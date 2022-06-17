@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    private Board board;
+
     public GameObject pawn;
     public GameObject knight;
     public GameObject rook;
@@ -29,11 +32,10 @@ public class GameManager : MonoBehaviour
     public Material black;
 
 
-    public GameObject[,] pieces;
+    public Dictionary<Vector2, GameObject> pieces;
 
     public void Start()
     {
-        pieces = new GameObject[8, 8];
         AddPiece(rook, Color.white, 0, 0);
         AddPiece(knight, Color.white, 1, 0);
         AddPiece(bishop, Color.white, 2, 0);
@@ -62,7 +64,7 @@ public class GameManager : MonoBehaviour
     public void AddPiece(GameObject @object, Color color, int col, int row)
     {
         Material mat = color == Color.white ? white : black;
-        //pieces[col, row] = board.AddPiece(@object, mat, col, row);
+        pieces.Add(new Vector2(col, row), board.AddPiece(@object, mat, col, row));
     }
 
     public GameObject PieceAtGrid(Vector2Int @vector)
@@ -70,11 +72,11 @@ public class GameManager : MonoBehaviour
         if (vector.x > 7 || vector.y > 7 || vector.x < 0 || vector.y < 0)
             return null;
 
-        return pieces[vector.x, vector.y];
+        return pieces.GetValueOrDefault(vector, null);
     }
     public void SelectPiece(GameObject @gameObject)
     {
-       //board.SelectPiece(gameObject);
+       board.SelectPiece(gameObject);
     }
 
     public enum Color
