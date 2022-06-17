@@ -7,10 +7,11 @@ public class Board : MonoBehaviour
     public Material defaultMaterial;
     public Material selectedMaterial;
 
-    public GameObject AddPiece(GameObject piece, int col, int row)
+    public GameObject AddPiece(GameObject piece,Material material, int col, int row)
     {
         Vector2Int gridPoint = Geometry.GridPoint(col, row);
         GameObject newPiece = Instantiate(piece, Geometry.PointFromGrid(gridPoint), Quaternion.identity, gameObject.transform);
+        newPiece.GetComponent<Renderer>().material = material;
         return newPiece;
     }
 
