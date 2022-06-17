@@ -43,15 +43,14 @@ public class TileSelector : MonoBehaviour
                 tileHighlight.SetActive(true);
                 tileHighlight.transform.position = new Vector3(x, 0, z);
                 if (Input.GetMouseButtonDown(0))
-                {/*
+                {
                     GameObject selectedPiece = 
-                        GameManager.instance.PieceAtGrid(new Vector2Int(x,z));
-                    if(GameManager.instance.DoesPieceBelongToCurrentPlayer(selectedPiece))
-                    {
-                        GameManager.instance.SelectPiece(selectedPiece);
+                        GameManager.Instance.PieceAtGrid(new Vector2Int(x,z));
+                        //TODO: Check if piece belongs to active Player
+                        GameManager.Instance.SelectPiece(selectedPiece);
                         // Reference Point 1: add ExitState call here later
-                    }
-                    */
+                    
+                    
                 }
                 
             }
