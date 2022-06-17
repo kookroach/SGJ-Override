@@ -3,8 +3,17 @@ guid: 93c1c47c7bf964046ad1db1db5a512ab
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
-  executionOrder: 0
+  defaultReferences:
+  - board: {instanceID: 0}
+  - pawn: {fileID: 1394685609085146482, guid: 6ddb11c246a6e5d438d7f41366e82716, type: 3}
+  - knight: {fileID: 1394685609085146482, guid: 6ddb11c246a6e5d438d7f41366e82716, type: 3}
+  - rook: {fileID: 1394685609085146482, guid: 6ddb11c246a6e5d438d7f41366e82716, type: 3}
+  - bishop: {fileID: 1394685609085146482, guid: 6ddb11c246a6e5d438d7f41366e82716, type: 3}
+  - queen: {fileID: 1394685609085146482, guid: 6ddb11c246a6e5d438d7f41366e82716, type: 3}
+  - king: {fileID: 1394685609085146482, guid: 6ddb11c246a6e5d438d7f41366e82716, type: 3}
+  - white: {fileID: 2100000, guid: cb2638973defff645bd1848edfa38f52, type: 2}
+  - black: {fileID: 2100000, guid: b02b472498e311e42b2eef62a46c304d, type: 2}
+  executionOrder: 200
   icon: {instanceID: 0}
   userData: 
   assetBundleName: 

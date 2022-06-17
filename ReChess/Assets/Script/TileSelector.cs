@@ -17,8 +17,10 @@ public class TileSelector : MonoBehaviour
         Vector3 point = new Vector3(gridPoint.x, 0, gridPoint.y);
         tileHighlight = Instantiate(tileHighlightPrefab, point, Quaternion.identity,gameObject.transform);
         tileHighlight.SetActive(false);
-
         
+
+
+
     }
 
     public void EnterState()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,15 +12,16 @@ public class GameManager : MonoBehaviour
         {
             if (_instance == null)
             {
-                GameObject manager = new GameObject("GameManager");
-                manager.AddComponent<GameManager>();
+                GameObject manager = GameObject.Find("GameManager");
+                _instance = manager.GetComponent<GameManager>();
+                
             }
             return _instance;
         }
     }
 
-    [SerializeField]
-    private Board board;
+   
+    public Board board;
 
     public GameObject pawn;
     public GameObject knight;
@@ -45,14 +47,14 @@ public class GameManager : MonoBehaviour
         AddPiece(knight, Color.white, 6, 0);
         AddPiece(rook, Color.white, 7, 0);
 
-        AddPiece(rook, Color.black, 0, 0);
-        AddPiece(knight, Color.black, 1, 0);
-        AddPiece(bishop, Color.black, 2, 0);
-        AddPiece(queen, Color.black, 3, 0);
-        AddPiece(king, Color.black, 4, 0);
-        AddPiece(bishop, Color.black, 5, 0);
-        AddPiece(knight, Color.black, 6, 0);
-        AddPiece(rook, Color.black, 7, 0);
+        AddPiece(rook, Color.black, 0, 7);
+        AddPiece(knight, Color.black, 1, 7);
+        AddPiece(bishop, Color.black, 2, 7);
+        AddPiece(queen, Color.black, 3, 7);
+        AddPiece(king, Color.black, 4, 7);
+        AddPiece(bishop, Color.black, 5, 7);
+        AddPiece(knight, Color.black, 6, 7);
+        AddPiece(rook, Color.black, 7, 7);
 
         for (int i = 0; i < 8; i++)
         {
