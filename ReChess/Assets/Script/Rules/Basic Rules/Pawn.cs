@@ -5,6 +5,13 @@ using UnityEngine;
 public class Pawn : IRule
 {
     private bool hasMoved = false;
+
+    public bool CanMoveToTarget(Vector2Int target)
+    {
+
+        return true;
+    }
+
     public bool OnAction(Vector2Int target) 
     {
         if (!hasMoved)
@@ -15,14 +22,23 @@ public class Pawn : IRule
         return true;
     }
 
-    public void OnAttack(IPiece piece, IPiece other)
+    public void OnAttack(IPiece other)
     {
         throw new System.NotImplementedException();
     }
 
-    public void OnDestroy(IPiece piece)
+    public void OnAttack()
     {
         throw new System.NotImplementedException();
     }
 
+    public void OnDestroy()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnDestroy(IPiece other)
+    {
+        throw new System.NotImplementedException();
+    }
 }
