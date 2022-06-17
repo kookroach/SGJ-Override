@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     public Material black;
 
 
-    public Dictionary<Vector2, GameObject> pieces;
+    public Dictionary<Vector2, GameObject> pieces = new Dictionary<Vector2, GameObject>();
 
     public void Start()
     {
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
     public void AddPiece(GameObject @object, Color color, int col, int row)
     {
         Material mat = color == Color.white ? white : black;
-        pieces.Add(new Vector2(col, row), board.AddPiece(@object, mat, col, row));
+        pieces.Add(new Vector2Int(col, row), board.AddPiece(@object, mat, col, row));
     }
 
     public GameObject PieceAtGrid(Vector2Int @vector)
