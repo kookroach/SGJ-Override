@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviour
     public Material black;
 
 
-    public Dictionary<Vector2, GameObject> pieces = new Dictionary<Vector2, GameObject>();
+    public static Dictionary<Vector2, GameObject> pieces = new Dictionary<Vector2, GameObject>();
 
     public void Start()
     {
@@ -86,6 +87,13 @@ public class GameManager : MonoBehaviour
         board.DeselectPiece(gameObject);
     }
 
+    public void MoveToGrid(GameObject @object, Vector2Int target)
+    {
+        var key = pieces.Where(x => x.Value == this.gameObject).FirstOrDefault().Key;
+        pieces.Remove(key);
+        @object.transform.position = new Vector3(target.x, gameObject.transform.position.y, target.y);
+        pieces.Add(target, @object);
+    }
     public enum Color
     {
         white,

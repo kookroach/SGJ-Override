@@ -6,27 +6,30 @@ using System.Linq;
 public class Pawn : MonoBehaviour, IRule
 {
     private bool hasMoved = false;
-    public int forwardMovement => hasMoved ? 1 : 2;
+    public int forwardMovement = 1;
     public int lateralMovement = 1;
+    public int startMovement = 2;
 
     public bool CanMoveToTarget(Vector2Int target)
     {
-        var pieces = GameManager.Instance.pieces;
+        var pieces = GameManager.pieces;
         var key = pieces.Where(x => x.Value == this.gameObject).FirstOrDefault().Key;
         
 
         if (key == null)
             return false;
 
-        if (target.x - key.x != forwardMovement && target.x - key.x != -forwardMovement)
-            return false;
+        
 
 
         GameObject objectOnTarget;
-        var isFree = pieces.TryGetValue(target, out objectOnTarget);
+        var isFree = !pieces.TryGetValue(target, out objectOnTarget);
         if (hasMoved)
         {
-            if (target.y - key.y == lateralMovement || target.y - key.y == -lateralMovement)
+            if (target.y - key.y != forwardMovement && target.y - key.y != -forwardMovement)
+                return false;
+
+            if (target.x - key.x == lateralMovement || target.x - key.x == -lateralMovement)
             {
                 if (!isFree && !objectOnTarget.CompareTag(this.tag))
                 {
@@ -35,8 +38,14 @@ public class Pawn : MonoBehaviour, IRule
                 return false;
             }
         }
-
-        if (target.y - key.y == 0 && isFree)
+        else
+        {
+            if (target.y - key.y != startMovement && target.y - key.y != -startMovement)
+                if (target.y - key.y != forwardMovement && target.y - key.y != -forwardMovement)
+                    return false;
+        }
+        
+        if (target.x - key.x == 0 && isFree)
             return true;
 
         return false;
@@ -47,9 +56,8 @@ public class Pawn : MonoBehaviour, IRule
         if (!CanMoveToTarget(target))
             return false;
 
-        this.gameObject.transform.position = new Vector3(target.x, gameObject.transform.position.y, target.y);
-
-        if(!hasMoved)
+        GameManager.Instance.MoveToGrid(this.gameObject, target);
+        if (!hasMoved)
             hasMoved = true;
         return true;
     }
