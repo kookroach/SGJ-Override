@@ -7,7 +7,7 @@ using System.Linq;
 public class Knight : MonoBehaviour, IRule
 {
 
-    public bool CanMoveToTarget(Vector2Int target)
+    public virtual bool CanMoveToTarget(Vector2Int target)
     {
         var pieces = GameManager.pieces;
         var key = pieces.Where(x => x.Value == this.gameObject).FirstOrDefault().Key;

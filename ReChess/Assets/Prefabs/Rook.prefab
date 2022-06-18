@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3732450087532705178}
   - component: {fileID: 8754804820049903393}
   - component: {fileID: 104170312115751945}
-  - component: {fileID: -3609058227636205675}
+  - component: {fileID: 6074435463271818873}
   m_Layer: 0
   m_Name: Rook
   m_TagString: Untagged
@@ -100,7 +100,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-3609058227636205675
+--- !u!114 &6074435463271818873
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
