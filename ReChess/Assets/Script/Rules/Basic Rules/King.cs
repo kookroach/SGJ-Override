@@ -8,6 +8,7 @@ public class King : MonoBehaviour, IRule
 {
     public int forwardMovement = 1;
     public int lateralMovement = 1;
+    public bool hasMoved = false;
 
     public bool CanMoveToTarget(Vector2Int target)
     {
@@ -19,11 +20,11 @@ public class King : MonoBehaviour, IRule
             return false;
 
 
-        if (Math.Abs(target.y - key.y) == forwardMovement)
+        if (Math.Abs(target.y - key.y) <= forwardMovement && Math.Abs(target.x - key.x) <= lateralMovement)
             return true;
-        else if (Math.Abs(target.x - key.x) == lateralMovement)
+        if (!hasMoved && Math.Abs(target.x - key.x) == lateralMovement + 1 && target.y - key.y == 0)
             return true;
-        else
+        
             return false;
 
         
@@ -31,6 +32,8 @@ public class King : MonoBehaviour, IRule
 
     public bool OnAction(Vector2Int target)
     {
+        if (!hasMoved)
+            hasMoved = true;
         if (!CanMoveToTarget(target))
             return false;
 

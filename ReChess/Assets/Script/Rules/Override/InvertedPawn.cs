@@ -18,7 +18,7 @@ public class InvertedPawn : Pawn
             return false;
         }
         //go two squares diagonal
-        if (!hasMoved && (target.y - key.y == startMovement) && (target.x - key.x == startMovement) && !pieces.ContainsKey(target) && !pieces.ContainsKey(new Vector2(target.x - 1, target.y - 1)) && !pieces.ContainsKey(new Vector2(target.x + 1, target.y - 1)))
+        if (!hasMoved && (target.y - key.y == startMovement) && (Math.Abs(target.x - key.x) == startMovement) && !pieces.ContainsKey(target) && !pieces.ContainsKey(new Vector2(target.x - 1, target.y - 1)) && !pieces.ContainsKey(new Vector2(target.x + 1, target.y - 1)))
             return true;
 
 
