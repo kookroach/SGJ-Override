@@ -6,8 +6,7 @@ using UnityEngine;
 public class MoveSelector : MonoBehaviour
 {
     public GameObject moveLocationPrefab;
-    public GameObject tileHighlightPrefab;
-    public GameObject attackLocationPrefab;
+    
 
     private GameObject _tileHighlight;
     private GameObject _movingPiece;
@@ -22,7 +21,7 @@ public class MoveSelector : MonoBehaviour
     private void Start()
     {
         this.enabled = false;
-        _tileHighlight = Instantiate(tileHighlightPrefab, Geometry.PointFromGrid(new Vector2Int(0, 0)),
+        _tileHighlight = Instantiate(moveLocationPrefab, Geometry.PointFromGrid(new Vector2Int(0, 0)),
             Quaternion.identity, gameObject.transform);
         _tileHighlight.SetActive(false);
     }
@@ -41,7 +40,7 @@ public class MoveSelector : MonoBehaviour
             Vector2Int gridPoint = new Vector2Int(x, z);
 
             _tileHighlight.SetActive(true);
-            _tileHighlight.transform.position = Geometry.PointFromGrid(gridPoint);
+            _tileHighlight.transform.position = new Vector3(x, 0.1f, z);
             
             
             if (Input.GetMouseButtonDown(0))

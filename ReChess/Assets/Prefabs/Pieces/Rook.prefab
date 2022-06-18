@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ade992629d574146baab2aa986dded3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardMovement: 1
-  lateralMovement: 1
+  forwardMovement: 10
+  lateralMovement: 10
 --- !u!136 &-6268919742381135605
 CapsuleCollider:
   m_ObjectHideFlags: 0

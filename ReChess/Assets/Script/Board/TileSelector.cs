@@ -51,7 +51,7 @@ public class TileSelector : MonoBehaviour
                 int x = Mathf.RoundToInt(hit.point.x);
                 int z = Mathf.RoundToInt(hit.point.z);
                 tileHighlight.SetActive(true);
-                tileHighlight.transform.position = new Vector3(x, 0, z);
+                tileHighlight.transform.position = new Vector3(x, 0.1f, z);
                 if (Input.GetMouseButtonDown(0))
                 {
                     GameObject selectedPiece = 
