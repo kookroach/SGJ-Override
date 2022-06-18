@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class RotateCamera : MonoBehaviour
 {
-    List<Vector3> pos = new List<Vector3>()  {
-          new Vector3(7, 3.5f, 0),
-          new Vector3(7, 3.5f, 7),
-          new Vector3(0, 3.5f, 7),
-          new Vector3(0, 3.5f, 0)
-    };
+    public Transform[] pos = new Transform[4];
 
-    int current_index = 0;
+        int current_index = 0;
     bool running = false;
     public float moveSpeed = 2;
 
@@ -23,19 +18,19 @@ public class RotateCamera : MonoBehaviour
 
     IEnumerator Courutine()
     {
-        var dir = (pos[current_index % pos.Count] - Camera.main.transform.position).normalized;
-        while (Vector3.Distance(Camera.main.transform.position, pos[current_index % pos.Count]) > 0.5f  )
+        
+        while (Vector3.Distance(Camera.main.transform.position, pos[current_index % pos.Length].position) != 0f  )
         {
-            Camera.main.transform.LookAt(new Vector3(3.5f, 0.5f, 3.5f));
-
-            Camera.main.transform.Translate(dir * moveSpeed * Time.deltaTime);
+            Camera.main.transform.position = Vector3.MoveTowards(Camera.main.transform.position,
+                pos[current_index % pos.Length].position, moveSpeed * Time.deltaTime * 7.5f);
+            
+            Camera.main.transform.rotation = Quaternion.RotateTowards(Camera.main.transform.rotation,
+                pos[current_index % pos.Length].rotation, moveSpeed * Time.deltaTime * 100f);
 
 
             yield return new WaitForEndOfFrame();
         }
-        Camera.main.transform.LookAt(new Vector3(3.5f, 0.5f, 3.5f));
-
-        Camera.main.transform.position = pos[current_index % pos.Count];
+        
 
         current_index++;
         yield return null;
