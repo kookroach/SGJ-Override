@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: f6fc5e18688b47747bfb9a323e936526
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - VFX_Library: {fileID: 11400000, guid: d3f642b58ea108844ae7419f467fc12c, type: 2}
+  - SFX_Library: {fileID: 11400000, guid: a9951230bff3a9240b3a4b0321753880, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
