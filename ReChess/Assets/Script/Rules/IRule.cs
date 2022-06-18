@@ -4,6 +4,7 @@ using UnityEngine;
 
 
 
+
 public interface IRule 
 {
     public bool CanMoveToTarget(Vector2Int target);
