@@ -7,6 +7,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
+    [SerializeField] [Range(1, 10)] private float speed;
     public static GameManager Instance
     {
         get
@@ -104,7 +105,9 @@ public class GameManager : MonoBehaviour
         }
         pieces.Remove(key);
 
-        @object.transform.position = new Vector3(target.x, gameObject.transform.position.y, target.y);
+        
+        Vector3 dir = new Vector3(target.x, gameObject.transform.position.y, target.y) - @object.transform.position;
+        StartCoroutine(muve(@object,dir,new Vector3(target.x, gameObject.transform.position.y, target.y)));
         pieces[target] = @object;
         return true;
     }
@@ -112,5 +115,20 @@ public class GameManager : MonoBehaviour
     {
         white,
         black
+    }
+
+    IEnumerator muve(GameObject obj, Vector3 dir, Vector3 target)
+    {
+        while (Vector3.Distance(obj.transform.position,target) > 0.1f)
+        {
+
+            obj.transform.Translate(dir * Time.deltaTime * speed);
+            yield return new WaitForEndOfFrame();
+            
+        }
+
+        obj.transform.position = target;
+        yield return null;
+
     }
 }
