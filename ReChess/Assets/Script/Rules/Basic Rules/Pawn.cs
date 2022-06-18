@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Linq;
 
 
-public class Pawn : MonoBehaviour, IRule
+public class Pawn : ChessPiece, IRule
 {
     public bool hasMoved = false;
     public virtual int forwardMovement { get; protected set; } = 1;

@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class King : MonoBehaviour, IRule
+public class King : ChessPiece, IRule
 {
     public int forwardMovement = 1;
     public int lateralMovement = 1;
+    public bool hasMoved;
 
     public bool CanMoveToTarget(Vector2Int target)
     {
@@ -18,22 +19,62 @@ public class King : MonoBehaviour, IRule
         if (key == null)
             return false;
 
-
-        if (Math.Abs(target.y - key.y) == forwardMovement)
+        //standard movement
+        if (Math.Abs(target.y - key.y) <= forwardMovement && Math.Abs(target.x - key.x) <= lateralMovement)
             return true;
-        else if (Math.Abs(target.x - key.x) == lateralMovement)
-            return true;
-        else
-            return false;
-
         
+        //castling logic
+        if (!hasMoved && Math.Abs(target.x - key.x) == lateralMovement + 1 && target.y - key.y == 0)
+        {
+            if (IRule.RaycastBoard(key, target))
+            {
+                if (this.gameObject.CompareTag("White"))
+                {
+                    Component _;
+                    if (target.x - key.x == - lateralMovement - 1 && GameManager.Instance.PieceAtGrid(new Vector2Int(0, 0)).TryGetComponent(typeof(Rook),out _))
+                    {
+                        GameManager.Instance.PieceAtGrid(new Vector2Int(0, 0)).GetComponent<IRule>().OnAction(new Vector2Int(3, 0));
+                        return true;
+                    }
+                    if (target.x - key.x == lateralMovement + 1 && GameManager.Instance.PieceAtGrid(new Vector2Int(7, 0)).TryGetComponent(typeof(Rook),out _))
+                    {
+                        GameManager.Instance.PieceAtGrid(new Vector2Int(7, 0)).GetComponent<IRule>().OnAction(new Vector2Int(5, 0));
+                        return true;
+                    }
+                }
+
+                if (this.gameObject.CompareTag("Black"))
+                {
+                    Component _;
+                    if (target.x - key.x == - lateralMovement - 1 && GameManager.Instance.PieceAtGrid(new Vector2Int(0, 7)).TryGetComponent(typeof(Rook),out _))
+                    {
+                        GameManager.Instance.PieceAtGrid(new Vector2Int(0, 7)).GetComponent<IRule>().OnAction(new Vector2Int(3, 7));
+                        return true;
+                    }
+                    if (target.x - key.x == lateralMovement + 1 && GameManager.Instance.PieceAtGrid(new Vector2Int(7, 7)).TryGetComponent(typeof(Rook),out _))
+                    {
+                        GameManager.Instance.PieceAtGrid(new Vector2Int(7, 7)).GetComponent<IRule>().OnAction(new Vector2Int(5, 7));
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
+
+
+
+
     }
 
     public bool OnAction(Vector2Int target)
     {
         if (!CanMoveToTarget(target))
             return false;
-
+        
+        if (!hasMoved)
+            hasMoved = true;
+        
         return GameManager.Instance.MoveToGrid(this.gameObject, target);
     }
 
