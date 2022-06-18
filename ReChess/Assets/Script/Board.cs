@@ -16,6 +16,10 @@ public class Board : MonoBehaviour
         Vector2Int gridPoint = Geometry.GridPoint(col, row);
         GameObject newPiece = Instantiate(piece, Geometry.PointFromGrid(gridPoint), Quaternion.identity, gameObject.transform);
         newPiece.GetComponent<Renderer>().material = material;
+        if (material.color == Color.black)
+            newPiece.tag = "Black";
+        else if (material.color == Color.white)
+            newPiece.tag = "White";
         return newPiece;
     }
 
