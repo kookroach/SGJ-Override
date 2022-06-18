@@ -3,7 +3,12 @@ guid: 6bddf968b85f51f479db725300092f50
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - moveLocationPrefab: {instanceID: 0}
+  - tileHighlightPrefab: {instanceID: 0}
+  - attackLocationPrefab: {instanceID: 0}
+  - defaultWhite: {fileID: 2100000, guid: cb2638973defff645bd1848edfa38f52, type: 2}
+  - defaultBlack: {fileID: 2100000, guid: b02b472498e311e42b2eef62a46c304d, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

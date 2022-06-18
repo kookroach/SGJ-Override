@@ -11,8 +11,8 @@ public class MoveSelector : MonoBehaviour
 
     private GameObject _tileHighlight;
     private GameObject _movingPiece;
-    
-    
+
+
     public void EnterState(GameObject piece)
     {
         _movingPiece = piece;
@@ -63,11 +63,13 @@ public class MoveSelector : MonoBehaviour
     
     private void ExitState()
     {
+        
         this.enabled = false;
         _tileHighlight.SetActive(false);
         GameManager.Instance.DeselectPiece(_movingPiece);
         _movingPiece = null;
         TileSelector selector = GetComponent<TileSelector>();
         selector.EnterState();
+        
     }
 }

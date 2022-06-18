@@ -6,7 +6,10 @@ using UnityEngine;
 public class Board : MonoBehaviour
 {
     public Material defaultMaterial;
+    public Material defaultWhite;
+    public Material defaultBlack;
     public Material selectedMaterial;
+    
 
 
 
@@ -16,9 +19,9 @@ public class Board : MonoBehaviour
         Vector2Int gridPoint = Geometry.GridPoint(col, row);
         GameObject newPiece = Instantiate(piece, Geometry.PointFromGrid(gridPoint), Quaternion.identity, gameObject.transform);
         newPiece.GetComponent<Renderer>().material = material;
-        if (material.color == Color.black)
+        if (material == defaultBlack)
             newPiece.tag = "Black";
-        else if (material.color == Color.white)
+        else if (material == defaultWhite)
             newPiece.tag = "White";
         return newPiece;
     }
@@ -41,7 +44,12 @@ public class Board : MonoBehaviour
 
     public void DeselectPiece(GameObject piece)
     {
+        
         MeshRenderer renderers = piece.GetComponentInChildren<MeshRenderer>();
         renderers.material = defaultMaterial;
+        if (piece.CompareTag("Black"))
+            renderers.material = defaultBlack;
+        else if (piece.CompareTag("White"))
+            renderers.material = defaultWhite;
     }
 }
