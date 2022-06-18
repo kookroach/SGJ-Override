@@ -17,8 +17,8 @@ public class BigHorse : Knight
         {
             return false;
         }
-        if ((Math.Abs(target.y - key.y) == 4 && Math.Abs(target.x - key.x) == 3) ||
-            (Math.Abs(target.y - key.y) == 3 && Math.Abs(target.x - key.x) == 4))
+        if ((Math.Abs(target.y - key.y) == 4 && Math.Abs(target.x - key.x) == 2) ||
+            (Math.Abs(target.y - key.y) == 2 && Math.Abs(target.x - key.x) == 4))
             return true;
         return false;
         
