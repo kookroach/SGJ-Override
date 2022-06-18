@@ -64,5 +64,7 @@ public class Pawn : MonoBehaviour, IRule
 
     public void OnDestroy()
     {
+        throw new System.NotImplementedException();
+        throw new System.NotImplementedException();
     }
 }
