@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class Queen : MonoBehaviour
+public class Queen : MonoBehaviour, IRule
 {
     public int forwardMovement = 1;
     public int lateralMovement = 1;

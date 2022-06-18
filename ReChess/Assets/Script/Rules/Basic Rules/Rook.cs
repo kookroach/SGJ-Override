@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class Rook : MonoBehaviour
+public class Rook : MonoBehaviour, IRule
 {
     public int forwardMovement = 1;
     public int lateralMovement = 1;
