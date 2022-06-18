@@ -1,44 +1,11 @@
 fileFormatVersion: 2
-guid: 2a523774ef329b642b3ab56b8b4c5cbb
+guid: a922038742b353f498d38289bdc07f37
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: ' '
-    100002: //RootNode
-    100004: car-firefighter-pickup-wheel_BL
-    100006: car-firefighter-pickup-wheel_BR
-    100008: car-firefighter-pickup-wheel_FL
-    100010: car-firefighter-pickup-wheel_FR
-    100012: car-firefighter-pickup-base
-    400000: ' '
-    400002: //RootNode
-    400004: car-firefighter-pickup-wheel_BL
-    400006: car-firefighter-pickup-wheel_BR
-    400008: car-firefighter-pickup-wheel_FL
-    400010: car-firefighter-pickup-wheel_FR
-    400012: car-firefighter-pickup-base
-    2100000: LOWPOLY-COLORS
-    2300000: ' '
-    2300002: car-firefighter-pickup-wheel_BL
-    2300004: car-firefighter-pickup-wheel_BR
-    2300006: car-firefighter-pickup-wheel_FL
-    2300008: car-firefighter-pickup-wheel_FR
-    2300010: car-firefighter-pickup-base
-    3300000: ' '
-    3300002: car-firefighter-pickup-wheel_BL
-    3300004: car-firefighter-pickup-wheel_BR
-    3300006: car-firefighter-pickup-wheel_FL
-    3300008: car-firefighter-pickup-wheel_FR
-    3300010: car-firefighter-pickup-base
-    4300000: ' '
-    4300002: car-firefighter-pickup-wheel_BL
-    4300004: car-firefighter-pickup-wheel_BR
-    4300006: car-firefighter-pickup-wheel_FL
-    4300008: car-firefighter-pickup-wheel_FR
-    4300010: car-firefighter-pickup-base
+  serializedVersion: 21202
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 2
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -47,6 +14,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -64,32 +32,41 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -98,10 +75,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  importAnimation: 0
-  copyAvatar: 0
+  referencedClips: []
+  importAnimation: 1
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -111,13 +88,17 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

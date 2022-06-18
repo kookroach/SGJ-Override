@@ -1,44 +1,11 @@
 fileFormatVersion: 2
-guid: b9a2609bde816da46b0f8401cb1a4b4b
+guid: 3d117943ec4410849a8beed0367db189
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: //RootNode
-    100002: scifi-buggy-cabin
-    100004: scifi-buggy-chassis
-    100006: scifi-buggy-wheel_BL
-    100008: scifi-buggy-wheel_BR
-    100010: scifi-buggy-wheel_FL
-    100012: scifi-buggy-wheel_FR
-    400000: //RootNode
-    400002: scifi-buggy-cabin
-    400004: scifi-buggy-chassis
-    400006: scifi-buggy-wheel_BL
-    400008: scifi-buggy-wheel_BR
-    400010: scifi-buggy-wheel_FL
-    400012: scifi-buggy-wheel_FR
-    2100000: LOWPOLY-COLORS
-    2300000: scifi-buggy-cabin
-    2300002: scifi-buggy-chassis
-    2300004: scifi-buggy-wheel_BL
-    2300006: scifi-buggy-wheel_BR
-    2300008: scifi-buggy-wheel_FL
-    2300010: scifi-buggy-wheel_FR
-    3300000: scifi-buggy-cabin
-    3300002: scifi-buggy-chassis
-    3300004: scifi-buggy-wheel_BL
-    3300006: scifi-buggy-wheel_BR
-    3300008: scifi-buggy-wheel_FL
-    3300010: scifi-buggy-wheel_FR
-    4300000: scifi-buggy-cabin
-    4300002: scifi-buggy-wheel_FL
-    4300004: scifi-buggy-wheel_FR
-    4300006: scifi-buggy-wheel_BL
-    4300008: scifi-buggy-wheel_BR
-    4300010: scifi-buggy-chassis
+  serializedVersion: 21202
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 2
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -47,6 +14,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -64,32 +32,41 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -98,10 +75,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -111,13 +88,17 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

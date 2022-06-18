@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 using System;
 
-public class MageBishop : Bishop
+public class BouncyBishop : Bishop
 {
     public override bool CanMoveToTarget(Vector2Int target)
     {
