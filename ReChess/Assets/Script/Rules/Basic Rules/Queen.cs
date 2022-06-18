@@ -8,6 +8,13 @@ public class Queen : ChessPiece, IRule
 {
     public int forwardMovement = 20;
     public int lateralMovement = 20;
+    
+    private AudioManager dj;
+
+    private void Start()
+    {
+        dj = FindObjectOfType<AudioManager>();
+    }
 
     public bool CanMoveToTarget(Vector2Int target)
     {
@@ -49,7 +56,7 @@ public class Queen : ChessPiece, IRule
     {
         if (!CanMoveToTarget(target))
             return false;
-
+        dj.Play("spare1");
         return GameManager.Instance.MoveToGrid(this.gameObject, target);
     }
 
@@ -60,6 +67,7 @@ public class Queen : ChessPiece, IRule
 
         if (other.GetComponent<IRule>().OnDestroy())
         {
+            dj.Play("attack");
             Destroy(other);
             return true;
         }

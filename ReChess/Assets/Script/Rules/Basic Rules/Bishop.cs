@@ -9,6 +9,14 @@ public class Bishop : ChessPiece, IRule
     public int forwardMovement = 1;
     public int lateralMovement = 1;
 
+    
+    private AudioManager dj;
+
+    private void Start()
+    {
+        dj = FindObjectOfType<AudioManager>();
+    }
+
     public bool CanMoveToTarget(Vector2Int target)
     {
         var pieces = GameManager.pieces;
@@ -32,7 +40,7 @@ public class Bishop : ChessPiece, IRule
     {
         if (!CanMoveToTarget(target))
             return false;
-        
+        dj.Play("bishop");
         return GameManager.Instance.MoveToGrid(this.gameObject, target);
 
     }
@@ -44,6 +52,7 @@ public class Bishop : ChessPiece, IRule
 
         if (other.GetComponent<IRule>().OnDestroy())
         {
+            dj.Play("attack");
             Destroy(other);
             return true;
         }

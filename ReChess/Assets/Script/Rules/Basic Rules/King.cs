@@ -9,6 +9,13 @@ public class King : ChessPiece, IRule
     public int forwardMovement = 1;
     public int lateralMovement = 1;
     public bool hasMoved;
+    
+    private AudioManager dj;
+
+    private void Start()
+    {
+        dj = FindObjectOfType<AudioManager>();
+    }
 
     public bool CanMoveToTarget(Vector2Int target)
     {
@@ -21,6 +28,9 @@ public class King : ChessPiece, IRule
 
         //standard movement
         if (Math.Abs(target.y - key.y) <= forwardMovement && Math.Abs(target.x - key.x) <= lateralMovement)
+        {
+            dj.Play("king");
+        }
             return true;
         
         //castling logic
@@ -85,6 +95,7 @@ public class King : ChessPiece, IRule
 
         if (other.GetComponent<IRule>().OnDestroy())
         {
+            dj.Play("attack");
             Destroy(other);
             return true;
         }

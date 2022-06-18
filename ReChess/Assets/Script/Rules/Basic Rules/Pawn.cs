@@ -10,8 +10,11 @@ public class Pawn : ChessPiece, IRule
     public virtual int lateralMovement { get; protected set; } = 0;
     public int startMovement = 2;
 
+    private AudioManager dj;
+
     private void Start()
     {
+        dj = FindObjectOfType<AudioManager>();
         if (this.gameObject.CompareTag("Black"))
         {
             forwardMovement *= -1;
@@ -32,17 +35,25 @@ public class Pawn : ChessPiece, IRule
         if (!hasMoved && (target.y - key.y == startMovement) && !pieces.ContainsKey(target) &&
             target.x - key.x == lateralMovement && !pieces.ContainsKey(new Vector2(target.x, target.y - 1)))
         {
+            dj.Play("pawn");
             return true;
         }
             
         //usual pawn movement
         if (target.y - key.y == forwardMovement && target.x - key.x == lateralMovement && !pieces.ContainsKey(target))
+        {
+            dj.Play("pawn");
+            //FindObjectOfType<AudioManager>().Play("pawn");
             return true;
+        }
         //take enemy piece
         if (target.y - key.y == forwardMovement && Math.Abs(target.x - key.x) == (lateralMovement + 1) &&
             pieces.ContainsKey(target))
+        {
+            dj.Play("attack");
             return true;
-        
+        }
+
         //TODO: en passant
         
 

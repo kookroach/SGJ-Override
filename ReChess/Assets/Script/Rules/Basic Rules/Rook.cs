@@ -10,6 +10,14 @@ public class Rook : ChessPiece, IRule
     public int lateralMovement = 10;
 
     public virtual bool CanMoveToTarget(Vector2Int target)
+    private AudioManager dj;
+
+    private void Start()
+    {
+        dj = FindObjectOfType<AudioManager>();
+    }
+    
+    public bool CanMoveToTarget(Vector2Int target)
     {
         var pieces = GameManager.pieces;
         var key = pieces.Where(x => x.Value == this.gameObject).FirstOrDefault().Key;
@@ -40,7 +48,7 @@ public class Rook : ChessPiece, IRule
     {
         if (!CanMoveToTarget(target))
             return false;
-        
+        dj.Play("rook");
         return GameManager.Instance.MoveToGrid(this.gameObject, target);
 
     }
@@ -52,6 +60,7 @@ public class Rook : ChessPiece, IRule
 
         if (other.GetComponent<IRule>().OnDestroy())
         {
+            dj.Play("attack");
             Destroy(other);
             return true;
         }
