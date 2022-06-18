@@ -17,10 +17,14 @@ public class BouncyBishop : Bishop
             return false;
         }
         
+        //normal bishop movement
         if (Math.Abs(target.y - key.y) <= forwardMovement && Math.Abs(target.y - key.y) == Math.Abs(target.x - key.x))
         {
             return IRule.RaycastBoard(key, target);
         }
+        
+            
+            
 
         return false;
     }
