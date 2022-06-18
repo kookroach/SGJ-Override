@@ -56,21 +56,18 @@ public class Pawn : MonoBehaviour, IRule
 
     public void OnAttack(IPiece other)
     {
-        throw new System.NotImplementedException();
     }
 
     public void OnAttack()
     {
-        throw new System.NotImplementedException();
     }
 
     public void OnDestroy()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
     public void OnDestroy(IPiece other)
     {
-        throw new System.NotImplementedException();
     }
 }

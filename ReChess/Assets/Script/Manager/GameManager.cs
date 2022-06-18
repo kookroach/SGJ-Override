@@ -81,6 +81,11 @@ public class GameManager : MonoBehaviour
        board.SelectPiece(gameObject);
     }
 
+    public void DeselectPiece(GameObject @gameObject)
+    {
+        board.DeselectPiece(gameObject);
+    }
+
     public enum Color
     {
         white,

@@ -27,6 +27,14 @@ public class TileSelector : MonoBehaviour
     {
         enabled = true;
     }
+    
+    private void ExitState(GameObject movingPiece)
+    {
+        this.enabled = false;
+        tileHighlight.SetActive(false);
+        MoveSelector move = GetComponent<MoveSelector>();
+        move.EnterState(movingPiece);
+    }
 
     private void Update()
     {
@@ -50,8 +58,10 @@ public class TileSelector : MonoBehaviour
                         GameManager.Instance.PieceAtGrid(new Vector2Int(x,z));
                         //TODO: Check if piece belongs to active Player
                         GameManager.Instance.SelectPiece(selectedPiece);
-                        // Reference Point 1: add ExitState call here later
-                    
+                        
+                        
+                        ExitState(selectedPiece);
+
                     
                 }
                 
