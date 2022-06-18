@@ -31,7 +31,10 @@ public class Pawn : ChessPiece, IRule
         //go two squares forward
         if (!hasMoved && (target.y - key.y == startMovement) && !pieces.ContainsKey(target) &&
             target.x - key.x == lateralMovement && !pieces.ContainsKey(new Vector2(target.x, target.y - 1)))
+        {
             return true;
+        }
+            
         //usual pawn movement
         if (target.y - key.y == forwardMovement && target.x - key.x == lateralMovement && !pieces.ContainsKey(target))
             return true;
@@ -39,6 +42,7 @@ public class Pawn : ChessPiece, IRule
         if (target.y - key.y == forwardMovement && Math.Abs(target.x - key.x) == (lateralMovement + 1) &&
             pieces.ContainsKey(target))
             return true;
+        
         //TODO: en passant
         
 
