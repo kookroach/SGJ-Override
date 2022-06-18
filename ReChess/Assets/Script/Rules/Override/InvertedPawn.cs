@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class InvertedPawn : Pawn
 {
-    public override int forwardMovement { get; protected set; } = 0;
-    public override int lateralMovement { get; protected set; } = 1;
+    public override int forwardMovement { get; protected set; } = 1;
+    public override int lateralMovement { get; protected set; } = 0;
 
     public override bool CanMoveToTarget(Vector2Int target)
     {
@@ -18,16 +18,15 @@ public class InvertedPawn : Pawn
             return false;
         }
         //go two squares diagonal
-        if (!hasMoved && (target.y - key.y == startMovement) && pieces.ContainsKey(target) && 
-            Math.Abs(target.x - key.x) == (lateralMovement + 1) && pieces.ContainsKey(new Vector2(target.x, target.y - 1)))
+        if (!hasMoved && (target.y - key.y == startMovement) && (target.x - key.x == startMovement) && !pieces.ContainsKey(target) && !pieces.ContainsKey(new Vector2(target.x - 1, target.y - 1)) && !pieces.ContainsKey(new Vector2(target.x + 1, target.y - 1)))
             return true;
 
 
-        //diagonal movement
+        //"standard" diagonal movement
         if (target.y - key.y == forwardMovement && Math.Abs(target.x - key.x) == (lateralMovement + 1) &&
             !pieces.ContainsKey(target))
             return true;
-        //usual pawn movement
+        //take enemy piece
         if (target.y - key.y == forwardMovement && target.x - key.x == lateralMovement && pieces.ContainsKey(target))
             return true;
      

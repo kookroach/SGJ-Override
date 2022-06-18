@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using System.Linq;
 using UnityEngine.UI;
 
 public class Augments : MonoBehaviour
@@ -38,8 +39,8 @@ public class Augments : MonoBehaviour
         button1.GetComponentInChildren<TextMeshProUGUI>().text = pawn1.ToString();
         button2.GetComponentInChildren<TextMeshProUGUI>().text = pawn2.ToString();
         button3.GetComponentInChildren<TextMeshProUGUI>().text = pawn3.ToString();
-        
-        
+
+
 
     }
 
@@ -50,5 +51,19 @@ public class Augments : MonoBehaviour
         button3.SetActive(false);
 
         
+    }
+
+    public void SelectCard(Pawn pawn)
+    {
+        var list = GameManager.pieces.Where(x => x.Value.GetType() == typeof(Pawn)).Select(x => x.Key).ToList();
+        foreach (var piece in list)
+        {
+            Destroy(GameManager.pieces[piece].GetComponent<Pawn>());
+            GameManager.pieces[piece].AddComponent(typeof(Pawn));
+        }
+
+        button1.SetActive(false);
+        button2.SetActive(false);
+        button3.SetActive(false);
     }
 }
