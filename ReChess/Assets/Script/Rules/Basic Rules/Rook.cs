@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,13 @@ public class Rook : MonoBehaviour, IRule
         
 
         if (key == null)
+            return false;
+        
+        if (Math.Abs(target.y - key.y ) <= forwardMovement && (target.x - key.x == 0))
+            return true;
+        else if (Math.Abs(target.x - key.x) <= lateralMovement && (target.y - key.y == 0))
+            return true;
+        else
             return false;
         
         return false;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,27 +6,36 @@ using System.Linq;
 
 public class Queen : MonoBehaviour, IRule
 {
-    public int forwardMovement = 1;
-    public int lateralMovement = 1;
+    public int forwardMovement = 20;
+    public int lateralMovement = 20;
 
     public bool CanMoveToTarget(Vector2Int target)
     {
         var pieces = GameManager.pieces;
         var key = pieces.Where(x => x.Value == this.gameObject).FirstOrDefault().Key;
-        
+
 
         if (key == null)
             return false;
-        
+
+        if ((Math.Abs(target.y - key.y) <= forwardMovement && (target.x - key.x == 0)) ||
+            (Math.Abs(target.y - key.y) == Math.Abs(target.x - key.x)))
+            return true;
+        else if (Math.Abs(target.x - key.x) <= lateralMovement && (target.y - key.y == 0) ||
+                 (Math.Abs(target.y - key.y) == Math.Abs(target.x - key.x)))
+            return true;
+        else
+            return false;
+
         return false;
     }
-    public bool OnAction(Vector2Int target) 
+
+    public bool OnAction(Vector2Int target)
     {
         if (!CanMoveToTarget(target))
             return false;
-        
-        return GameManager.Instance.MoveToGrid(this.gameObject, target);
 
+        return GameManager.Instance.MoveToGrid(this.gameObject, target);
     }
 
     public bool OnAttack(GameObject other)

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,20 +19,14 @@ public class King : MonoBehaviour, IRule
             return false;
 
 
-        if (target.y - key.y != forwardMovement && target.y - key.y != -forwardMovement)
+        if (Math.Abs(target.y - key.y) == forwardMovement)
             return true;
-
-        if (target.x - key.x != lateralMovement && target.x - key.x != -lateralMovement)
-        {
+        else if (Math.Abs(target.x - key.x) == lateralMovement)
             return true;
-        }
+        else
+            return false;
 
-        if (target.x - key.x == 0)
-            return true;
-
-        return false;
-
-        return false;
+        
     }
 
     public bool OnAction(Vector2Int target)
