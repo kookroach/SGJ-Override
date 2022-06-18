@@ -91,15 +91,18 @@ public class GameManager : MonoBehaviour
     {
         var key = pieces.Where(x => x.Value == @object).FirstOrDefault().Key;
         pieces.Remove(key);
-        @object.transform.position = new Vector3(target.x, gameObject.transform.position.y, target.y);
-        if(pieces.TryAdd(target, @object))
+        if(pieces.ContainsKey(target))
         {
-
             GameObject objectOnTarget = GameManager.pieces[target];
-
-            return @object.GetComponent<IRule>().OnAttack(objectOnTarget);
+            if (!@object.GetComponent<IRule>().OnAttack(objectOnTarget))
+            {
+                return false;
+            }
+     
         }
 
+        @object.transform.position = new Vector3(target.x, gameObject.transform.position.y, target.y);
+        pieces[target] = @object;
         return true;
     }
     public enum Color

@@ -10,6 +10,14 @@ public class Pawn : MonoBehaviour, IRule
     public int lateralMovement = 1;
     public int startMovement = 2;
 
+    private void Start()
+    {
+        if(this.gameObject.CompareTag("Black"))
+        {
+            forwardMovement *= -1;
+            startMovement *= -1;
+        }
+    }
     public bool CanMoveToTarget(Vector2Int target)
     {
         var pieces = GameManager.pieces;
@@ -22,22 +30,22 @@ public class Pawn : MonoBehaviour, IRule
         
         if (hasMoved)
         {
-            if (target.y - key.y != forwardMovement && target.y - key.y != -forwardMovement)
+            if (target.y - key.y != forwardMovement)
                 return false;
 
-            if (target.x - key.x == lateralMovement || target.x - key.x == -lateralMovement)
+            if ((target.x - key.x == lateralMovement || target.x - key.x == -lateralMovement) && pieces.ContainsKey(target))
             {
                 return true;
             }
         }
         else
         {
-            if (target.y - key.y != startMovement && target.y - key.y != -startMovement)
-                if (target.y - key.y != forwardMovement && target.y - key.y != -forwardMovement)
+            if (target.y - key.y != startMovement)
+                if (target.y - key.y != forwardMovement)
                     return false;
         }
         
-        if (target.x - key.x == 0)
+        if (target.x - key.x == 0 && !pieces.ContainsKey(target))
             return true;
 
         return false;

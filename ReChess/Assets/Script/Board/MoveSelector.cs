@@ -47,11 +47,12 @@ public class MoveSelector : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 // Reference Point 2: check for valid move location
-                if (GameManager.Instance.PieceAtGrid(gridPoint) == null)
-                {
+   
                     _movingPiece.GetComponent<IRule>().OnAction(gridPoint);
-                }
+     
                 // Reference Point 3: capture enemy piece here later
+                
+
                 ExitState();
             }
         }
