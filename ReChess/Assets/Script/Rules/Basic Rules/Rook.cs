@@ -6,10 +6,10 @@ using System.Linq;
 
 public class Rook : ChessPiece, IRule
 {
-    public int forwardMovement = 1;
-    public int lateralMovement = 1;
+    public int forwardMovement = 10;
+    public int lateralMovement = 10;
 
-    public bool CanMoveToTarget(Vector2Int target)
+    public virtual bool CanMoveToTarget(Vector2Int target)
     {
         var pieces = GameManager.pieces;
         var key = pieces.Where(x => x.Value == this.gameObject).FirstOrDefault().Key;
@@ -23,7 +23,6 @@ public class Rook : ChessPiece, IRule
         //forward(/backward) movement
         if ((Math.Abs(target.y - key.y) <= forwardMovement && (target.x - key.x == 0)))
         {
-            //TODO RAYCAST
             return IRule.RaycastBoard(key, target);
         }
             
@@ -37,7 +36,7 @@ public class Rook : ChessPiece, IRule
         
         return false;
     }
-    public bool OnAction(Vector2Int target) 
+    public virtual bool OnAction(Vector2Int target) 
     {
         if (!CanMoveToTarget(target))
             return false;
@@ -46,7 +45,7 @@ public class Rook : ChessPiece, IRule
 
     }
 
-    public bool OnAttack(GameObject other)
+    public virtual bool OnAttack(GameObject other)
     {
         if (other.CompareTag(this.gameObject.tag))
             return false;
@@ -60,7 +59,7 @@ public class Rook : ChessPiece, IRule
         return false;
     }
 
-    public bool OnDestroy()
+    public virtual bool OnDestroy()
     {
         return true;
     }
