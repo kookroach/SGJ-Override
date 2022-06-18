@@ -106,8 +106,8 @@ public class GameManager : MonoBehaviour
         pieces.Remove(key);
 
         
-        Vector3 dir = new Vector3(target.x, gameObject.transform.position.y, target.y) - @object.transform.position;
-        StartCoroutine(muve(@object,dir,new Vector3(target.x, gameObject.transform.position.y, target.y)));
+        Vector3 dir = new Vector3(target.x, 0.5f, target.y) - @object.transform.position;
+        StartCoroutine(muve(@object,dir,new Vector3(target.x, 0.5f, target.y)));
         pieces[target] = @object;
         return true;
     }

@@ -17,7 +17,7 @@ public class Board : MonoBehaviour
     public GameObject AddPiece(GameObject piece,Material material, int col, int row)
     {
         Vector2Int gridPoint = Geometry.GridPoint(col, row);
-        GameObject newPiece = Instantiate(piece, Geometry.PointFromGrid(gridPoint), Quaternion.identity, gameObject.transform);
+        GameObject newPiece = Instantiate(piece,new Vector3(col, 0.5f, row), Quaternion.identity, gameObject.transform);
         newPiece.GetComponent<Renderer>().material = material;
         if (material == defaultBlack)
             newPiece.tag = "Black";
