@@ -8,7 +8,7 @@ public interface IRule
 {
     public bool CanMoveToTarget(Vector2Int target);
     public bool OnAction(Vector2Int target);
-    public void OnDestroy();
-    public void OnAttack(IPiece other);
+    public bool OnDestroy();
+    public bool OnAttack(GameObject other);
 
 }

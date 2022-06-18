@@ -87,12 +87,20 @@ public class GameManager : MonoBehaviour
         board.DeselectPiece(gameObject);
     }
 
-    public void MoveToGrid(GameObject @object, Vector2Int target)
+    public bool MoveToGrid(GameObject @object, Vector2Int target)
     {
-        var key = pieces.Where(x => x.Value == this.gameObject).FirstOrDefault().Key;
+        var key = pieces.Where(x => x.Value == @object).FirstOrDefault().Key;
         pieces.Remove(key);
         @object.transform.position = new Vector3(target.x, gameObject.transform.position.y, target.y);
-        pieces.Add(target, @object);
+        if(pieces.TryAdd(target, @object))
+        {
+
+            GameObject objectOnTarget = GameManager.pieces[target];
+
+            return @object.GetComponent<IRule>().OnAttack(objectOnTarget);
+        }
+
+        return true;
     }
     public enum Color
     {

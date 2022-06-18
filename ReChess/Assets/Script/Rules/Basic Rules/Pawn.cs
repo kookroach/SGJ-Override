@@ -20,10 +20,6 @@ public class Pawn : MonoBehaviour, IRule
             return false;
 
         
-
-
-        GameObject objectOnTarget;
-        var isFree = !pieces.TryGetValue(target, out objectOnTarget);
         if (hasMoved)
         {
             if (target.y - key.y != forwardMovement && target.y - key.y != -forwardMovement)
@@ -31,11 +27,7 @@ public class Pawn : MonoBehaviour, IRule
 
             if (target.x - key.x == lateralMovement || target.x - key.x == -lateralMovement)
             {
-                if (!isFree && !objectOnTarget.CompareTag(this.tag))
-                {
-                    return true;
-                }
-                return false;
+                return true;
             }
         }
         else
@@ -45,7 +37,7 @@ public class Pawn : MonoBehaviour, IRule
                     return false;
         }
         
-        if (target.x - key.x == 0 && isFree)
+        if (target.x - key.x == 0)
             return true;
 
         return false;
@@ -56,22 +48,29 @@ public class Pawn : MonoBehaviour, IRule
         if (!CanMoveToTarget(target))
             return false;
 
-        GameManager.Instance.MoveToGrid(this.gameObject, target);
         if (!hasMoved)
             hasMoved = true;
+        return GameManager.Instance.MoveToGrid(this.gameObject, target);
+
+    }
+
+    public bool OnAttack(GameObject other)
+    {
+        if (other.CompareTag(this.gameObject.tag))
+            return false;
+
+        if (other.GetComponent<IRule>().OnDestroy())
+        {
+            Destroy(other);
+            return true;
+        }
+
+        return false;
+    }
+
+    public bool OnDestroy()
+    {
         return true;
     }
 
-    public void OnAttack(IPiece other)
-    {
-    }
-
-    public void OnAttack()
-    {
-    }
-
-    public void OnDestroy()
-    {
-       
-    }
 }

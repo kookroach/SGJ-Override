@@ -56,13 +56,14 @@ public class TileSelector : MonoBehaviour
                 {
                     GameObject selectedPiece = 
                         GameManager.Instance.PieceAtGrid(new Vector2Int(x,z));
-                        //TODO: Check if piece belongs to active Player
-                        GameManager.Instance.SelectPiece(selectedPiece);
-                        
-                        
-                        ExitState(selectedPiece);
 
-                    
+
+                    if (selectedPiece != null)
+                    {
+                        GameManager.Instance.SelectPiece(selectedPiece);
+
+                        ExitState(selectedPiece);
+                    }                                     
                 }
                 
             }
