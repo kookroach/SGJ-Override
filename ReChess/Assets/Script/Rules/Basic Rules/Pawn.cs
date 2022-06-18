@@ -1,15 +1,13 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
 
 public class Pawn : MonoBehaviour, IRule
 {
-    private bool hasMoved = false;
-    public int forwardMovement = 1;
-    public int lateralMovement = 0;
+    public bool hasMoved = false;
+    public virtual int forwardMovement { get; protected set; } = 1;
+    public virtual int lateralMovement { get; protected set; } = 0;
     public int startMovement = 2;
 
     private void Start()
@@ -20,8 +18,7 @@ public class Pawn : MonoBehaviour, IRule
             startMovement *= -1;
         }
     }
-
-    public bool CanMoveToTarget(Vector2Int target)
+    public virtual bool CanMoveToTarget(Vector2Int target)
     {
         var pieces = GameManager.pieces;
         var key = pieces.Where(x => x.Value == this.gameObject).FirstOrDefault().Key;

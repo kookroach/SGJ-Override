@@ -6,7 +6,7 @@ using UnityEngine;
 
 
 
-public interface IRule 
+public interface IRule
 {
     public bool CanMoveToTarget(Vector2Int target);
     public bool OnAction(Vector2Int target);
