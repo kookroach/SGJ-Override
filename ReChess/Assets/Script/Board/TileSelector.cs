@@ -45,7 +45,7 @@ public class TileSelector : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                Debug.Log(hit.point);
+                
                 Debug.DrawLine(ray.origin, hit.point,Color.red);
 
                 int x = Mathf.RoundToInt(hit.point.x);
@@ -58,7 +58,7 @@ public class TileSelector : MonoBehaviour
                         GameManager.Instance.PieceAtGrid(new Vector2Int(x,z));
 
 
-                    if (selectedPiece != null)
+                    if (selectedPiece != null && GameManager.Instance.playerWhite.Contains(selectedPiece))
                     {
                         GameManager.Instance.SelectPiece(selectedPiece);
 

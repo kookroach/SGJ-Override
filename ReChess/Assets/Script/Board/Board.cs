@@ -21,8 +21,13 @@ public class Board : MonoBehaviour
         newPiece.GetComponent<Renderer>().material = material;
         if (material == defaultBlack)
             newPiece.tag = "Black";
+            
         else if (material == defaultWhite)
+        {
+            GameManager.Instance.playerWhite.Add(newPiece);
             newPiece.tag = "White";
+        }
+            
         return newPiece;
     }
 

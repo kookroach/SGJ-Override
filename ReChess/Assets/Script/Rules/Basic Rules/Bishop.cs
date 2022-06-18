@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,10 +15,18 @@ public class Bishop : MonoBehaviour, IRule
         var key = pieces.Where(x => x.Value == this.gameObject).FirstOrDefault().Key;
         
 
-        if (key == null)
+        if (pieces[key] == null)
+        {
             return false;
+        }
         
+        if (Math.Abs(target.y - key.y) <= forwardMovement && Math.Abs(target.y - key.y) == Math.Abs(target.x - key.x))
+        {
+            return IRule.RaycastBoard(key, target);
+        }
+
         return false;
+        
     }
     public bool OnAction(Vector2Int target) 
     {

@@ -15,15 +15,25 @@ public class Rook : MonoBehaviour, IRule
         var key = pieces.Where(x => x.Value == this.gameObject).FirstOrDefault().Key;
         
 
-        if (key == null)
+        if (pieces[key] == null)
+        {
             return false;
+        }
         
-        if (Math.Abs(target.y - key.y ) <= forwardMovement && (target.x - key.x == 0))
-            return true;
-        else if (Math.Abs(target.x - key.x) <= lateralMovement && (target.y - key.y == 0))
-            return true;
-        else
-            return false;
+        //forward(/backward) movement
+        if ((Math.Abs(target.y - key.y) <= forwardMovement && (target.x - key.x == 0)))
+        {
+            //TODO RAYCAST
+            return IRule.RaycastBoard(key, target);
+        }
+            
+
+        //lateral movement
+        if (Math.Abs(target.x - key.x) <= lateralMovement && (target.y - key.y == 0))
+        {
+            return IRule.RaycastBoard(key, target);
+        }
+    
         
         return false;
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,8 +6,6 @@ using System.Linq;
 
 public class Knight : MonoBehaviour, IRule
 {
-    public int forwardMovement = 1;
-    public int lateralMovement = 1;
 
     public bool CanMoveToTarget(Vector2Int target)
     {
@@ -14,10 +13,16 @@ public class Knight : MonoBehaviour, IRule
         var key = pieces.Where(x => x.Value == this.gameObject).FirstOrDefault().Key;
         
 
-        if (key == null)
+        if (pieces[key] == null)
+        {
             return false;
-        
+        }
+
+        if ((Math.Abs(target.y - key.y) == 2 && Math.Abs(target.x - key.x) == 1) ||
+            (Math.Abs(target.y - key.y) == 1 && Math.Abs(target.x - key.x) == 2))
+            return true;
         return false;
+
     }
     public bool OnAction(Vector2Int target) 
     {

@@ -12,20 +12,35 @@ public class Queen : MonoBehaviour, IRule
     public bool CanMoveToTarget(Vector2Int target)
     {
         var pieces = GameManager.pieces;
-        var key = pieces.Where(x => x.Value == this.gameObject).FirstOrDefault().Key;
+        Vector2 key = pieces.Where(x => x.Value == this.gameObject).FirstOrDefault().Key;
 
 
-        if (key == null)
+        if (pieces[key] == null)
+        {
             return false;
+        }
 
-        if ((Math.Abs(target.y - key.y) <= forwardMovement && (target.x - key.x == 0)) ||
-            (Math.Abs(target.y - key.y) == Math.Abs(target.x - key.x)))
-            return true;
-        else if (Math.Abs(target.x - key.x) <= lateralMovement && (target.y - key.y == 0) ||
-                 (Math.Abs(target.y - key.y) == Math.Abs(target.x - key.x)))
-            return true;
-        else
-            return false;
+
+        //forward(/backward) movement
+        if ((Math.Abs(target.y - key.y) <= forwardMovement && (target.x - key.x == 0)))
+        {
+            //TODO RAYCAST
+            return IRule.RaycastBoard(key, target);
+        }
+            
+
+        //lateral movement
+        if (Math.Abs(target.x - key.x) <= lateralMovement && (target.y - key.y == 0))
+        {
+            return IRule.RaycastBoard(key, target);
+        }
+            
+
+        //covers diagonal movement
+        if (Math.Abs(target.y - key.y) <= forwardMovement && Math.Abs(target.y - key.y) == Math.Abs(target.x - key.x))
+        {
+            return IRule.RaycastBoard(key, target);
+        }
 
         return false;
     }

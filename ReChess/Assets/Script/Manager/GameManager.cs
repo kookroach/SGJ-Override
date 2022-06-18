@@ -37,8 +37,11 @@ public class GameManager : MonoBehaviour
 
     public static Dictionary<Vector2, GameObject> pieces = new Dictionary<Vector2, GameObject>();
 
+    public List<GameObject> playerWhite = new List<GameObject>();
+
     public void Start()
     {
+        pieces.Add(new Vector2(69,69), null);
         AddPiece(rook, Color.white, 0, 0);
         AddPiece(knight, Color.white, 1, 0);
         AddPiece(bishop, Color.white, 2, 0);
@@ -90,7 +93,6 @@ public class GameManager : MonoBehaviour
     public bool MoveToGrid(GameObject @object, Vector2Int target)
     {
         var key = pieces.Where(x => x.Value == @object).FirstOrDefault().Key;
-        pieces.Remove(key);
         if(pieces.ContainsKey(target))
         {
             GameObject objectOnTarget = GameManager.pieces[target];
@@ -100,6 +102,7 @@ public class GameManager : MonoBehaviour
             }
      
         }
+        pieces.Remove(key);
 
         @object.transform.position = new Vector3(target.x, gameObject.transform.position.y, target.y);
         pieces[target] = @object;
