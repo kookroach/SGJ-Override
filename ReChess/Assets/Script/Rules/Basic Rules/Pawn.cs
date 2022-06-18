@@ -12,7 +12,7 @@ public class Pawn : MonoBehaviour, IRule
     public bool CanMoveToTarget(Vector2Int target)
     {
         var pieces = GameManager.Instance.pieces;
-        var key = pieces.Where(x => x.Value == this).FirstOrDefault().Key;
+        var key = pieces.Where(x => x.Value == this.gameObject).FirstOrDefault().Key;
         
 
         if (key == null)
