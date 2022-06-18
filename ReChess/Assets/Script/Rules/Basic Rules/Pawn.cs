@@ -12,7 +12,7 @@ public class Pawn : MonoBehaviour, IRule
     public bool CanMoveToTarget(Vector2Int target)
     {
         var pieces = GameManager.Instance.pieces;
-        var key = pieces.FirstOrDefault(x => x.Value == this).Key;
+        var key = pieces.Where(x => x.Value == this).FirstOrDefault().Key;
         
 
         if (key == null)
@@ -56,21 +56,13 @@ public class Pawn : MonoBehaviour, IRule
 
     public void OnAttack(IPiece other)
     {
-        throw new System.NotImplementedException();
     }
 
     public void OnAttack()
     {
-        throw new System.NotImplementedException();
     }
 
     public void OnDestroy()
     {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnDestroy(IPiece other)
-    {
-        throw new System.NotImplementedException();
     }
 }
