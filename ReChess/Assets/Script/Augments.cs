@@ -53,17 +53,5 @@ public class Augments : MonoBehaviour
         
     }
 
-    public void SelectCard(Pawn pawn)
-    {
-        var list = GameManager.pieces.Where(x => x.Value.GetType() == typeof(Pawn)).Select(x => x.Key).ToList();
-        foreach (var piece in list)
-        {
-            Destroy(GameManager.pieces[piece].GetComponent<Pawn>());
-            GameManager.pieces[piece].AddComponent(typeof(Pawn));
-        }
-
-        button1.SetActive(false);
-        button2.SetActive(false);
-        button3.SetActive(false);
-    }
+   
 }

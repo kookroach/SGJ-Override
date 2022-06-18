@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class Knight : MonoBehaviour, IRule
+public class Knight : ChessPiece, IRule
 {
 
     public bool CanMoveToTarget(Vector2Int target)

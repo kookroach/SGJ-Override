@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class Queen : MonoBehaviour, IRule
+public class Queen : ChessPiece, IRule
 {
     public int forwardMovement = 20;
     public int lateralMovement = 20;

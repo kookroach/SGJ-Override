@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        pieces.Add(new Vector2(69,69), null);
+       //pieces.Add(new Vector2(69,69), null);
         AddPiece(rook, Color.white, 0, 0);
         AddPiece(knight, Color.white, 1, 0);
         AddPiece(bishop, Color.white, 2, 0);
