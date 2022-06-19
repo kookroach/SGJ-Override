@@ -158,17 +158,17 @@ public class GameManager : MonoBehaviour
         }
 
         PlayerMoves.Remove(possibilities);
-        if (PlayerMoves.Count == 0)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
-            if (playerWhite.Contains(PieceAtGrid(key)))
-            {
-                PieceAtGrid(PlayerMoves.First().from).GetComponent<IRule>().OnAction(PlayerMoves.First().to);
-                PlayerMoves.Remove(PlayerMoves.First());
 
-                if (PlayerMoves.Count == 0) return; //You WON
+        if (playerWhite.Contains(PieceAtGrid(key)))
+        {
+            PieceAtGrid(PlayerMoves.First().from).GetComponent<IRule>().OnAction(PlayerMoves.First().to);
+            PlayerMoves.Remove(PlayerMoves.First());
+
+            if (PlayerMoves.Count == 0)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); //You WON
             }
+        }
         }
     
 
@@ -195,4 +195,5 @@ public class GameManager : MonoBehaviour
 
     }
     
+
 }
