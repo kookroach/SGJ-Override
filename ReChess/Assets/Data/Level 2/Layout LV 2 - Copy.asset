@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37fa4e36ccc75c643b6be57a39105143, type: 3}
-  m_Name: Layout LV 2
+  m_Name: Layout LV 2 - Copy
   m_EditorClassIdentifier: 
   layouts:
   - ChessPiece: {fileID: 2169919132572526806, guid: aa1aa7e860a914a4c96fca2ab8c94a61, type: 3}
@@ -44,7 +44,7 @@ MonoBehaviour:
   - ChessPiece: {fileID: 4345233427828794028, guid: 644dfbda33ed6444f9e02470d284f702, type: 3}
     vector: {x: 3, y: 6}
   - ChessPiece: {fileID: 3204391787452939913, guid: 6a28fa5f1eb920e4896619834fed7f01, type: 3}
-    vector: {x: 3, y: 7}
+    vector: {x: 2, y: 2}
   - ChessPiece: {fileID: 3204391787452939913, guid: 6a28fa5f1eb920e4896619834fed7f01, type: 3}
     vector: {x: 2, y: 7}
   - ChessPiece: {fileID: 2857489990013814966, guid: 7a1d674d677360a4abed7255dc27d31f, type: 3}
@@ -54,17 +54,17 @@ MonoBehaviour:
   card3: {fileID: 11400000, guid: 49913d916b9bf4b48a6fe71d21428ad6, type: 2}
   playerMoves:
   - card: 0
-    from: {x: 0, y: 0}
-    to: {x: 0, y: 0}
-  - card: 0
-    from: {x: 0, y: 0}
-    to: {x: 0, y: 0}
-  - card: 0
-    from: {x: 0, y: 0}
-    to: {x: 0, y: 0}
-  - card: 0
-    from: {x: 0, y: 0}
-    to: {x: 0, y: 0}
-  - card: 0
-    from: {x: 0, y: 0}
-    to: {x: 0, y: 0}
+    from: {x: 6, y: 2}
+    to: {x: 2, y: 2}
+  - card: 1
+    from: {x: 6, y: 5}
+    to: {x: 7, y: 6}
+  - card: 2
+    from: {x: 6, y: 2}
+    to: {x: 2, y: 2}
+  - card: 2
+    from: {x: 7, y: 7}
+    to: {x: 6, y: 7}
+  - card: 2
+    from: {x: 2, y: 2}
+    to: {x: 6, y: 6}

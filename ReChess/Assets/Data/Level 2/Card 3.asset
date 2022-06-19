@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Card 3
   m_EditorClassIdentifier: 
   Name: 
-  Description: 
-  changeFrom: 0
-  changeTo: 0
+  Description: Multiplies the knight's range by two.
+  changeFrom: 1
+  changeTo: 5

@@ -3260,8 +3260,9 @@ MonoBehaviour:
   button2: {fileID: 1528681809}
   button3: {fileID: 108515419}
   playerWhite: []
-  layoutData: {fileID: 11400000, guid: e81fdc278c7daef44a68c4b20b756813, type: 2}
+  layoutData: {fileID: 11400000, guid: d3c6035a12e4e584cb231af1ceb21d1e, type: 2}
   cardSelect: 0
+  PlayerMoves: []
 --- !u!4 &765122110
 Transform:
   m_ObjectHideFlags: 0
@@ -5815,7 +5816,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1345200089
 RectTransform:
   m_ObjectHideFlags: 0
