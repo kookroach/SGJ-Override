@@ -71,31 +71,31 @@ public class ZombieQueen : Queen
             {
                 case Rook:
                     Destroy(other);
-                    GameManager.pieces.Remove(new Vector2(Mathf.RoundToInt(othercopy.gameObject.transform.position.x),Mathf.RoundToInt(othercopy.gameObject.transform.position.z)));
+                    GameManager.pieces.Remove(new Vector2Int(Mathf.RoundToInt(othercopy.gameObject.transform.position.x),Mathf.RoundToInt(othercopy.gameObject.transform.position.z)));
                     GameManager.Instance.AddPiece(GameManager.Instance.rookRed,Mathf.RoundToInt(othercopy.gameObject.transform.position.x),Mathf.RoundToInt(othercopy.gameObject.transform.position.z));
                     
                     return false;
                    
                 case Knight:
                     Destroy(other);
-                    GameManager.pieces.Remove(new Vector2(Mathf.RoundToInt(othercopy.gameObject.transform.position.x),Mathf.RoundToInt(othercopy.gameObject.transform.position.z)));
+                    GameManager.pieces.Remove(new Vector2Int(Mathf.RoundToInt(othercopy.gameObject.transform.position.x),Mathf.RoundToInt(othercopy.gameObject.transform.position.z)));
                     GameManager.Instance.AddPiece(GameManager.Instance.knightRed,Mathf.RoundToInt(othercopy.gameObject.transform.position.x),Mathf.RoundToInt(othercopy.gameObject.transform.position.z));
                     return false;
 
                 case Bishop:
                     Destroy(other);
-                    GameManager.pieces.Remove(new Vector2(Mathf.RoundToInt(othercopy.gameObject.transform.position.x),Mathf.RoundToInt(othercopy.gameObject.transform.position.z)));
+                    GameManager.pieces.Remove(new Vector2Int(Mathf.RoundToInt(othercopy.gameObject.transform.position.x),Mathf.RoundToInt(othercopy.gameObject.transform.position.z)));
                     GameManager.Instance.AddPiece(GameManager.Instance.bishopRed,Mathf.RoundToInt(othercopy.gameObject.transform.position.x),Mathf.RoundToInt(othercopy.gameObject.transform.position.z));
                     return false;
 
                 case Queen:
                     Destroy(other);
-                    GameManager.pieces.Remove(new Vector2(Mathf.RoundToInt(othercopy.gameObject.transform.position.x),Mathf.RoundToInt(othercopy.gameObject.transform.position.z)));
+                    GameManager.pieces.Remove(new Vector2Int(Mathf.RoundToInt(othercopy.gameObject.transform.position.x),Mathf.RoundToInt(othercopy.gameObject.transform.position.z)));
                     GameManager.Instance.AddPiece(GameManager.Instance.queenRed,Mathf.RoundToInt(othercopy.gameObject.transform.position.x),Mathf.RoundToInt(othercopy.gameObject.transform.position.z));
                     return false;
                 case Pawn:
                     Destroy(other);
-                    GameManager.pieces.Remove(new Vector2(Mathf.RoundToInt(othercopy.gameObject.transform.position.x),Mathf.RoundToInt(othercopy.gameObject.transform.position.z)));
+                    GameManager.pieces.Remove(new Vector2Int(Mathf.RoundToInt(othercopy.gameObject.transform.position.x),Mathf.RoundToInt(othercopy.gameObject.transform.position.z)));
                     GameManager.Instance.AddPiece(GameManager.Instance.pawnRed,Mathf.RoundToInt(othercopy.gameObject.transform.position.x),Mathf.RoundToInt(othercopy.gameObject.transform.position.z));
                     return false;
                 default:

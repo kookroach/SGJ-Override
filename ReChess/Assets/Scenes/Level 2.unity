@@ -3256,18 +3256,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6.67
   board: {fileID: 131482358}
-  pawnRed: {fileID: 8543364763282190006, guid: 8be6e0d315d3a16459e9c10fe2093adb, type: 3}
-  pawnBlue: {fileID: 4345233427828794028, guid: 644dfbda33ed6444f9e02470d284f702, type: 3}
-  knightRed: {fileID: 6343297158941916681, guid: 9ed1aad9eb0faf84e94a89eb2c824b8f, type: 3}
-  knightBlue: {fileID: 1609337182752801080, guid: 07762ddae7f7bdb4c86947179a1206cd, type: 3}
-  rookRed: {fileID: 2290939553036995774, guid: 8b646a5a09ef2e344b31bf008b62db5d, type: 3}
-  rookBlue: {fileID: 506396512453912938, guid: 350c269ed79af004cb2156e4c944a939, type: 3}
-  bishopRed: {fileID: 2785366503151453909, guid: fbffe3cd50108e443a0cae6456e1606c, type: 3}
-  bishopBlue: {fileID: 3204391787452939913, guid: 6a28fa5f1eb920e4896619834fed7f01, type: 3}
-  queenRed: {fileID: 493878074044124399, guid: 0498ed555388de34686246a0f74c3610, type: 3}
-  queenBlue: {fileID: 6789094142783331072, guid: 63b8cb46aeb93d84988cb7b62c2a7075, type: 3}
-  kingRed: {fileID: 2169919132572526806, guid: aa1aa7e860a914a4c96fca2ab8c94a61, type: 3}
-  kingBlue: {fileID: 2857489990013814966, guid: 7a1d674d677360a4abed7255dc27d31f, type: 3}
+  pawnRed: {fileID: 0}
+  pawnBlue: {fileID: 0}
+  knightRed: {fileID: 0}
+  knightBlue: {fileID: 0}
+  rookRed: {fileID: 0}
+  rookBlue: {fileID: 0}
+  bishopRed: {fileID: 0}
+  bishopBlue: {fileID: 0}
+  queenRed: {fileID: 0}
+  queenBlue: {fileID: 0}
+  kingRed: {fileID: 0}
+  kingBlue: {fileID: 0}
   button1: {fileID: 1799377594}
   button2: {fileID: 1528681809}
   button3: {fileID: 108515419}
@@ -3903,7 +3903,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &937363044
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5828,7 +5828,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1345200089
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8175,7 +8175,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2036918154
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8252,7 +8252,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2071473668
 RectTransform:
   m_ObjectHideFlags: 0

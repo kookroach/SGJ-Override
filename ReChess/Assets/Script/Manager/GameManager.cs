@@ -154,7 +154,8 @@ public class GameManager : MonoBehaviour
         {
             playerWhite.Clear();
             pieces.Clear();
-            Application.LoadLevel(Application.loadedLevel);
+            //Application.LoadLevel(Application.loadedLevel);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         PlayerMoves.Remove(possibilities);
