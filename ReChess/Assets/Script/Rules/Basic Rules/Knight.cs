@@ -24,7 +24,7 @@ public class Knight : ChessPiece, IRule
         return false;
 
     }
-    public bool OnAction(Vector2Int target) 
+    public virtual bool OnAction(Vector2Int target) 
     {
         if (!CanMoveToTarget(target))
             return false;
@@ -34,7 +34,7 @@ public class Knight : ChessPiece, IRule
 
     }
 
-    public bool OnAttack(GameObject other)
+    public virtual bool OnAttack(GameObject other)
     {
         if (other.CompareTag(this.gameObject.tag))
             return false;
@@ -48,7 +48,7 @@ public class Knight : ChessPiece, IRule
         return false;
     }
 
-    public bool OnDestroy()
+    public virtual bool OnDestroy()
     {
         FxManager.Instance.CreateSFX(this.gameObject, FxManager.SFX_TYPE.Clash);
         return true;

@@ -9,7 +9,7 @@ public class Queen : ChessPiece, IRule
     public int forwardMovement = 20;
     public int lateralMovement = 20;
 
-    public bool CanMoveToTarget(Vector2Int target)
+    public virtual bool CanMoveToTarget(Vector2Int target)
     {
         var pieces = GameManager.pieces;
         Vector2 key = pieces.Where(x => x.Value == this.gameObject).FirstOrDefault().Key;

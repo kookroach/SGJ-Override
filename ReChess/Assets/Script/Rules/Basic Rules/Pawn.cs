@@ -12,7 +12,7 @@ public class Pawn : ChessPiece, IRule
 
     private void Start()
     {
-        
+
         if (this.gameObject.CompareTag("Black"))
         {
             forwardMovement *= -1;

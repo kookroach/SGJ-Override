@@ -6,10 +6,10 @@ using System.Linq;
 
 public class Bishop : ChessPiece, IRule
 {
-    public int forwardMovement = 1;
-    public int lateralMovement = 1;
+    public int forwardMovement = 8;
+    public int lateralMovement = 8;
 
-    public bool CanMoveToTarget(Vector2Int target)
+    public virtual bool CanMoveToTarget(Vector2Int target)
     {
         var pieces = GameManager.pieces;
         var key = pieces.Where(x => x.Value == this.gameObject).FirstOrDefault().Key;
@@ -28,7 +28,7 @@ public class Bishop : ChessPiece, IRule
         return false;
         
     }
-    public bool OnAction(Vector2Int target) 
+    public virtual bool OnAction(Vector2Int target) 
     {
         if (!CanMoveToTarget(target))
             return false;
@@ -38,7 +38,7 @@ public class Bishop : ChessPiece, IRule
 
     }
 
-    public bool OnAttack(GameObject other)
+    public virtual bool OnAttack(GameObject other)
     {
         if (other.CompareTag(this.gameObject.tag))
             return false;
@@ -52,7 +52,7 @@ public class Bishop : ChessPiece, IRule
         return false;
     }
 
-    public bool OnDestroy()
+    public virtual bool OnDestroy()
     {
         FxManager.Instance.CreateSFX(this.gameObject, FxManager.SFX_TYPE.Clash);
         return true;

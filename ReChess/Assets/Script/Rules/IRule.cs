@@ -41,12 +41,16 @@ public interface IRule
 
     static int amountOfRaycastHits(Vector2 origin, Vector2 target)
     {
+        return raycastHits(origin, target).Length;
+    }
+
+    static RaycastHit[] raycastHits(Vector2 origin, Vector2 target)
+    {
         RaycastHit[] hits;
         float distance = Vector3.Distance(origin, target);
         hits = Physics.RaycastAll(new Vector3(origin.x, 1, origin.y),
             new Vector3(target.x, 1, target.y) - new Vector3(origin.x, 1, origin.y), distance);
-        
-        
-        return hits.Length;
+        return hits;
     }
+    
 }
