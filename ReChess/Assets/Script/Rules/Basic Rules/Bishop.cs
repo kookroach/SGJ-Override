@@ -6,8 +6,8 @@ using System.Linq;
 
 public class Bishop : ChessPiece, IRule
 {
-    public int forwardMovement = 10;
-    public int lateralMovement = 10;
+    public int forwardMovement = 8;
+    public int lateralMovement = 8;
 
     public virtual bool CanMoveToTarget(Vector2Int target)
     {

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8168437297432116354}
   - component: {fileID: 6249000911607089224}
   - component: {fileID: -6268919742381135605}
-  - component: {fileID: 7927044800649133302}
+  - component: {fileID: -8215075963225276584}
   m_Layer: 6
   m_Name: Rook
   m_TagString: Untagged
@@ -99,7 +99,7 @@ CapsuleCollider:
   m_Height: 1.0028667
   m_Direction: 1
   m_Center: {x: 0, y: 0.5014334, z: -0.000000029802322}
---- !u!114 &7927044800649133302
+--- !u!114 &-8215075963225276584
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5600249536820898205}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c389cd9e07715c54ab57af0cea482cfe, type: 3}
+  m_Script: {fileID: 11500000, guid: be398acacbef9d7409c4914d9b9c4323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   forwardMovement: 10

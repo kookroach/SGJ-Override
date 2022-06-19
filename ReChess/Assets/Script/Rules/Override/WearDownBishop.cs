@@ -1,13 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
-using System;
+using UnityEngine;
 
-public class BouncyBishop : Bishop
+public class WearDownBishop : Bishop
 {
+    public GameObject canvas;
+
+    private void Awake()
+    {
+        canvas.SetActive(true);
+    }
+
     public override bool CanMoveToTarget(Vector2Int target)
     {
+        
+        
         var pieces = GameManager.pieces;
         var key = pieces.Where(x => x.Value == this.gameObject).FirstOrDefault().Key;
         
@@ -17,25 +26,21 @@ public class BouncyBishop : Bishop
             return false;
         }
         
-        //normal bishop movement
         if (Math.Abs(target.y - key.y) <= forwardMovement && Math.Abs(target.y - key.y) == Math.Abs(target.x - key.x))
         {
-            return IRule.RaycastBoard(key, target);
+            
+            if(IRule.RaycastBoard(key, target))
+            {
+                if (forwardMovement != 0)
+                {
+                    forwardMovement--;
+                }
+                return true;
+            }
         }
-        
-            
-            
 
         return false;
     }
 
-    public override bool OnAction(Vector2Int target)
-    {
-        return base.OnAction(target);
-    }
-
-    public override bool OnAttack(GameObject other)
-    {
-        return base.OnAttack(other);
-    }
+    
 }

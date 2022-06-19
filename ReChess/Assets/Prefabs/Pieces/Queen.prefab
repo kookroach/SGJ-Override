@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5404711168461305426}
   - component: {fileID: 8984329109479356919}
   - component: {fileID: 6578150404337896765}
-  - component: {fileID: 8984329109479356918}
   - component: {fileID: -3634544814788035347}
+  - component: {fileID: 2051271881831816744}
   m_Layer: 6
   m_Name: Queen
   m_TagString: Untagged
@@ -85,20 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8984329109479356918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4632713630818282728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d006ccbd450928f46a5c80a8cbaba859, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  forwardMovement: 20
-  lateralMovement: 20
 --- !u!136 &-3634544814788035347
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -113,3 +99,17 @@ CapsuleCollider:
   m_Height: 2.1256986
   m_Direction: 1
   m_Center: {x: 0, y: 1.0637052, z: -0.0000002682209}
+--- !u!114 &2051271881831816744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4632713630818282728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c222c59ae81592458c55a7aa97a1f43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forwardMovement: 20
+  lateralMovement: 20

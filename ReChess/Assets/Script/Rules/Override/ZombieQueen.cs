@@ -1,15 +1,12 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using System.Linq;
 
-public class Queen : ChessPiece, IRule
+public class ZombieQueen : Queen
 {
-    public int forwardMovement = 20;
-    public int lateralMovement = 20;
-
-    public virtual bool CanMoveToTarget(Vector2Int target)
+    public override bool CanMoveToTarget(Vector2Int target)
     {
         var pieces = GameManager.pieces;
         Vector2 key = pieces.Where(x => x.Value == this.gameObject).FirstOrDefault().Key;
@@ -22,24 +19,31 @@ public class Queen : ChessPiece, IRule
 
 
         //forward(/backward) movement
-        if ((Math.Abs(target.y - key.y) <= forwardMovement && (target.x - key.x == 0)))
+        if ((Math.Abs(target.y - key.y) <= forwardMovement && (target.x - key.x == 0)) && !pieces.ContainsKey(target))
         {
-            //TODO RAYCAST
             return IRule.RaycastBoard(key, target);
         }
-            
+
 
         //lateral movement
-        if (Math.Abs(target.x - key.x) <= lateralMovement && (target.y - key.y == 0))
+        if (Math.Abs(target.x - key.x) <= lateralMovement && (target.y - key.y == 0) && !pieces.ContainsKey(target))
         {
             return IRule.RaycastBoard(key, target);
         }
-            
+
 
         //covers diagonal movement
-        if (Math.Abs(target.y - key.y) <= forwardMovement && Math.Abs(target.y - key.y) == Math.Abs(target.x - key.x))
+        if (Math.Abs(target.y - key.y) <= forwardMovement && Math.Abs(target.y - key.y) == Math.Abs(target.x - key.x) &&
+            !pieces.ContainsKey(target))
         {
             return IRule.RaycastBoard(key, target);
+        }
+
+        //take enemy piece forward(/backward)
+        if ((Math.Abs(target.y - key.y) <= forwardMovement && (target.x - key.x == 0)) && pieces.ContainsKey(target) &&
+            IRule.RaycastBoard(key, target))
+        {
+            return false;
         }
 
         return false;
