@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37fa4e36ccc75c643b6be57a39105143, type: 3}
-  m_Name: Layout LV 2
+  m_Name: Layout LV 1
   m_EditorClassIdentifier: 
   layouts:
   - ChessPiece: {fileID: 2857489990013814966, guid: 7a1d674d677360a4abed7255dc27d31f, type: 3}

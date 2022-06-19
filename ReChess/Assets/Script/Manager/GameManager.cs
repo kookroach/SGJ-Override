@@ -59,13 +59,19 @@ public class GameManager : MonoBehaviour
     public List<LayoutData.Moves> PlayerMoves = new List<LayoutData.Moves>();
  
 
-    public void Start()
+    public void Awake()
     {
+        playerWhite.Clear();
+        pieces.Clear();
         //Set Layout
        foreach(var piece in layoutData.layouts)
        {
             AddPiece(piece.ChessPiece, (int)piece.vector.x, (int)piece.vector.y);
+            
        }
+
+       
+       
         //Set Cards
         //button1.GetComponent<Button>().onClick.AddListener(SelectCard);
         button1.GetComponentInChildren<TextMeshProUGUI>().text = layoutData.card1.Description;
@@ -146,7 +152,7 @@ public class GameManager : MonoBehaviour
         return true;
     }
 
-    private void CheckMove(Vector2Int key, Vector2 target)
+    public void CheckMove(Vector2Int key, Vector2 target)
     {
         var possibilities = PlayerMoves.Where(x => x.from == key && x.to == target).FirstOrDefault();
 
@@ -157,18 +163,20 @@ public class GameManager : MonoBehaviour
             //Application.LoadLevel(Application.loadedLevel);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-
+       
         PlayerMoves.Remove(possibilities);
+        if (PlayerMoves.Count == 0)
+        {
+            playerWhite.Clear();
+            pieces.Clear();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); //You WON
+        }
 
         if (playerWhite.Contains(PieceAtGrid(key)))
         {
             PieceAtGrid(PlayerMoves.First().from).GetComponent<IRule>().OnAction(PlayerMoves.First().to);
             PlayerMoves.Remove(PlayerMoves.First());
 
-            if (PlayerMoves.Count == 0)
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); //You WON
-            }
         }
         }
     

@@ -53,18 +53,18 @@ MonoBehaviour:
   card2: {fileID: 11400000, guid: 513547db6faaf9648927617cdc53aab6, type: 2}
   card3: {fileID: 11400000, guid: 49913d916b9bf4b48a6fe71d21428ad6, type: 2}
   playerMoves:
-  - card: 0
+  - card: 1
     from: {x: 6, y: 2}
     to: {x: 2, y: 2}
-  - card: 1
+  - card: 2
     from: {x: 6, y: 5}
     to: {x: 7, y: 6}
-  - card: 2
+  - card: 3
     from: {x: 6, y: 2}
     to: {x: 2, y: 2}
-  - card: 2
+  - card: 3
     from: {x: 7, y: 7}
     to: {x: 6, y: 7}
-  - card: 2
+  - card: 3
     from: {x: 2, y: 2}
     to: {x: 6, y: 6}
