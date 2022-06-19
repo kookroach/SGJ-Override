@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Card 7
   m_EditorClassIdentifier: 
   Name: 
-  Description: Cannons move like rooks, but can only capture by jumping a piece of
-    either colour along the attack.
+  Description: Rooks can only capture by jumping a piece of either colour along the
+    attack.
   changeFrom: 3
   changeTo: 9

@@ -275,13 +275,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'MUSIC:
-
-    Pit, Konrad und Dan
-
-    Assets:
-
-'
+  m_text: "MUSIC:\nPit, Konrad und Dan\nAssets: \nLow poly ultimate pac - poly perfect\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e408ac160934e6a48a1532e07aee82c3, type: 2}
   m_sharedMaterial: {fileID: -8168327012332293038, guid: e408ac160934e6a48a1532e07aee82c3, type: 2}

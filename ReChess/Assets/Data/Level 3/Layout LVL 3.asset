@@ -27,7 +27,7 @@ MonoBehaviour:
     vector: {x: 1, y: 4}
   - ChessPiece: {fileID: 506396512453912938, guid: 350c269ed79af004cb2156e4c944a939, type: 3}
     vector: {x: 0, y: 7}
-  - ChessPiece: {fileID: 506396512453912938, guid: 350c269ed79af004cb2156e4c944a939, type: 3}
+  - ChessPiece: {fileID: 4345233427828794028, guid: 644dfbda33ed6444f9e02470d284f702, type: 3}
     vector: {x: 6, y: 7}
   - ChessPiece: {fileID: 4345233427828794028, guid: 644dfbda33ed6444f9e02470d284f702, type: 3}
     vector: {x: 6, y: 6}

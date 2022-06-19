@@ -11,11 +11,14 @@ public class ZombieQueen : Queen
         var pieces = GameManager.pieces;
         Vector2Int key = pieces.Where(x => x.Value == this.gameObject).FirstOrDefault().Key;
 
-
+        
+        ;
         if (pieces[key] == null)
         {
             return false;
         }
+        
+        
 
 
         //forward(/backward) movement

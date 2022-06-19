@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Card 8
   m_EditorClassIdentifier: 
   Name: 
-  Description: The king can eat its own pieces and gain their move set.
+  Description: The king can eat its own pieces (except for pawns) and gain their
+    move set.
   changeFrom: 5
   changeTo: 10
