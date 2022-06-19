@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37fa4e36ccc75c643b6be57a39105143, type: 3}
+  m_Name: Layout LV 2
+  m_EditorClassIdentifier: 
+  layouts:
+  - ChessPiece: {fileID: 2857489990013814966, guid: 7a1d674d677360a4abed7255dc27d31f, type: 3}
+    vector: {x: 0, y: 7}
+  - ChessPiece: {fileID: 4345233427828794028, guid: 644dfbda33ed6444f9e02470d284f702, type: 3}
+    vector: {x: 0, y: 6}
+  - ChessPiece: {fileID: 4345233427828794028, guid: 644dfbda33ed6444f9e02470d284f702, type: 3}
+    vector: {x: 4, y: 6}
+  - ChessPiece: {fileID: 4345233427828794028, guid: 644dfbda33ed6444f9e02470d284f702, type: 3}
+    vector: {x: 6, y: 6}
+  - ChessPiece: {fileID: 4345233427828794028, guid: 644dfbda33ed6444f9e02470d284f702, type: 3}
+    vector: {x: 7, y: 6}
+  - ChessPiece: {fileID: 4345233427828794028, guid: 644dfbda33ed6444f9e02470d284f702, type: 3}
+    vector: {x: 0, y: 3}
+  - ChessPiece: {fileID: 2169919132572526806, guid: aa1aa7e860a914a4c96fca2ab8c94a61, type: 3}
+    vector: {x: 7, y: 0}
+  - ChessPiece: {fileID: 2290939553036995774, guid: 8b646a5a09ef2e344b31bf008b62db5d, type: 3}
+    vector: {x: 1, y: 2}
+  - ChessPiece: {fileID: 2290939553036995774, guid: 8b646a5a09ef2e344b31bf008b62db5d, type: 3}
+    vector: {x: 5, y: 1}
+  - ChessPiece: {fileID: 2785366503151453909, guid: fbffe3cd50108e443a0cae6456e1606c, type: 3}
+    vector: {x: 7, y: 1}
+  - ChessPiece: {fileID: 8543364763282190006, guid: 8be6e0d315d3a16459e9c10fe2093adb, type: 3}
+    vector: {x: 1, y: 4}
+  - ChessPiece: {fileID: 8543364763282190006, guid: 8be6e0d315d3a16459e9c10fe2093adb, type: 3}
+    vector: {x: 4, y: 1}
+  - ChessPiece: {fileID: 8543364763282190006, guid: 8be6e0d315d3a16459e9c10fe2093adb, type: 3}
+    vector: {x: 6, y: 1}
+  card1: {fileID: 11400000, guid: b0f9e6edd1526514a8f254c446bf8284, type: 2}
+  card2: {fileID: 11400000, guid: 38cce6eb8e8fd014aa20824bd50a5058, type: 2}
+  card3: {fileID: 11400000, guid: 93e1b1a94e1a19646a9b7e1354bd523f, type: 2}
+  playerMoves:
+  - card: 1
+    from: {x: 5, y: 1}
+    to: {x: 5, y: 7}
+  - card: 2
+    from: {x: 5, y: 1}
+    to: {x: 5, y: 7}
+  - card: 2
+    from: {x: 0, y: 7}
+    to: {x: 1, y: 6}
+  - card: 2
+    from: {x: 5, y: 7}
+    to: {x: 1, y: 7}
+  - card: 3
+    from: {x: 1, y: 4}
+    to: {x: 1, y: 6}
