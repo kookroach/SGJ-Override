@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
    
     public Board board;
-    /*
+    
     public GameObject pawnRed;
     public GameObject pawnBlue;
 
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject kingRed;
     public GameObject kingBlue;
-    */
+    
     public GameObject button1;
     public GameObject button2;
     public GameObject button3;

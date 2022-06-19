@@ -57,7 +57,7 @@ public class ZombieQueen : Queen
         return GameManager.Instance.MoveToGrid(this.gameObject, target);
     }
 
-    public bool OnAttack(GameObject other)
+    public override bool OnAttack(GameObject other)
     {
         
         if (other.CompareTag(this.gameObject.tag))
@@ -65,30 +65,44 @@ public class ZombieQueen : Queen
 
         if (other.GetComponent<IRule>().OnDestroy())
         {
+            GameObject othercopy = other;
             
             switch (other.GetComponent<IRule>())
             {
                 case Rook:
-                    Rook rookKing = gameObject.AddComponent(typeof(Rook)) as Rook;
                     Destroy(other);
-                    break;
+                    GameManager.pieces.Remove(new Vector2(Mathf.RoundToInt(othercopy.gameObject.transform.position.x),Mathf.RoundToInt(othercopy.gameObject.transform.position.z)));
+                    GameManager.Instance.AddPiece(GameManager.Instance.rookRed,Mathf.RoundToInt(othercopy.gameObject.transform.position.x),Mathf.RoundToInt(othercopy.gameObject.transform.position.z));
+                    
+                    return false;
+                   
                 case Knight:
-                    Knight knightKing = gameObject.AddComponent(typeof(Knight)) as Knight;
                     Destroy(other);
-                    break;
+                    GameManager.pieces.Remove(new Vector2(Mathf.RoundToInt(othercopy.gameObject.transform.position.x),Mathf.RoundToInt(othercopy.gameObject.transform.position.z)));
+                    GameManager.Instance.AddPiece(GameManager.Instance.knightRed,Mathf.RoundToInt(othercopy.gameObject.transform.position.x),Mathf.RoundToInt(othercopy.gameObject.transform.position.z));
+                    return false;
+
                 case Bishop:
-                    Bishop bishopKing = gameObject.AddComponent(typeof(Bishop)) as Bishop;
                     Destroy(other);
-                    break;
+                    GameManager.pieces.Remove(new Vector2(Mathf.RoundToInt(othercopy.gameObject.transform.position.x),Mathf.RoundToInt(othercopy.gameObject.transform.position.z)));
+                    GameManager.Instance.AddPiece(GameManager.Instance.bishopRed,Mathf.RoundToInt(othercopy.gameObject.transform.position.x),Mathf.RoundToInt(othercopy.gameObject.transform.position.z));
+                    return false;
+
                 case Queen:
-                    Queen queenKing = gameObject.AddComponent(typeof(Queen)) as Queen;
                     Destroy(other);
-                    break;
+                    GameManager.pieces.Remove(new Vector2(Mathf.RoundToInt(othercopy.gameObject.transform.position.x),Mathf.RoundToInt(othercopy.gameObject.transform.position.z)));
+                    GameManager.Instance.AddPiece(GameManager.Instance.queenRed,Mathf.RoundToInt(othercopy.gameObject.transform.position.x),Mathf.RoundToInt(othercopy.gameObject.transform.position.z));
+                    return false;
+                case Pawn:
+                    Destroy(other);
+                    GameManager.pieces.Remove(new Vector2(Mathf.RoundToInt(othercopy.gameObject.transform.position.x),Mathf.RoundToInt(othercopy.gameObject.transform.position.z)));
+                    GameManager.Instance.AddPiece(GameManager.Instance.pawnRed,Mathf.RoundToInt(othercopy.gameObject.transform.position.x),Mathf.RoundToInt(othercopy.gameObject.transform.position.z));
+                    return false;
                 default:
                     return false;
             }
-            Destroy(other);
-            return true;
+            
+            return false;
         }
 
         return false;

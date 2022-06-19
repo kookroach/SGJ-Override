@@ -43,6 +43,7 @@ MonoBehaviour:
   card2: {fileID: 11400000, guid: 38cce6eb8e8fd014aa20824bd50a5058, type: 2}
   card3: {fileID: 11400000, guid: 93e1b1a94e1a19646a9b7e1354bd523f, type: 2}
   playerMoves:
+<<<<<<< Updated upstream
   - card: 1
     from: {x: 5, y: 1}
     to: {x: 5, y: 7}
@@ -58,3 +59,21 @@ MonoBehaviour:
   - card: 3
     from: {x: 1, y: 4}
     to: {x: 1, y: 6}
+=======
+  - card: 0
+    from: {x: 0, y: 0}
+    to: {x: 0, y: 0}
+  - card: 1
+    from: {x: 0, y: 0}
+    to: {x: 0, y: 0}
+  - card: 1
+    from: {x: 0, y: 0}
+    to: {x: 0, y: 0}
+  - card: 2
+    from: {x: 0, y: 0}
+    to: {x: 0, y: 0}
+  aiMoves:
+  - card: 1
+    from: {x: 0, y: 0}
+    to: {x: 0, y: 0}
+>>>>>>> Stashed changes
