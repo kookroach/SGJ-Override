@@ -10,8 +10,7 @@ public class LayoutData : ScriptableObject
     public PieceData card2;
     public PieceData card3; 
 
-    public PlayerMoves[] playerMoves;
-    public AIMoves[] aiMoves;
+    public Moves[] playerMoves;
 
 
     [Serializable]
@@ -21,20 +20,14 @@ public class LayoutData : ScriptableObject
         public Vector2 vector;
     }
 
-    [Serializable]
-    public class AIMoves
-    {
-        public CardSelect card;
-        public Vector2 from;
-        public Vector2 to;
-    }
+ 
 
     [Serializable]
-    public class PlayerMoves
+    public class Moves
     {
         public CardSelect card;
-        public Vector2 from;
-        public Vector2 to;
+        public Vector2Int from;
+        public Vector2Int to;
     }
 
     public enum CardSelect

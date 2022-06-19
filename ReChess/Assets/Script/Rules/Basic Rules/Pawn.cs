@@ -22,7 +22,7 @@ public class Pawn : ChessPiece, IRule
     public virtual bool CanMoveToTarget(Vector2Int target)
     {
         var pieces = GameManager.pieces;
-        var key = pieces.Where(x => x.Value == this.gameObject).FirstOrDefault().Key;
+        Vector2Int key = pieces.Where(x => x.Value == this.gameObject).FirstOrDefault().Key;
 
 
         if (pieces[key] == null)
@@ -31,7 +31,7 @@ public class Pawn : ChessPiece, IRule
         }
         //go two squares forward
         if (!hasMoved && (target.y - key.y == startMovement) && !pieces.ContainsKey(target) &&
-            target.x - key.x == lateralMovement && !pieces.ContainsKey(new Vector2(target.x, target.y - 1)))
+            target.x - key.x == lateralMovement && !pieces.ContainsKey(new Vector2Int(target.x, target.y - 1)))
         {
             return true;
         }

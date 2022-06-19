@@ -19,28 +19,28 @@ public class HorselessKnight : Knight
 
         //forward movement
         if ((target.y - key.y == 2 && Math.Abs(target.x - key.x) == 1) &&
-            !pieces.ContainsKey(new Vector2(key.x, key.y + 1)))
+            !pieces.ContainsKey(new Vector2Int(key.x, key.y + 1)))
         {
             return true;
         }
 
         //backward movement
         if ((target.y - key.y == -2 && Math.Abs(target.x - key.x) == 1) &&
-            !pieces.ContainsKey(new Vector2(key.x, key.y - 1)))
+            !pieces.ContainsKey(new Vector2Int(key.x, key.y - 1)))
         {
             return true;
         }
 
         //left movement
         if ((target.x - key.x == 2 && Math.Abs(target.y - key.y) == 1) &&
-            !pieces.ContainsKey(new Vector2(key.x + 1, key.y)))
+            !pieces.ContainsKey(new Vector2Int(key.x + 1, key.y)))
         {
             return true;
         }
 
         //right movement
         if ((target.x - key.x == -2 && Math.Abs(target.y - key.y) == 1) &&
-            !pieces.ContainsKey(new Vector2(key.x - 1, key.y)))
+            !pieces.ContainsKey(new Vector2Int(key.x - 1, key.y)))
         {
             return true;
         }

@@ -9,7 +9,7 @@ public class ChargeQueen : Queen
     public override bool CanMoveToTarget(Vector2Int target)
     {
         var pieces = GameManager.pieces;
-        Vector2 key = pieces.Where(x => x.Value == this.gameObject).FirstOrDefault().Key;
+        Vector2Int key = pieces.Where(x => x.Value == this.gameObject).FirstOrDefault().Key;
 
 
         if (pieces[key] == null)

@@ -18,7 +18,7 @@ public class DoublePawn : Pawn
         }
         //go two squares forward
         if ( !pieces.ContainsKey(target) &&
-            target.x - key.x == lateralMovement && !pieces.ContainsKey(new Vector2(target.x, target.y - 1)))
+            target.x - key.x == lateralMovement && !pieces.ContainsKey(new Vector2Int(target.x, target.y - 1)))
         {
             return true;
         }

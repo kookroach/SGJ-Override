@@ -49,13 +49,13 @@ public class GameManager : MonoBehaviour
     public GameObject button2;
     public GameObject button3;
 
-    public static Dictionary<Vector2, GameObject> pieces = new Dictionary<Vector2, GameObject>();
+    public static Dictionary<Vector2Int, GameObject> pieces = new Dictionary<Vector2Int, GameObject>();
 
     public List<GameObject> playerWhite = new List<GameObject>();
 
     public LayoutData layoutData;
     public LayoutData.CardSelect cardSelect;
-
+    private List<LayoutData.Moves> PlayerMoves = new List<LayoutData.Moves>();
  
 
     public void Start()
@@ -66,14 +66,12 @@ public class GameManager : MonoBehaviour
             AddPiece(piece.ChessPiece, (int)piece.vector.x, (int)piece.vector.y);
        }
         //Set Cards
-        button1.GetComponent<Button>().onClick.AddListener(SelectCard);
         button1.GetComponentInChildren<TextMeshProUGUI>().text = layoutData.card1.Description;
         
-        button2.GetComponent<Button>().onClick.AddListener(layoutData.card2.SelectCard);
         button2.GetComponentInChildren<TextMeshProUGUI>().text = layoutData.card2.Description;
 
-        button3.GetComponent<Button>().onClick.AddListener(layoutData.card3.SelectCard);
         button3.GetComponentInChildren<TextMeshProUGUI>().text = layoutData.card3.Description;
+        PlayerMoves = layoutData.playerMoves.Where(x => x.card == cardSelect).ToList();
 
 
         /*
@@ -122,7 +120,7 @@ public class GameManager : MonoBehaviour
 
     public bool MoveToGrid(GameObject @object, Vector2Int target)
     {
-        var key = pieces.Where(x => x.Value == @object).FirstOrDefault().Key;
+        Vector2Int key = pieces.Where(x => x.Value == @object).FirstOrDefault().Key;
         if(pieces.ContainsKey(target))
         {
             GameObject objectOnTarget = GameManager.pieces[target];
@@ -132,18 +130,38 @@ public class GameManager : MonoBehaviour
             }
             objectOnTarget.GetComponent<Animator>().SetTrigger("OnAttack");
         }
+
+        CheckMove(key,target);
+
         pieces.Remove(key);
         StartCoroutine(muve(@object,new Vector3(target.x, @object.transform.position.y, target.y)));
         @object.GetComponent<Animator>().SetTrigger("OnAction");
         pieces[target] = @object;
         
-        CheckMove(target);
-
         return true;
     }
 
-    private void CheckMove(Vector2 target)
+    private void CheckMove(Vector2Int key,Vector2 target)
     {
+        var possibilities = PlayerMoves.Where(x => x.from == key && x.to == target).FirstOrDefault();
+
+        if (possibilities is null)
+        {
+            Application.LoadLevel(Application.loadedLevel);
+            playerWhite.Clear();
+            pieces.Clear();
+        }
+
+        PlayerMoves.Remove(possibilities);
+        if (PlayerMoves.Count == 0) return; //WON
+
+        if (playerWhite.Contains(PieceAtGrid(key)))
+        {
+            PieceAtGrid(PlayerMoves.First().from).GetComponent<IRule>().OnAction(PlayerMoves.First().to);
+            PlayerMoves.Remove(PlayerMoves.First());
+
+            if (PlayerMoves.Count == 0) return; //You WON
+        }
     }
 
     public enum Color
