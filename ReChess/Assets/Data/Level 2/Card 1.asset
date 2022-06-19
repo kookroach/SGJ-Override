@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Card 1
   m_EditorClassIdentifier: 
   Name: 
-  Description: 
-  changeFrom: 0
-  changeTo: 0
+  Description: Queen zombifies enemies instead of taking them.
+  changeFrom: 4
+  changeTo: 3

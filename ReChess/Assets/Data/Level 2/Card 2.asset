@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Card 2
   m_EditorClassIdentifier: 
   Name: 
-  Description: 
+  Description: Pawn moves diagonally and takes enemies frontal.
   changeFrom: 0
   changeTo: 0
