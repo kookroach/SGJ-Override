@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour
             AddPiece(piece.ChessPiece, (int)piece.vector.x, (int)piece.vector.y);
        }
         //Set Cards
+        //button1.GetComponent<Button>().onClick.AddListener(SelectCard);
         button1.GetComponentInChildren<TextMeshProUGUI>().text = layoutData.card1.Description;
         
         button2.GetComponentInChildren<TextMeshProUGUI>().text = layoutData.card2.Description;
