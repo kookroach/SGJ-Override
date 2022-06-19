@@ -29,16 +29,17 @@ public class CanonRook : Rook
             return IRule.RaycastBoard(key, target);
         }
 
-
+        Debug.Log(IRule.raycastHits(key,target)[0].collider.gameObject.name);
         //forward(/backward) take enemy piece
         if ((Math.Abs(target.y - key.y) <= forwardMovement && (target.x - key.x == 0)) && pieces.ContainsKey(target) &&
-            !IRule.RaycastBoard(key, target) && IRule.amountOfRaycastHits(key, target) == 2)
+             IRule.amountOfRaycastHits(key, target) == 2)
             return true;
 
         //lateral take enemy piece
+        
         if (Math.Abs(target.x - key.x) <= lateralMovement && (target.y - key.y == 0) &&
             pieces.ContainsKey(target) &&
-            !IRule.RaycastBoard(key, target) && IRule.amountOfRaycastHits(key, target) == 2)
+            IRule.amountOfRaycastHits(key, target) == 2)
             return true;
 
 

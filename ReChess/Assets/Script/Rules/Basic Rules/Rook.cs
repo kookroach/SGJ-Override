@@ -52,7 +52,7 @@ public class Rook : ChessPiece, IRule
 
         if (other.GetComponent<IRule>().OnDestroy())
         {
-            StartCoroutine(WaitForDeath(other));
+            Destroy(other);
             return true;
         }
 
@@ -61,7 +61,7 @@ public class Rook : ChessPiece, IRule
 
     public virtual bool OnDestroy()
     {
-        FxManager.Instance.CreateSFX(this.gameObject, FxManager.SFX_TYPE.Clash);
+        
         return true;
     }
 }
