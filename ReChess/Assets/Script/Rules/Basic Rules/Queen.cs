@@ -50,6 +50,8 @@ public class Queen : ChessPiece, IRule
         if (!CanMoveToTarget(target))
             return false;
 
+        FxManager.Instance.CreateSFX(this.gameObject, FxManager.SFX_TYPE.Queen);
+
         return GameManager.Instance.MoveToGrid(this.gameObject, target);
     }
 
@@ -60,15 +62,18 @@ public class Queen : ChessPiece, IRule
 
         if (other.GetComponent<IRule>().OnDestroy())
         {
-            Destroy(other);
+            StartCoroutine(WaitForDeath(other));
             return true;
         }
 
         return false;
     }
 
+    
+
     public bool OnDestroy()
     {
+        FxManager.Instance.CreateSFX(this.gameObject, FxManager.SFX_TYPE.Clash);
         return true;
     }
 }

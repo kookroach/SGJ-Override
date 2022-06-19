@@ -40,9 +40,9 @@ public class Rook : ChessPiece, IRule
     {
         if (!CanMoveToTarget(target))
             return false;
-        
-        return GameManager.Instance.MoveToGrid(this.gameObject, target);
 
+        FxManager.Instance.CreateSFX(this.gameObject, FxManager.SFX_TYPE.Rook);
+        return GameManager.Instance.MoveToGrid(this.gameObject, target);
     }
 
     public virtual bool OnAttack(GameObject other)
@@ -52,7 +52,7 @@ public class Rook : ChessPiece, IRule
 
         if (other.GetComponent<IRule>().OnDestroy())
         {
-            Destroy(other);
+            StartCoroutine(WaitForDeath(other));
             return true;
         }
 
@@ -61,6 +61,7 @@ public class Rook : ChessPiece, IRule
 
     public virtual bool OnDestroy()
     {
+        FxManager.Instance.CreateSFX(this.gameObject, FxManager.SFX_TYPE.Clash);
         return true;
     }
 }

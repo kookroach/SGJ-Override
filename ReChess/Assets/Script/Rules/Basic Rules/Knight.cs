@@ -28,7 +28,8 @@ public class Knight : ChessPiece, IRule
     {
         if (!CanMoveToTarget(target))
             return false;
-        
+        FxManager.Instance.CreateSFX(this.gameObject, FxManager.SFX_TYPE.Knight);
+
         return GameManager.Instance.MoveToGrid(this.gameObject, target);
 
     }
@@ -40,7 +41,7 @@ public class Knight : ChessPiece, IRule
 
         if (other.GetComponent<IRule>().OnDestroy())
         {
-            Destroy(other);
+            StartCoroutine(WaitForDeath(other));
             return true;
         }
 
@@ -49,6 +50,7 @@ public class Knight : ChessPiece, IRule
 
     public bool OnDestroy()
     {
+        FxManager.Instance.CreateSFX(this.gameObject, FxManager.SFX_TYPE.Clash);
         return true;
     }
 }

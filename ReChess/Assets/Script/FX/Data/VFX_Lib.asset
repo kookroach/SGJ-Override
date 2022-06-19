@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f1e6aba47b6b47428cf6e0e0e1555be, type: 3}
   m_Name: VFX_Lib
   m_EditorClassIdentifier: 
-  library: []
+  library:
+  - vfx: 1
+    prefab: {fileID: 194062, guid: 8c27aeead6d968e4ba986702d6b84335, type: 3}
+    time: 0
+  - vfx: 0
+    prefab: {fileID: 191186, guid: 079954accd64b32419ec069129c81273, type: 3}
+    time: 0

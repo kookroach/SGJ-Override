@@ -14,18 +14,14 @@ public class Board : MonoBehaviour
 
 
 
-    public GameObject AddPiece(GameObject piece,Material material, int col, int row)
+    public GameObject AddPiece(GameObject piece, int col, int row)
     {
         Vector2Int gridPoint = Geometry.GridPoint(col, row);
-        GameObject newPiece = Instantiate(piece,new Vector3(col, 0.5f, row), Quaternion.identity, gameObject.transform);
-        newPiece.GetComponent<Renderer>().material = material;
-        if (material == defaultBlack)
-            newPiece.tag = "Black";
+        GameObject newPiece = Instantiate(piece,new Vector3(col, piece.transform.position.y, row), piece.transform.rotation, gameObject.transform);
             
-        else if (material == defaultWhite)
+        if (newPiece.CompareTag("White"))
         {
             GameManager.Instance.playerWhite.Add(newPiece);
-            newPiece.tag = "White";
         }
             
         return newPiece;
@@ -39,22 +35,5 @@ public class Board : MonoBehaviour
     public void MovePiece(GameObject piece, Vector2Int gridPoint)
     {
         piece.transform.position = Geometry.PointFromGrid(gridPoint);
-    }
-
-    public void SelectPiece(GameObject piece)
-    {
-        MeshRenderer renderers = piece.GetComponentInChildren<MeshRenderer>();
-        renderers.material = selectedMaterial;
-    }
-
-    public void DeselectPiece(GameObject piece)
-    {
-        
-        MeshRenderer renderers = piece.GetComponentInChildren<MeshRenderer>();
-        renderers.material = defaultMaterial;
-        if (piece.CompareTag("Black"))
-            renderers.material = defaultBlack;
-        else if (piece.CompareTag("White"))
-            renderers.material = defaultWhite;
     }
 }

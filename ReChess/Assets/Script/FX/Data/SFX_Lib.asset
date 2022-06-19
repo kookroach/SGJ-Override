@@ -12,3 +12,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58af560a99acbe45a73ebe649234bf1, type: 3}
   m_Name: SFX_Lib
   m_EditorClassIdentifier: 
+  library:
+  - sfx: 0
+    clip: {fileID: 8300000, guid: 995684193c939e647bf585ff1704321f, type: 3}
+    time: 0
+    loop: 0
+    spatial: 0
+  - sfx: 1
+    clip: {fileID: 8300000, guid: 137278dd83112064ab752074b34871b7, type: 3}
+    time: 0
+    loop: 0
+    spatial: 0
+  - sfx: 2
+    clip: {fileID: 8300000, guid: eed0e4308b4c7494d8ca393c71adba10, type: 3}
+    time: 0
+    loop: 0
+    spatial: 0
+  - sfx: 3
+    clip: {fileID: 8300000, guid: 4d082f148a62471419733fbc0e20322c, type: 3}
+    time: 0
+    loop: 0
+    spatial: 0
+  - sfx: 4
+    clip: {fileID: 8300000, guid: 3779fb0a84c9c824d8d8cac70904f2b5, type: 3}
+    time: 0
+    loop: 0
+    spatial: 0
+  - sfx: 5
+    clip: {fileID: 8300000, guid: 344bc718630e2b946b93c88e351be3da, type: 3}
+    time: 0
+    loop: 0
+    spatial: 0
+  - sfx: 6
+    clip: {fileID: 8300000, guid: 65b6ecb1e879d0140b33a12736ce51a1, type: 3}
+    time: 0
+    loop: 0
+    spatial: 0
+  - sfx: 7
+    clip: {fileID: 8300000, guid: f346f210adc561948a6fc868df55404c, type: 3}
+    time: 0
+    loop: 0
+    spatial: 0
+  - sfx: 8
+    clip: {fileID: 8300000, guid: 35cba9f01e08ad44894977c153bb6fd6, type: 3}
+    time: 0
+    loop: 0
+    spatial: 0
+  - sfx: 9
+    clip: {fileID: 8300000, guid: 83283b6c2b1c7364c8403b044e2f2729, type: 3}
+    time: 0
+    loop: 0
+    spatial: 0
+  - sfx: 10
+    clip: {fileID: 8300000, guid: 98cbcade6d3ec4842a3cb0ee43601727, type: 3}
+    time: 0
+    loop: 0
+    spatial: 0
+  - sfx: 11
+    clip: {fileID: 8300000, guid: 8bc527a6b29bb3f40b2b7d32843ee00b, type: 3}
+    time: 0
+    loop: 0
+    spatial: 0

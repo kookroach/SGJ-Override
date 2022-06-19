@@ -66,7 +66,6 @@ public class MoveSelector : MonoBehaviour
         
         this.enabled = false;
         _tileHighlight.SetActive(false);
-        GameManager.Instance.DeselectPiece(_movingPiece);
         _movingPiece = null;
         TileSelector selector = GetComponent<TileSelector>();
         selector.EnterState();
