@@ -32,6 +32,7 @@ public class LayoutData : ScriptableObject
 
     public enum CardSelect
     {
+        Nan,
         first,
         second,
         third

@@ -5,12 +5,10 @@ using UnityEngine.UI;
 
 public class DeleteButtons : MonoBehaviour
 {
-   public void DestroyAll(GameObject button1,GameObject button2,GameObject button3)
+   public void DestroyAll()
    {
-      
-      Destroy(button2);
-      Destroy(button3);
-      Destroy(button1);
+
+        Destroy(this.gameObject);
 
    }
 }
