@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -55,7 +56,7 @@ public class GameManager : MonoBehaviour
 
     public LayoutData layoutData;
     public LayoutData.CardSelect cardSelect;
-    private List<LayoutData.Moves> PlayerMoves = new List<LayoutData.Moves>();
+    public List<LayoutData.Moves> PlayerMoves = new List<LayoutData.Moves>();
  
 
     public void Start()
@@ -72,7 +73,10 @@ public class GameManager : MonoBehaviour
         button2.GetComponentInChildren<TextMeshProUGUI>().text = layoutData.card2.Description;
 
         button3.GetComponentInChildren<TextMeshProUGUI>().text = layoutData.card3.Description;
-        PlayerMoves = layoutData.playerMoves.Where(x => x.card == cardSelect).ToList();
+
+        button1.SetActive(true);
+        button2.SetActive(true);
+        button3.SetActive(true);
 
 
         /*
@@ -142,28 +146,31 @@ public class GameManager : MonoBehaviour
         return true;
     }
 
-    private void CheckMove(Vector2Int key,Vector2 target)
+    private void CheckMove(Vector2Int key, Vector2 target)
     {
         var possibilities = PlayerMoves.Where(x => x.from == key && x.to == target).FirstOrDefault();
 
-        if (possibilities is null)
+        if (possibilities is null && (PlayerMoves.Count != 0))
         {
-            Application.LoadLevel(Application.loadedLevel);
             playerWhite.Clear();
             pieces.Clear();
+            Application.LoadLevel(Application.loadedLevel);
         }
 
         PlayerMoves.Remove(possibilities);
-        if (PlayerMoves.Count == 0) return; //WON
-
-        if (playerWhite.Contains(PieceAtGrid(key)))
+        if (PlayerMoves.Count == 0)
         {
-            PieceAtGrid(PlayerMoves.First().from).GetComponent<IRule>().OnAction(PlayerMoves.First().to);
-            PlayerMoves.Remove(PlayerMoves.First());
-
-            if (PlayerMoves.Count == 0) return; //You WON
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
-    }
+            if (playerWhite.Contains(PieceAtGrid(key)))
+            {
+                PieceAtGrid(PlayerMoves.First().from).GetComponent<IRule>().OnAction(PlayerMoves.First().to);
+                PlayerMoves.Remove(PlayerMoves.First());
+
+                if (PlayerMoves.Count == 0) return; //You WON
+            }
+        }
+    
 
     public enum Color
     {
@@ -187,4 +194,5 @@ public class GameManager : MonoBehaviour
         yield return null;
 
     }
+    
 }
