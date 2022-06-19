@@ -12,7 +12,7 @@ public class SFX : MonoBehaviour
      }
 
 
-    public void PlaySound(AudioClip clip, bool loop = false, bool spatial = true)
+    public void PlaySound(AudioClip clip, bool loop = false, bool spatial = true, bool destroyable = true)
     {
         source.loop = loop;
         source.spatialBlend = 1;
@@ -20,7 +20,14 @@ public class SFX : MonoBehaviour
 
         source.clip = clip;
         source.Play();
+        if(destroyable)
+            StartCoroutine(TimeToDie(source.clip.length));
     }
 
+    IEnumerator TimeToDie(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Destroy(this.gameObject);
+    }
    
 }

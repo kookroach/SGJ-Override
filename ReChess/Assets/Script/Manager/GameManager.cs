@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,54 +26,87 @@ public class GameManager : MonoBehaviour
 
    
     public Board board;
+    /*
+    public GameObject pawnRed;
+    public GameObject pawnBlue;
 
-    public GameObject pawn;
-    public GameObject knight;
-    public GameObject rook;
-    public GameObject bishop;
-    public GameObject queen;
-    public GameObject king;
+    public GameObject knightRed;
+    public GameObject knightBlue;
 
-    public Material white;
-    public Material black;
+    public GameObject rookRed;
+    public GameObject rookBlue;
 
+    public GameObject bishopRed;
+    public GameObject bishopBlue;
+
+    public GameObject queenRed;
+    public GameObject queenBlue;
+
+    public GameObject kingRed;
+    public GameObject kingBlue;
+    */
+    public GameObject button1;
+    public GameObject button2;
+    public GameObject button3;
 
     public static Dictionary<Vector2, GameObject> pieces = new Dictionary<Vector2, GameObject>();
 
     public List<GameObject> playerWhite = new List<GameObject>();
 
+    public LayoutData layoutData;
+
     public void Start()
     {
-       //pieces.Add(new Vector2(69,69), null);
-        AddPiece(rook, Color.white, 0, 0);
-        AddPiece(knight, Color.white, 1, 0);
-        AddPiece(bishop, Color.white, 2, 0);
-        AddPiece(queen, Color.white, 3, 0);
-        AddPiece(king, Color.white, 4, 0);
-        AddPiece(bishop, Color.white, 5, 0);
-        AddPiece(knight, Color.white, 6, 0);
-        AddPiece(rook, Color.white, 7, 0);
+        //Set Layout
+       foreach(var piece in layoutData.layouts)
+       {
+            AddPiece(piece.ChessPiece, (int)piece.vector.x, (int)piece.vector.y);
+       }
+        //Set Cards
+        button1.GetComponent<Button>().clicked += layoutData.card1.SelectCard;
+        button1.GetComponentInChildren<TextMeshProUGUI>().text = layoutData.card1.Description;
+        
+        button2.GetComponent<Button>().clicked += layoutData.card2.SelectCard;
+        button2.GetComponentInChildren<TextMeshProUGUI>().text = layoutData.card2.Description;
 
-        AddPiece(rook, Color.black, 0, 7);
-        AddPiece(knight, Color.black, 1, 7);
-        AddPiece(bishop, Color.black, 2, 7);
-        AddPiece(queen, Color.black, 3, 7);
-        AddPiece(king, Color.black, 4, 7);
-        AddPiece(bishop, Color.black, 5, 7);
-        AddPiece(knight, Color.black, 6, 7);
-        AddPiece(rook, Color.black, 7, 7);
+        button3.GetComponent<Button>().clicked += layoutData.card3.SelectCard;
+        button3.GetComponentInChildren<TextMeshProUGUI>().text = layoutData.card3.Description;
+
+
+
+        /*
+       //pieces.Add(new Vector2(69,69), null);
+        AddPiece(rookRed, 0, 0);
+        AddPiece(knightRed,  1, 0);
+        AddPiece(bishopRed,  2, 0);
+        AddPiece(queenRed,  3, 0);
+        AddPiece(kingRed,  4, 0);
+        AddPiece(bishopRed, 5, 0);
+        AddPiece(knightRed,  6, 0);
+        AddPiece(rookRed,  7, 0);
+
+        AddPiece(rookBlue, 0, 7);
+        AddPiece(knightBlue, 1, 7);
+        AddPiece(bishopBlue, 2, 7);
+        AddPiece(queenBlue,3, 7);
+        AddPiece(kingBlue,  4, 7);
+        AddPiece(bishopBlue, 5, 7);
+        AddPiece(knightBlue,  6, 7);
+        AddPiece(rookBlue,  7, 7);
 
         for (int i = 0; i < 8; i++)
         {
-            AddPiece(pawn, Color.white, i, 1);
-            AddPiece(pawn, Color.black, i, 6);
+            AddPiece(pawnRed,  i, 1);
+            AddPiece(pawnBlue, i, 6);
         }
+        */
+
+        FxManager.Instance.CreateSFX(this.gameObject, FxManager.SFX_TYPE.CheezySlow, true, false);
     }
 
-    public void AddPiece(GameObject @object, Color color, int col, int row)
+    public void AddPiece(GameObject @object, int col, int row)
     {
-        Material mat = color == Color.white ? white : black;
-        pieces.Add(new Vector2Int(col, row), board.AddPiece(@object, mat, col, row));
+        pieces.Add(new Vector2Int(col, row), board.AddPiece(@object, col, row));
     }
 
     public GameObject PieceAtGrid(Vector2Int @vector)
@@ -81,15 +116,7 @@ public class GameManager : MonoBehaviour
 
         return pieces.GetValueOrDefault(vector, null);
     }
-    public void SelectPiece(GameObject @gameObject)
-    {
-       board.SelectPiece(gameObject);
-    }
-
-    public void DeselectPiece(GameObject @gameObject)
-    {
-        board.DeselectPiece(gameObject);
-    }
+    
 
     public bool MoveToGrid(GameObject @object, Vector2Int target)
     {
@@ -101,13 +128,15 @@ public class GameManager : MonoBehaviour
             {
                 return false;
             }
-     
+            objectOnTarget.GetComponent<Animator>().SetTrigger("OnAttack");
         }
         pieces.Remove(key);
 
+        //TODO: Abfrage ob gewonnen
         
-        Vector3 dir = new Vector3(target.x, 0.5f, target.y) - @object.transform.position;
-        StartCoroutine(muve(@object,dir,new Vector3(target.x, 0.5f, target.y)));
+        
+        StartCoroutine(muve(@object,new Vector3(target.x, @object.transform.position.y, target.y)));
+        @object.GetComponent<Animator>().SetTrigger("OnAction");
         pieces[target] = @object;
         return true;
     }
@@ -117,17 +146,19 @@ public class GameManager : MonoBehaviour
         black
     }
 
-    IEnumerator muve(GameObject obj, Vector3 dir, Vector3 target)
+    IEnumerator muve(GameObject obj, Vector3 target)
     {
-        while (Vector3.Distance(obj.transform.position,target) > 0.1f)
+        var orig = obj.transform.rotation;
+        while (Vector3.Distance(obj.transform.position, target) > 0.2f)
         {
-
-            obj.transform.Translate(dir * Time.deltaTime * speed);
+           obj.transform.position =  Vector3.MoveTowards(obj.transform.position,  target, speed * Time.deltaTime);
+            obj.transform.LookAt(new Vector3(target.x, obj.transform.position.y, target.z));
             yield return new WaitForEndOfFrame();
             
         }
-
+        obj.transform.transform.rotation = orig; 
         obj.transform.position = target;
+        obj.GetComponent<Animator>().SetTrigger("Idle");
         yield return null;
 
     }

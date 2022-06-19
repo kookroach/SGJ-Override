@@ -29,7 +29,7 @@ public class FxManager : MonoBehaviour{
     public bool CreateVFX(GameObject @object, VFX_TYPE fx, bool playOnAwake = true)
     {
         VFX_Lib prefab;
-       if (VFX_Library.GetFX(fx, out prefab))
+       if (!VFX_Library.GetFX(fx, out prefab))
             return false;
 
         GameObject vfxOBJ = new GameObject("VFX Container");
@@ -43,18 +43,19 @@ public class FxManager : MonoBehaviour{
         return true;
     }
 
-    public bool CreateSFX(GameObject @object, SFX_TYPE fx, bool playOnAwake = true)
+    public bool CreateSFX(GameObject @object, SFX_TYPE fx, bool playOnAwake = true, bool destroyable = true)
     {
         SFX_Lib prefab;
-        if (SFX_Library.GetFX(fx, out prefab))
+        if (!SFX_Library.GetFX(fx, out prefab))
             return false;
 
         GameObject sfxOBJ = new GameObject("Sound Container");
         SFX sfx = sfxOBJ.AddComponent<SFX>();
         if (playOnAwake)
         {
-            sfx.PlaySound(prefab.clip, prefab.loop, prefab.spatial);
+            sfx.PlaySound(prefab.clip, prefab.loop, prefab.spatial, destroyable);
         }
+        sfx.PlaySound(prefab.clip, prefab.loop, prefab.spatial, destroyable);
         return true;
     }
 
@@ -67,6 +68,16 @@ public class FxManager : MonoBehaviour{
     public enum SFX_TYPE
     {
         Clash,
-        Move,
+        Pawn,
+        Knight,
+        Bishop,
+        Rook,
+        Queen,
+        King,
+        CheezySlow,
+        CheezyFast,
+        Cheezy,
+        TrompetLong,
+        TrompetSlow
     }
 }

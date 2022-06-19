@@ -32,7 +32,8 @@ public class Bishop : ChessPiece, IRule
     {
         if (!CanMoveToTarget(target))
             return false;
-        
+
+        FxManager.Instance.CreateSFX(this.gameObject, FxManager.SFX_TYPE.Bishop);
         return GameManager.Instance.MoveToGrid(this.gameObject, target);
 
     }
@@ -44,7 +45,7 @@ public class Bishop : ChessPiece, IRule
 
         if (other.GetComponent<IRule>().OnDestroy())
         {
-            Destroy(other);
+            StartCoroutine(WaitForDeath(other));
             return true;
         }
 
@@ -53,6 +54,7 @@ public class Bishop : ChessPiece, IRule
 
     public virtual bool OnDestroy()
     {
+        FxManager.Instance.CreateSFX(this.gameObject, FxManager.SFX_TYPE.Clash);
         return true;
     }
 

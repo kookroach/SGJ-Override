@@ -60,7 +60,6 @@ public class TileSelector : MonoBehaviour
 
                     if (selectedPiece != null && GameManager.Instance.playerWhite.Contains(selectedPiece))
                     {
-                        GameManager.Instance.SelectPiece(selectedPiece);
 
                         ExitState(selectedPiece);
                     }                                     

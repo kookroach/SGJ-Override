@@ -74,7 +74,8 @@ public class King : ChessPiece, IRule
         
         if (!hasMoved)
             hasMoved = true;
-        
+        FxManager.Instance.CreateSFX(this.gameObject, FxManager.SFX_TYPE.King);
+
         return GameManager.Instance.MoveToGrid(this.gameObject, target);
     }
 
@@ -85,7 +86,7 @@ public class King : ChessPiece, IRule
 
         if (other.GetComponent<IRule>().OnDestroy())
         {
-            Destroy(other);
+            StartCoroutine(WaitForDeath(other));
             return true;
         }
 
@@ -94,6 +95,7 @@ public class King : ChessPiece, IRule
 
     public bool OnDestroy()
     {
+        FxManager.Instance.CreateSFX(this.gameObject, FxManager.SFX_TYPE.Clash);
         return true;
     }
 }
