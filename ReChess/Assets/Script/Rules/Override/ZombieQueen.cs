@@ -43,13 +43,13 @@ public class ZombieQueen : Queen
         if ((Math.Abs(target.y - key.y) <= forwardMovement && (target.x - key.x == 0)) && pieces.ContainsKey(target) &&
             IRule.RaycastBoard(key, target))
         {
-            return false;
+            return IRule.RaycastBoard(key, target);
         }
 
         return false;
     }
 
-    public bool OnAction(Vector2Int target)
+    public override bool OnAction(Vector2Int target)
     {
         if (!CanMoveToTarget(target))
             return false;
@@ -59,11 +59,34 @@ public class ZombieQueen : Queen
 
     public bool OnAttack(GameObject other)
     {
+        
         if (other.CompareTag(this.gameObject.tag))
             return false;
 
         if (other.GetComponent<IRule>().OnDestroy())
         {
+            
+            switch (other.GetComponent<IRule>())
+            {
+                case Rook:
+                    Rook rookKing = gameObject.AddComponent(typeof(Rook)) as Rook;
+                    Destroy(other);
+                    break;
+                case Knight:
+                    Knight knightKing = gameObject.AddComponent(typeof(Knight)) as Knight;
+                    Destroy(other);
+                    break;
+                case Bishop:
+                    Bishop bishopKing = gameObject.AddComponent(typeof(Bishop)) as Bishop;
+                    Destroy(other);
+                    break;
+                case Queen:
+                    Queen queenKing = gameObject.AddComponent(typeof(Queen)) as Queen;
+                    Destroy(other);
+                    break;
+                default:
+                    return false;
+            }
             Destroy(other);
             return true;
         }
