@@ -78,7 +78,7 @@ public class King : ChessPiece, IRule
         return GameManager.Instance.MoveToGrid(this.gameObject, target);
     }
 
-    public bool OnAttack(GameObject other)
+    public virtual bool OnAttack(GameObject other)
     {
         if (other.CompareTag(this.gameObject.tag))
             return false;
