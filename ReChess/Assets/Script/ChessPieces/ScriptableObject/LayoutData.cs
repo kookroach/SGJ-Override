@@ -25,16 +25,16 @@ public class LayoutData : ScriptableObject
     public class AIMoves
     {
         public CardSelect card;
-        public GameObject ChessPiece;
-        public Vector2 vector;
+        public Vector2 from;
+        public Vector2 to;
     }
 
     [Serializable]
     public class PlayerMoves
     {
         public CardSelect card;
-        public GameObject ChessPiece;
-        public Vector2 vector;
+        public Vector2 from;
+        public Vector2 to;
     }
 
     public enum CardSelect

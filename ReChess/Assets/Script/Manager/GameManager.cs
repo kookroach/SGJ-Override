@@ -54,6 +54,9 @@ public class GameManager : MonoBehaviour
     public List<GameObject> playerWhite = new List<GameObject>();
 
     public LayoutData layoutData;
+    public LayoutData.CardSelect cardSelect;
+
+ 
 
     public void Start()
     {
@@ -63,7 +66,7 @@ public class GameManager : MonoBehaviour
             AddPiece(piece.ChessPiece, (int)piece.vector.x, (int)piece.vector.y);
        }
         //Set Cards
-        button1.GetComponent<Button>().onClick.AddListener(layoutData.card1.SelectCard);
+        button1.GetComponent<Button>().onClick.AddListener(SelectCard);
         button1.GetComponentInChildren<TextMeshProUGUI>().text = layoutData.card1.Description;
         
         button2.GetComponent<Button>().onClick.AddListener(layoutData.card2.SelectCard);
@@ -71,7 +74,6 @@ public class GameManager : MonoBehaviour
 
         button3.GetComponent<Button>().onClick.AddListener(layoutData.card3.SelectCard);
         button3.GetComponentInChildren<TextMeshProUGUI>().text = layoutData.card3.Description;
-
 
 
         /*
@@ -131,15 +133,19 @@ public class GameManager : MonoBehaviour
             objectOnTarget.GetComponent<Animator>().SetTrigger("OnAttack");
         }
         pieces.Remove(key);
-
-        //TODO: Abfrage ob gewonnen
-        
-        
         StartCoroutine(muve(@object,new Vector3(target.x, @object.transform.position.y, target.y)));
         @object.GetComponent<Animator>().SetTrigger("OnAction");
         pieces[target] = @object;
+        
+        CheckMove(target);
+
         return true;
     }
+
+    private void CheckMove(Vector2 target)
+    {
+    }
+
     public enum Color
     {
         white,
