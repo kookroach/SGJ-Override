@@ -42,3 +42,20 @@ MonoBehaviour:
   card1: {fileID: 11400000, guid: b0f9e6edd1526514a8f254c446bf8284, type: 2}
   card2: {fileID: 11400000, guid: 38cce6eb8e8fd014aa20824bd50a5058, type: 2}
   card3: {fileID: 11400000, guid: 93e1b1a94e1a19646a9b7e1354bd523f, type: 2}
+  playerMoves:
+  - card: 0
+    ChessPiece: {fileID: 2290939553036995774, guid: 8b646a5a09ef2e344b31bf008b62db5d, type: 3}
+    vector: {x: 5, y: 7}
+  - card: 1
+    ChessPiece: {fileID: 2290939553036995774, guid: 8b646a5a09ef2e344b31bf008b62db5d, type: 3}
+    vector: {x: 5, y: 7}
+  - card: 1
+    ChessPiece: {fileID: 2290939553036995774, guid: 8b646a5a09ef2e344b31bf008b62db5d, type: 3}
+    vector: {x: 1, y: 7}
+  - card: 2
+    ChessPiece: {fileID: 8543364763282190006, guid: 8be6e0d315d3a16459e9c10fe2093adb, type: 3}
+    vector: {x: 1, y: 6}
+  aiMoves:
+  - card: 1
+    ChessPiece: {fileID: 2857489990013814966, guid: 7a1d674d677360a4abed7255dc27d31f, type: 3}
+    vector: {x: 1, y: 6}

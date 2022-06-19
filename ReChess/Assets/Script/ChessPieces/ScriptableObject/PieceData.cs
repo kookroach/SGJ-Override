@@ -25,6 +25,17 @@ public class PieceData : ScriptableObject
     Type GetSpecialPieceType(CustomChessPiece customChessPiece) => customChessPiece switch
     {
         CustomChessPiece.InversePawn => typeof(InvertedPawn),
+        CustomChessPiece.TwoPawn => typeof(DoublePawn),
+        CustomChessPiece.ImmovableKing => typeof(DisabledKing),
+        CustomChessPiece.ZombieQueen => typeof(ZombieQueen),
+        CustomChessPiece.TwoRook => typeof(TwoRook),
+        CustomChessPiece.BigKnight => typeof(BigHorse),
+        CustomChessPiece.HorselessKnight => typeof(HorselessKnight),
+        CustomChessPiece.DontStopMeNowQueen => typeof(ChargeQueen),
+        CustomChessPiece.KamikazeBishop => typeof(KamikazeBishop),
+        CustomChessPiece.CanonRook => typeof(CanonRook),
+        CustomChessPiece.CannibalKing => typeof(CannibalKing),
+        CustomChessPiece.WeardownBishop => typeof(WearDownBishop),
     };
 
 
@@ -53,6 +64,16 @@ public class PieceData : ScriptableObject
     public enum CustomChessPiece
     {
         InversePawn,
-        
+        TwoPawn,
+        ImmovableKing,
+        ZombieQueen,
+        TwoRook,
+        BigKnight,
+        HorselessKnight,
+        DontStopMeNowQueen,
+        KamikazeBishop,
+        CanonRook,
+        CannibalKing,
+        WeardownBishop,
     }
 }

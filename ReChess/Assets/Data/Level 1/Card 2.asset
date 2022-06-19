@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Card 2
   m_EditorClassIdentifier: Assembly-CSharp::PieceData
   Name: 
-  Description: 
-  changeFrom: 0
-  changeTo: 0
+  Description: Rook stays on one color.
+  changeFrom: 3
+  changeTo: 4

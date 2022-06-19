@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Card 1
   m_EditorClassIdentifier: Assembly-CSharp::PieceData
   Name: 
-  Description: 
-  changeFrom: 0
-  changeTo: 0
+  Description: King becomes immovable.
+  changeFrom: 5
+  changeTo: 2

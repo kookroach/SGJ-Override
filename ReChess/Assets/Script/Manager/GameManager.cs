@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -63,13 +63,13 @@ public class GameManager : MonoBehaviour
             AddPiece(piece.ChessPiece, (int)piece.vector.x, (int)piece.vector.y);
        }
         //Set Cards
-        button1.GetComponent<Button>().clicked += layoutData.card1.SelectCard;
+        button1.GetComponent<Button>().onClick.AddListener(layoutData.card1.SelectCard);
         button1.GetComponentInChildren<TextMeshProUGUI>().text = layoutData.card1.Description;
         
-        button2.GetComponent<Button>().clicked += layoutData.card2.SelectCard;
+        button2.GetComponent<Button>().onClick.AddListener(layoutData.card2.SelectCard);
         button2.GetComponentInChildren<TextMeshProUGUI>().text = layoutData.card2.Description;
 
-        button3.GetComponent<Button>().clicked += layoutData.card3.SelectCard;
+        button3.GetComponent<Button>().onClick.AddListener(layoutData.card3.SelectCard);
         button3.GetComponentInChildren<TextMeshProUGUI>().text = layoutData.card3.Description;
 
 

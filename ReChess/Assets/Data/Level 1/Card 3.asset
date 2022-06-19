@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Card 3
   m_EditorClassIdentifier: Assembly-CSharp::PieceData
   Name: 
-  Description: 
+  Description: Pawn takes two steps.
   changeFrom: 0
-  changeTo: 0
+  changeTo: 1
