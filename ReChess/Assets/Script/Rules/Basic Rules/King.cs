@@ -9,6 +9,9 @@ public class King : ChessPiece, IRule
     public int forwardMovement = 1;
     public int lateralMovement = 1;
     public bool hasMoved;
+    public override PieceMovement PieceMovement => pieceMovement;
+    [SerializeField]
+    private PieceMovement pieceMovement;
 
     public bool CanMoveToTarget(Vector2Int target)
     {
