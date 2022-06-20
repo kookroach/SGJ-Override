@@ -5,6 +5,7 @@ public class CustomWindow : EditorWindow
 {
 
     bool[,] fieldsArray = new bool[17, 9];
+    bool canMoveBackwards;
     GameObject piece;
 
 
@@ -30,12 +31,16 @@ public class CustomWindow : EditorWindow
             GUI.enabled = true;
         }
         GUILayout.Label("Piece Movement Array", EditorStyles.centeredGreyMiniLabel);
-
-
         ChangeArrayWidthAndHeight();
+
+        GUILayout.Space(30);
+        canMoveBackwards = GUILayout.Toggle(canMoveBackwards, "Can move backwards");
+
         if (GUILayout.Button("Apply"))
         {
-            piece.GetComponent<ChessPiece>().PieceMovement.setArray(fieldsArray);
+            PieceMovement pieceMovement = piece.GetComponent<ChessPiece>().PieceMovement;
+            pieceMovement.canMoveBackwards = canMoveBackwards;
+            pieceMovement.setArray(fieldsArray);
         }
     }
 
@@ -48,27 +53,36 @@ public class CustomWindow : EditorWindow
             ChessPiece _;
             if (obj.TryGetComponent(out _))
             {
-                fieldsArray = _.PieceMovement.getArray();
+                PieceMovement pieceMovement = _.PieceMovement;
+                fieldsArray = pieceMovement.getArray();
+                canMoveBackwards = pieceMovement.canMoveBackwards;
+
                 piece = obj;
                 Repaint();
                 return;
             }
             else
             {
-                fieldsArray = new bool[17, 9];
-                piece = null;
-                Repaint();
+                Reset();
             }
         }
 
         if (Selection.gameObjects.Length == 0)
         {
-            fieldsArray = new bool[17, 9];
-            piece = null;
-            Repaint();
+            Reset();
+
         }
-        
+
     }
+    private void Reset()
+    {
+        fieldsArray = new bool[17, 9];
+        canMoveBackwards = false;
+
+        piece = null;
+        Repaint();
+    }
+
 
     void ChangeArrayWidthAndHeight()
     {

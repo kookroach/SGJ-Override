@@ -127,7 +127,13 @@ public class GameManager : MonoBehaviour
 
         return pieces.GetValueOrDefault(vector, null);
     }
-    
+
+    public Vector2Int GridAtPiece(GameObject @object)
+    {
+
+        return pieces.Where(x => x.Value == @object).Select(x => x.Key).FirstOrDefault();
+    }
+
 
     public bool MoveToGrid(GameObject @object, Vector2Int target)
     {
@@ -180,6 +186,10 @@ public class GameManager : MonoBehaviour
         }
         }
     
+    public void GetPossibleMoves(GameObject @object)
+    {
+        board.PossibleMoves(@object, GridAtPiece(@object));
+    }
 
     public enum Color
     {

@@ -390,6 +390,7 @@ MonoBehaviour:
   forwardMovement: 1
   lateralMovement: 1
   hasMoved: 0
+  pieceMovement: {fileID: 11400000, guid: 1864dfb6eddf0ed449592e5d2274a37c, type: 2}
 --- !u!136 &3742740368560617382
 CapsuleCollider:
   m_ObjectHideFlags: 0

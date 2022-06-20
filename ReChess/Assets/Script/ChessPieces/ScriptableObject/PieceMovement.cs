@@ -9,7 +9,8 @@ using System.Linq;
 public class PieceMovement : ScriptableObject
 {
 
-    public List<Vector2> movement;
+    public List<Vector2Int> movement;
+    public bool canMoveBackwards;
     
     public bool[,] getArray()
     {
@@ -20,7 +21,7 @@ public class PieceMovement : ScriptableObject
         {
             for (int i = 0; i < 17; i++)
             {
-                array[(i + 8)%17 , (8-j)] = movement.Contains(new Vector2(i,j));
+                array[(i) , (j)] = movement.Contains(new Vector2Int(i-8,8-j));
             }
             
         }
@@ -38,6 +39,8 @@ public class PieceMovement : ScriptableObject
             {
                 if (array[i, j])
                 {
+                    if (j < 8 && canMoveBackwards)
+                        movement.Add(new Vector2Int(i - 8, (8 - j) * -1));
                     movement.Add(new Vector2Int(i - 8,8 -j));
                 }
             }

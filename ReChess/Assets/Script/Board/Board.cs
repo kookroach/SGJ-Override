@@ -16,7 +16,6 @@ public class Board : MonoBehaviour
 
     public GameObject AddPiece(GameObject piece, int col, int row)
     {
-        Vector2Int gridPoint = Geometry.GridPoint(col, row);
         GameObject newPiece = Instantiate(piece,new Vector3(col, piece.transform.position.y, row), piece.transform.rotation, gameObject.transform);
             
         if (newPiece.CompareTag("White"))
@@ -35,5 +34,10 @@ public class Board : MonoBehaviour
     public void MovePiece(GameObject piece, Vector2Int gridPoint)
     {
         piece.transform.position = Geometry.PointFromGrid(gridPoint);
+    }
+
+    public void PossibleMoves(GameObject @object, Vector2Int gridPoint)
+    {
+        GetComponent<TileSelector>().SetPossibleMoves(@object.GetComponent<ChessPiece>().PieceMovement.movement, gridPoint);
     }
 }

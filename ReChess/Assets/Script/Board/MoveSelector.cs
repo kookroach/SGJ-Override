@@ -48,9 +48,9 @@ public class MoveSelector : MonoBehaviour
                 // Reference Point 2: check for valid move location
    
                     _movingPiece.GetComponent<IRule>().OnAction(gridPoint);
-     
+
                 // Reference Point 3: capture enemy piece here later
-                
+
 
                 ExitState();
             }
