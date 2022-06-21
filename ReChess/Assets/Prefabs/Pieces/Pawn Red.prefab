@@ -859,7 +859,6 @@ GameObject:
   - component: {fileID: 9069106502449918988}
   - component: {fileID: 8813906404068496377}
   - component: {fileID: 8543364763282190007}
-  - component: {fileID: 7732267116094715511}
   m_Layer: 6
   m_Name: Pawn Red
   m_TagString: White
@@ -918,20 +917,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasMoved: 0
   startMovement: 2
---- !u!136 &7732267116094715511
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8543364763282190006}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.1844728
-  m_Height: 1.3451568
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.7876062, z: 0.022360086}
 --- !u!1 &8668984352170987937
 GameObject:
   m_ObjectHideFlags: 0

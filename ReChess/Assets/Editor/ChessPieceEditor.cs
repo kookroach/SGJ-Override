@@ -1,17 +1,18 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 
-public class CustomWindow : EditorWindow
+public class ChessPieceEditor : EditorWindow
 {
 
     bool[,] fieldsArray = new bool[17, 9];
     bool canMoveBackwards;
+    ChessPiece behaviour = null;
     GameObject piece;
 
 
-    [MenuItem("Window/LevelEditor")]
+    [MenuItem("Window/Chess Piece Editor")]
     public static void ShowWindow() {
-        EditorWindow window = EditorWindow.GetWindow(typeof(CustomWindow));
+        EditorWindow window = EditorWindow.GetWindow(typeof(ChessPieceEditor));
         window.maxSize = new Vector2(500 , 500);
         window.minSize = window.maxSize;
     }
@@ -35,6 +36,7 @@ public class CustomWindow : EditorWindow
 
         GUILayout.Space(30);
         canMoveBackwards = GUILayout.Toggle(canMoveBackwards, "Can move backwards");
+                
 
         if (GUILayout.Button("Apply"))
         {

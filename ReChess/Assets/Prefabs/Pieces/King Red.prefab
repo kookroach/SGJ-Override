@@ -173,7 +173,6 @@ GameObject:
   - component: {fileID: 1537637705993646700}
   - component: {fileID: 4879339637094656022}
   - component: {fileID: 7891989253255788548}
-  - component: {fileID: 1513432443000545510}
   m_Layer: 6
   m_Name: King Red
   m_TagString: White
@@ -234,20 +233,6 @@ MonoBehaviour:
   lateralMovement: 1
   hasMoved: 0
   pieceMovement: {fileID: 11400000, guid: 1864dfb6eddf0ed449592e5d2274a37c, type: 2}
---- !u!136 &1513432443000545510
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2169919132572526806}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.33119893
-  m_Height: 1.9400924
-  m_Direction: 1
-  m_Center: {x: 0.036357164, y: 0.9842406, z: 0.08050513}
 --- !u!1 &2309527961613759760
 GameObject:
   m_ObjectHideFlags: 0

@@ -330,7 +330,6 @@ GameObject:
   - component: {fileID: 3352804139567309582}
   - component: {fileID: 4981209148796119294}
   - component: {fileID: 6531563968976052482}
-  - component: {fileID: 3742740368560617382}
   m_Layer: 6
   m_Name: King Blue
   m_TagString: Black
@@ -391,20 +390,6 @@ MonoBehaviour:
   lateralMovement: 1
   hasMoved: 0
   pieceMovement: {fileID: 11400000, guid: 1864dfb6eddf0ed449592e5d2274a37c, type: 2}
---- !u!136 &3742740368560617382
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2857489990013814966}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.33119893
-  m_Height: 1.9400924
-  m_Direction: 1
-  m_Center: {x: 0.036357164, y: 0.9842406, z: 0.08050513}
 --- !u!1 &3776242621529337156
 GameObject:
   m_ObjectHideFlags: 0

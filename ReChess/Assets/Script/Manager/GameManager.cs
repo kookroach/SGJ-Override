@@ -58,9 +58,37 @@ public class GameManager : MonoBehaviour
     public LayoutData.CardSelect cardSelect;
     public List<LayoutData.Moves> PlayerMoves = new List<LayoutData.Moves>();
  
+ public bool DEBUG;
 
     public void Awake()
     {
+        if(DEBUG){
+            AddPiece(rookRed, 0, 0);
+            AddPiece(knightRed,  1, 0);
+            AddPiece(bishopRed,  2, 0);
+            AddPiece(queenRed,  3, 0);
+            AddPiece(kingRed,  4, 0);
+            AddPiece(bishopRed, 5, 0);
+            AddPiece(knightRed,  6, 0);
+            AddPiece(rookRed,  7, 0);
+
+            AddPiece(rookBlue, 0, 7);
+            AddPiece(knightBlue, 1, 7);
+            AddPiece(bishopBlue, 2, 7);
+            AddPiece(queenBlue,3, 7);
+            AddPiece(kingBlue,  4, 7);
+            AddPiece(bishopBlue, 5, 7);
+            AddPiece(knightBlue,  6, 7);
+            AddPiece(rookBlue,  7, 7);
+
+            for (int i = 0; i < 8; i++)
+            {
+                AddPiece(pawnRed,  i, 1);
+                AddPiece(pawnBlue, i, 6);
+            }
+            return;
+        }
+
         playerWhite.Clear();
         pieces.Clear();
         //Set Layout
@@ -147,7 +175,7 @@ public class GameManager : MonoBehaviour
             }
             objectOnTarget.GetComponent<Animator>().SetTrigger("OnAttack");
         }
-
+        if(!DEBUG)
         CheckMove(key,target);
 
         pieces.Remove(key);

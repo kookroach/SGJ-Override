@@ -664,7 +664,6 @@ GameObject:
   - component: {fileID: 4345233427828794017}
   - component: {fileID: 4345233427828794018}
   - component: {fileID: 4345233427828794019}
-  - component: {fileID: 6895220684035875152}
   m_Layer: 6
   m_Name: Pawn Blue
   m_TagString: Black
@@ -723,20 +722,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasMoved: 0
   startMovement: 2
---- !u!136 &6895220684035875152
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4345233427828794028}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.1844728
-  m_Height: 1.534907
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.6927311, z: 0.022360086}
 --- !u!1 &4345233427904755680
 GameObject:
   m_ObjectHideFlags: 0

@@ -525,7 +525,6 @@ GameObject:
   - component: {fileID: 6159910040392778170}
   - component: {fileID: 260163550994275264}
   - component: {fileID: 7084261400933712791}
-  - component: {fileID: 3728925206888218417}
   m_Layer: 6
   m_Name: Queen Blue
   m_TagString: Black
@@ -584,20 +583,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardMovement: 20
   lateralMovement: 20
---- !u!136 &3728925206888218417
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6789094142783331072}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.39628726
-  m_Height: 2.0612464
-  m_Direction: 1
-  m_Center: {x: -0.06512207, y: 0.974417, z: -0}
 --- !u!1 &6928712858638730950
 GameObject:
   m_ObjectHideFlags: 0
