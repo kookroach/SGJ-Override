@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ade992629d574146baab2aa986dded3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardMovement: 10
-  lateralMovement: 10
+  _pieceMovement: {fileID: 11400000, guid: 22db2117dce47294987a0942d8a9ff37, type: 2}
+  speed: 3
 --- !u!95 &-7091006137568277007
 Animator:
   serializedVersion: 4

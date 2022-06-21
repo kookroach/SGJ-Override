@@ -11,6 +11,7 @@ public class PieceMovement : ScriptableObject
 
     public List<Vector2Int> movement;
     public bool canMoveBackwards;
+    public bool canJump = false;
     
     public bool[,] getArray()
     {

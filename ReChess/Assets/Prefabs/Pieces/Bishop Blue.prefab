@@ -501,8 +501,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bbcefa50e70a8e4a846cfc37add57c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardMovement: 12
-  lateralMovement: 12
+  _pieceMovement: {fileID: 11400000, guid: b2f31c0107d2e504d873d957c5ef7472, type: 2}
+  speed: 3
 --- !u!1 &3223449942621085927
 GameObject:
   m_ObjectHideFlags: 0

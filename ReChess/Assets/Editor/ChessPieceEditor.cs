@@ -6,7 +6,8 @@ public class ChessPieceEditor : EditorWindow
 
     bool[,] fieldsArray = new bool[17, 9];
     bool canMoveBackwards;
-    ChessPiece behaviour = null;
+    bool canJump;
+    PieceBehaviour behaviour = null;
     GameObject piece;
 
 
@@ -36,13 +37,18 @@ public class ChessPieceEditor : EditorWindow
 
         GUILayout.Space(30);
         canMoveBackwards = GUILayout.Toggle(canMoveBackwards, "Can move backwards");
-                
+        canJump = GUILayout.Toggle(canJump, "Can jump over other pieces");
 
         if (GUILayout.Button("Apply"))
         {
-            PieceMovement pieceMovement = piece.GetComponent<ChessPiece>().PieceMovement;
+            PieceMovement pieceMovement = piece.GetComponent<PieceBehaviour>().PieceMovement;
             pieceMovement.canMoveBackwards = canMoveBackwards;
             pieceMovement.setArray(fieldsArray);
+            pieceMovement.canJump = canJump;
+
+            EditorUtility.SetDirty(pieceMovement);
+            AssetDatabase.SaveAssetIfDirty(pieceMovement);
+            AssetDatabase.Refresh(); 
         }
     }
 
@@ -52,12 +58,13 @@ public class ChessPieceEditor : EditorWindow
         {
             var obj = Selection.gameObjects[0];
 
-            ChessPiece _;
+            PieceBehaviour _;
             if (obj.TryGetComponent(out _))
             {
                 PieceMovement pieceMovement = _.PieceMovement;
                 fieldsArray = pieceMovement.getArray();
                 canMoveBackwards = pieceMovement.canMoveBackwards;
+                canJump = pieceMovement.canJump;
 
                 piece = obj;
                 Repaint();
@@ -80,6 +87,7 @@ public class ChessPieceEditor : EditorWindow
     {
         fieldsArray = new bool[17, 9];
         canMoveBackwards = false;
+        canJump = false;
 
         piece = null;
         Repaint();

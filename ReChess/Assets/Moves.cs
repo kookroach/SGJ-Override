@@ -7,13 +7,13 @@ using UnityEngine.UI;
 
 public class Moves : MonoBehaviour
 {
-    [SerializeField]private GameObject _textMeshPro;
-    void Update()
-    {
-        transform.LookAt(Camera.main.transform);
+    //[SerializeField]private GameObject _textMeshPro;
+    //void Update()
+    //{
+    //    transform.LookAt(Camera.main.transform);
 
 
-        _textMeshPro.GetComponent<TextMeshProUGUI>().text =
-            GetComponentInParent<WearDownBishop>().forwardMovement.ToString();
-    }
+    //    _textMeshPro.GetComponent<TextMeshProUGUI>().text =
+    //        GetComponentInParent<WearDownBishop>().forwardMovement.ToString();
+    //}
 }

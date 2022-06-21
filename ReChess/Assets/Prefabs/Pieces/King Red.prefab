@@ -229,10 +229,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09b9e435c5824964a88b9b5a6de07ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pieceMovement: {fileID: 11400000, guid: 02ca30610e861da43bfd88ebd5ad4dbc, type: 2}
+  speed: 3
   forwardMovement: 1
   lateralMovement: 1
   hasMoved: 0
-  pieceMovement: {fileID: 11400000, guid: 1864dfb6eddf0ed449592e5d2274a37c, type: 2}
 --- !u!1 &2309527961613759760
 GameObject:
   m_ObjectHideFlags: 0

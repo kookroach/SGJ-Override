@@ -10,16 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e863646dace251a47ac0da78fbf54204, type: 3}
-  m_Name: Test
+  m_Name: MovementData_Pawn
   m_EditorClassIdentifier: 
   movement:
-  - {x: -1, y: -1}
-  - {x: -1, y: 1}
-  - {x: 0, y: -1}
   - {x: 0, y: 1}
-  - {x: 1, y: -1}
-  - {x: 1, y: 1}
-  - {x: -1, y: 0}
-  - {x: 1, y: 0}
-  canMoveBackwards: 1
+  canMoveBackwards: 0
   canJump: 0

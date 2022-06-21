@@ -7,20 +7,20 @@ using System.Linq;
 
 public class BigHorse : Knight
 {
-    public override bool CanMoveToTarget(Vector2Int target)
-    {
-        var pieces = GameManager.pieces;
-        var key = pieces.Where(x => x.Value == this.gameObject).FirstOrDefault().Key;
+    //public override bool CanMoveToTarget(Vector2Int target)
+    //{
+    //    var pieces = GameManager.pieces;
+    //    var key = pieces.Where(x => x.Value == this.gameObject).FirstOrDefault().Key;
         
 
-        if (pieces[key] == null)
-        {
-            return false;
-        }
-        if ((Math.Abs(target.y - key.y) == 4 && Math.Abs(target.x - key.x) == 2) ||
-            (Math.Abs(target.y - key.y) == 2 && Math.Abs(target.x - key.x) == 4))
-            return true;
-        return false;
+    //    if (pieces[key] == null)
+    //    {
+    //        return false;
+    //    }
+    //    if ((Math.Abs(target.y - key.y) == 4 && Math.Abs(target.x - key.x) == 2) ||
+    //        (Math.Abs(target.y - key.y) == 2 && Math.Abs(target.x - key.x) == 4))
+    //        return true;
+    //    return false;
         
-    }
+    //}
 }

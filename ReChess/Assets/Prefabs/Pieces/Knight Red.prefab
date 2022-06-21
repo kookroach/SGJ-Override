@@ -883,6 +883,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 005da25103bef4f49a82c9a31fc7b823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pieceMovement: {fileID: 11400000, guid: dd2ef797d82651f4d9d73e57a4db9e84, type: 2}
+  speed: 3
 --- !u!1 &6343297158993927935
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,7 +10,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
-    [SerializeField] [Range(1, 10)] private float speed;
     public static GameManager Instance
     {
         get
@@ -63,29 +62,7 @@ public class GameManager : MonoBehaviour
     public void Awake()
     {
         if(DEBUG){
-            AddPiece(rookRed, 0, 0);
-            AddPiece(knightRed,  1, 0);
-            AddPiece(bishopRed,  2, 0);
-            AddPiece(queenRed,  3, 0);
-            AddPiece(kingRed,  4, 0);
-            AddPiece(bishopRed, 5, 0);
-            AddPiece(knightRed,  6, 0);
-            AddPiece(rookRed,  7, 0);
-
-            AddPiece(rookBlue, 0, 7);
-            AddPiece(knightBlue, 1, 7);
-            AddPiece(bishopBlue, 2, 7);
-            AddPiece(queenBlue,3, 7);
-            AddPiece(kingBlue,  4, 7);
-            AddPiece(bishopBlue, 5, 7);
-            AddPiece(knightBlue,  6, 7);
-            AddPiece(rookBlue,  7, 7);
-
-            for (int i = 0; i < 8; i++)
-            {
-                AddPiece(pawnRed,  i, 1);
-                AddPiece(pawnBlue, i, 6);
-            }
+            FenReader.LoadPositionFromFen(FenReader.startFEN);
             return;
         }
 
@@ -163,27 +140,10 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public bool MoveToGrid(GameObject @object, Vector2Int target)
+    public void MoveToGrid(GameObject @object, Vector2Int target)
     {
-        Vector2Int key = pieces.Where(x => x.Value == @object).FirstOrDefault().Key;
-        if(pieces.ContainsKey(target))
-        {
-            GameObject objectOnTarget = GameManager.pieces[target];
-            if (!@object.GetComponent<IRule>().OnAttack(objectOnTarget))
-            {
-                return false;
-            }
-            objectOnTarget.GetComponent<Animator>().SetTrigger("OnAttack");
-        }
-        if(!DEBUG)
-        CheckMove(key,target);
-
-        pieces.Remove(key);
-        StartCoroutine(muve(@object,new Vector3(target.x, @object.transform.position.y, target.y)));
-        @object.GetComponent<Animator>().SetTrigger("OnAction");
-        pieces[target] = @object;
-        
-        return true;
+        pieces.Remove(GridAtPiece(@object));
+        pieces[target] = @object;      
     }
 
     public void CheckMove(Vector2Int key, Vector2 target)
@@ -225,22 +185,7 @@ public class GameManager : MonoBehaviour
         black
     }
 
-    IEnumerator muve(GameObject obj, Vector3 target)
-    {
-        var orig = obj.transform.rotation;
-        while (Vector3.Distance(obj.transform.position, target) > 0.2f)
-        {
-           obj.transform.position =  Vector3.MoveTowards(obj.transform.position,  target, speed * Time.deltaTime);
-            obj.transform.LookAt(new Vector3(target.x, obj.transform.position.y, target.z));
-            yield return new WaitForEndOfFrame();
-            
-        }
-        obj.transform.transform.rotation = orig; 
-        obj.transform.position = target;
-        obj.GetComponent<Animator>().SetTrigger("Idle");
-        yield return null;
-
-    }
+    
     
 
 }

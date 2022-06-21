@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e863646dace251a47ac0da78fbf54204, type: 3}
-  m_Name: Test
+  m_Name: MovementData_Knight
   m_EditorClassIdentifier: 
   movement:
-  - {x: -1, y: -1}
-  - {x: -1, y: 1}
-  - {x: 0, y: -1}
-  - {x: 0, y: 1}
-  - {x: 1, y: -1}
-  - {x: 1, y: 1}
-  - {x: -1, y: 0}
-  - {x: 1, y: 0}
+  - {x: -1, y: -3}
+  - {x: -1, y: 3}
+  - {x: 1, y: -3}
+  - {x: 1, y: 3}
+  - {x: -2, y: -2}
+  - {x: -2, y: 2}
+  - {x: 2, y: -2}
+  - {x: 2, y: 2}
   canMoveBackwards: 1
-  canJump: 0
+  canJump: 1

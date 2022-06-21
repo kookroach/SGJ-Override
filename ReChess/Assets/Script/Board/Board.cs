@@ -38,6 +38,6 @@ public class Board : MonoBehaviour
 
     public void PossibleMoves(GameObject @object, Vector2Int gridPoint)
     {
-        GetComponent<MoveSelector>().SetPossibleMoves(@object.GetComponent<ChessPiece>().PieceMovement.movement, @object);
+        GetComponent<MoveSelector>().SetPossibleMoves(@object.GetComponent<PieceBehaviour>().PieceMovement.movement, @object);
     }
 }
