@@ -31,7 +31,7 @@ public class Pawn : ChessPiece, IRule
         }
         //go two squares forward
         if (!hasMoved && (target.y - key.y == startMovement) && !pieces.ContainsKey(target) &&
-            target.x - key.x == lateralMovement && !pieces.ContainsKey(new Vector2Int(target.x, target.y - 1)))
+            target.x - key.x == lateralMovement && !pieces.ContainsKey(new Vector2Int(target.x, target.y - 1)) && ((this.gameObject.CompareTag("White") && key.y == 1)|| (this.gameObject.CompareTag("Black") && key.y == 6)))
         {
             return true;
         }
