@@ -10,7 +10,7 @@ public class Pawn : PieceBehaviour
 
     public override (bool hasObstacle, Vector2Int obstaclePos) CanMoveToTarget(Vector2Int target)
     {
-        if (!identifier)
+        if (!gameObject.CompareTag("White"))
         {
             target.y = (int)((target.y - gameObject.transform.position.z) * (-1) + gameObject.transform.position.z);
         }

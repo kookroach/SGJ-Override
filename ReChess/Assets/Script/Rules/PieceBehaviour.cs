@@ -10,14 +10,11 @@ public class PieceBehaviour : MonoBehaviour, IRule
     private PieceMovement _pieceMovement;
     public virtual bool canJump => _pieceMovement.canJump;
     [SerializeField][Range(1, 10)] private float speed = 3;
-    [HideInInspector]
-    //false is black(blue), true is white(red) 
-    public bool identifier = false; 
+
 
 
     public virtual (bool hasObstacle, Vector2Int obstaclePos) CanMoveToTarget(Vector2Int target)
-    {
-        var pieces = GameManager.pieces;
+    { 
         Vector2Int origin = GameManager.Instance.GridAtPiece(gameObject);
 
         if (canJump)
@@ -28,7 +25,7 @@ public class PieceBehaviour : MonoBehaviour, IRule
             return (false, target);
         }
 
-        if (pieces[origin] == null)
+        if (GameManager.Instance.PieceAtGrid(origin) == null)
         {
             throw new System.ArgumentOutOfRangeException();
         }

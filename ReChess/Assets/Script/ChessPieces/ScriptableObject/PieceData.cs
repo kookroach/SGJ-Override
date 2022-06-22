@@ -21,6 +21,7 @@ public class PieceData : ScriptableObject
         ChessPiece.Rook => typeof(Rook),
         ChessPiece.Queen => typeof(Queen),
         ChessPiece.King => typeof(King),
+        _ => null,
     };
     Type GetSpecialPieceType(CustomChessPiece customChessPiece) => customChessPiece switch
     {
@@ -36,18 +37,18 @@ public class PieceData : ScriptableObject
         CustomChessPiece.CanonRook => typeof(CanonRook),
         CustomChessPiece.CannibalKing => typeof(CannibalKing),
         CustomChessPiece.WeardownBishop => typeof(WearDownBishop),
+        _ => null,
     };
 
 
 
     public void SelectCard()
     {
-        Component xdd;
-        var list = GameManager.pieces.Where(x => x.Value.TryGetComponent(GetPieceType(changeFrom), out xdd)).ToList();
+        var list = GameManager.Instance.GetPiecesOfType(GetPieceType(changeFrom));
         foreach (var piece in list)
         {
-            Destroy(GameManager.pieces[piece.Key].GetComponent(GetPieceType(changeFrom)));
-            GameManager.pieces[piece.Key].AddComponent(GetSpecialPieceType(changeTo));
+            Destroy(piece.GetComponent(GetPieceType(changeFrom)));
+            piece.AddComponent(GetSpecialPieceType(changeTo));
         }
     }    
 

@@ -5,15 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(ParticleSystem))]
 public class VFX : MonoBehaviour
 {
-    public ParticleSystem particleSystem;
+    //public ParticleSystem particleSystem;
 
-    void Start()
-    {
-        particleSystem.GetComponent<ParticleSystem>();   
-    }
 
     public void playVFX()
     {
-        particleSystem.Play();
+        GetComponent<ParticleSystem>().Play();
     }
 }

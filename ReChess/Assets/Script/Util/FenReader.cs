@@ -5,7 +5,7 @@ using UnityEngine;
 
 public static class FenReader
 {
-    public const string startFEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+    public const string startFEN = "rnbqkbnr/8/8/8/8/8/8/RNBQKBNR w KQkq - 0 1";
 
 
     public static void LoadPositionFromFen(string fen)
@@ -52,15 +52,16 @@ public static class FenReader
         }
     }
 
-    public static string LoadFenFromBoar(Dictionary<Vector2Int, GameObject> board)
+    public static string LoadFenFromBoard(Dictionary<Vector2Int, GameObject> board)
     {
         string fen = "";
 
-        int file = 0, rank = 7;
+        int rank = 7;
 
-        for (int i = rank; i >= 0; i--)
+        //Piece positions
+        while(rank >= 0)
         {
-            int empty = 0;
+            int empty = 0, file = 0;
             while(file < 8)
             {
                 var vec = new Vector2Int(file, rank);
@@ -72,17 +73,42 @@ public static class FenReader
                     empty++;
                     continue;
                 }
-
-                if(empty != 0)
+                if (empty != 0)
                 {
-                    fen += empty;
+                    fen += empty.ToString();
                     empty = 0;
                 }
-
-                fen += obj.CompareTag("White") ? obj.ToString().ToUpper() : obj.ToString();
+                fen += obj.CompareTag("White") ? obj.GetComponent<PieceBehaviour>().ToString().ToUpper() : obj.GetComponent<PieceBehaviour>().ToString();
             }
-            fen += "/";
+            if (empty != 0)
+            {
+                fen += empty.ToString();
+                empty = 0;
+            }
+            if (rank != 0)
+            {
+                fen += '/';
+            }
+            rank--;
         }
+
+        fen += " ";
+
+        GameManager.Instance.SetTurn(!GameManager.Instance.GetTurn());
+        fen += GameManager.Instance.GetTurn() ? "w" : "b";
+        fen += " ";
+
+        //check for Castling
+        fen += GameManager.Instance.GetBoard().canWhiteKingSideCastling ? "K" : "";
+        fen += GameManager.Instance.GetBoard().canWhiteQueenSideCastling ? "Q" : "";
+        fen += GameManager.Instance.GetBoard().canBlackKingSideCastling ? "k" : "";
+        fen += GameManager.Instance.GetBoard().canBlackQueenSideCastling ? "q" : "";
+        fen += " ";
+
+        //TODO: check for En Passant
+
+        //TODO: track Halfmove clock
+        //TODO: track Fullmove number
 
         return fen;
     }

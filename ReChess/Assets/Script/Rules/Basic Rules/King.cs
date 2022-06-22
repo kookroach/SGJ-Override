@@ -6,7 +6,7 @@ using System.Linq;
 
 public class King : PieceBehaviour
 {
-    public override string ToString() => "k";
+    public override string ToString() { return "k"; }
 
     public int forwardMovement = 1;
     public int lateralMovement = 1;

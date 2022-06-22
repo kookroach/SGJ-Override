@@ -27,25 +27,25 @@ public class CannibalKing : King
                         Rook rookKing = gameObject.AddComponent(typeof(Rook)) as Rook;
                         Destroy(other);
                         return true;
-                        break;
+
                     case Knight:
                         Knight knightKing = gameObject.AddComponent(typeof(Knight)) as Knight;
                         Destroy(other);
                         return true;
 
-                        break;
+
                     case Bishop:
                         Bishop bishopKing = gameObject.AddComponent(typeof(Bishop)) as Bishop;
                         Destroy(other);
                         return true;
 
-                        break;
+
                     case Queen:
                         Queen queenKing = gameObject.AddComponent(typeof(Queen)) as Queen;
                         Destroy(other);
                         return true;
 
-                        break;
+
                     default:
                         return false;
                 }

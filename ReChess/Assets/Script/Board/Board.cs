@@ -1,44 +1,68 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Board : MonoBehaviour
 {
-    public Material defaultMaterial;
-    public Material defaultWhite;
-    public Material defaultBlack;
-    public Material selectedMaterial;
-    
+    private Dictionary<Vector2Int, GameObject> pieces = new Dictionary<Vector2Int, GameObject>();
+    [HideInInspector]
+    public bool isWhiteMove;
 
+    [HideInInspector]
+    public bool canWhiteQueenSideCastling = true;
+    [HideInInspector]
+    public bool canWhiteKingSideCastling = true;
+    [HideInInspector]
+    public bool canBlackQueenSideCastling = true;
+    [HideInInspector]
+    public bool canBlackKingSideCastling = true;
 
-
-
-    public GameObject AddPiece(GameObject piece, int col, int row)
+    public void AddPiece(GameObject @object, int col, int row)
     {
-        GameObject newPiece = Instantiate(piece,new Vector3(col, piece.transform.position.y, row), piece.transform.rotation, gameObject.transform);
+        GameObject newPiece = Instantiate(@object, new Vector3(col, @object.transform.position.y, row), @object.transform.rotation, gameObject.transform);
             
         if (newPiece.CompareTag("White"))
         {
             GameManager.Instance.playerWhite.Add(newPiece);
-            newPiece.GetComponent<PieceBehaviour>().identifier = true;
         }
-            
-        return newPiece;
+
+        pieces.Add(new Vector2Int(col, row), @object);
     }
 
-    public void RemovePiece(GameObject piece)
+    public void RemovePiece(GameObject @object)
     {
-        Destroy(piece);
+        Destroy(@object);
     }
 
-    public void MovePiece(GameObject piece, Vector2Int gridPoint)
+    public void MovePiece(GameObject @object, Vector2Int target)
     {
-        piece.transform.position = Geometry.PointFromGrid(gridPoint);
+        pieces.Remove(GridAtPiece(@object));
+        pieces[target] = @object;
+        Debug.Log(FenReader.LoadFenFromBoard(pieces));
     }
 
-    public void PossibleMoves(GameObject @object, Vector2Int gridPoint)
+    public void PossibleMoves(GameObject @object)
     {
         GetComponent<MoveSelector>().SetPossibleMoves(@object.GetComponent<PieceBehaviour>().PieceMovement.movement, @object);
+    }
+
+    public Vector2Int GridAtPiece(GameObject @object)
+    {
+        return pieces.Where(x => x.Value == @object).Select(x => x.Key).FirstOrDefault();
+    }
+
+    public GameObject PieceAtGrid(Vector2Int vector)
+    {
+        if (vector.x > 7 || vector.y > 7 || vector.x < 0 || vector.y < 0)
+            return null;
+
+        return pieces.GetValueOrDefault(vector, null);
+    }
+
+    public List<GameObject> GetPiecesOfType(Type type)
+    {
+        return pieces.Where(x => x.Value.GetComponent(type) != null).Select(x => x.Value).ToList();
     }
 }
