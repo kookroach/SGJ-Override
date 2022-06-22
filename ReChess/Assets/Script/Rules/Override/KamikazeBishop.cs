@@ -24,7 +24,7 @@ public class KamikazeBishop : Bishop
         }
         
         //take enemy piece(s)
-        if (Math.Abs(target.y - key.y) <= forwardMovement && Math.Abs(target.y - key.y) == Math.Abs(target.x - key.x) && IRule.amountOfRaycastHits(key, target) > 0)
+        if (Math.Abs(target.y - key.y) <= forwardMovement && Math.Abs(target.y - key.y) == Math.Abs(target.x - key.x) && IRule.amountOfRaycastHits(key, target) > 0 && pieces.ContainsKey(target))
         {
             
             RaycastHit[] hits = IRule.raycastHits(key, target);
