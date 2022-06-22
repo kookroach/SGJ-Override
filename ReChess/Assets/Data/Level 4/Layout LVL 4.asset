@@ -105,7 +105,7 @@ MonoBehaviour:
     from: {x: 4, y: 7}
     to: {x: 3, y: 7}
   - card: 2
-    from: {x: 4, y: 7}
+    from: {x: 2, y: 5}
     to: {x: 1, y: 6}
   - card: 2
     from: {x: 5, y: 5}

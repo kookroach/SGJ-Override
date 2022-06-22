@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviour
         }
         */
 
-        FxManager.Instance.CreateSFX(this.gameObject, FxManager.SFX_TYPE.CheezySlow, true, false);
+        FxManager.Instance.CreateSFX(gameObject, FxManager.SFX_TYPE.CheezySlow, true, false);
     }
 
     public void AddPiece(GameObject @object, int col, int row)
@@ -154,7 +154,7 @@ public class GameManager : MonoBehaviour
 
     public void CheckMove(Vector2Int key, Vector2 target)
     {
-        var possibilities = PlayerMoves.Where(x => x.from == key && x.to == target).FirstOrDefault();
+        var possibilities = PlayerMoves.FirstOrDefault(x => x.@from == key && x.to == target);
 
         if (possibilities is null && (PlayerMoves.Count != 0))
         {
