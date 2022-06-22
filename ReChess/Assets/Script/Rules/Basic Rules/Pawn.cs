@@ -7,6 +7,14 @@ public class Pawn : PieceBehaviour
 {
     public bool hasMoved = false;
 
+    public override (bool hasObstacle, Vector2Int obstaclePos) CanMoveToTarget(Vector2Int target)
+    {
+        if (!identifier)
+        {
+            target.y = (int)((target.y - gameObject.transform.position.z) * (-1) + gameObject.transform.position.z);
+        }
+        return base.CanMoveToTarget(target);
+    }
 
     //private void Start()
     //{

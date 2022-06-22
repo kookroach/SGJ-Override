@@ -60,7 +60,7 @@ public class TileSelector : MonoBehaviour
                         GameManager.Instance.PieceAtGrid(new Vector2Int(x,z));
 
 
-                    if (selectedPiece != null && GameManager.Instance.playerWhite.Contains(selectedPiece))
+                    if (selectedPiece != null && (GameManager.Instance.playerWhite.Contains(selectedPiece) || GameManager.Instance.DEBUG))
                     {
 
                         ExitState(selectedPiece);

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MovementData_Pawn
   m_EditorClassIdentifier: 
   movement:
+  - {x: 0, y: 2}
   - {x: 0, y: 1}
   canMoveBackwards: 0
   canJump: 0

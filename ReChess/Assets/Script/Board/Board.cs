@@ -21,6 +21,7 @@ public class Board : MonoBehaviour
         if (newPiece.CompareTag("White"))
         {
             GameManager.Instance.playerWhite.Add(newPiece);
+            newPiece.GetComponent<PieceBehaviour>().identifier = true;
         }
             
         return newPiece;

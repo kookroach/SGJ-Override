@@ -57,12 +57,14 @@ public class GameManager : MonoBehaviour
     public LayoutData.CardSelect cardSelect;
     public List<LayoutData.Moves> PlayerMoves = new List<LayoutData.Moves>();
  
- public bool DEBUG;
+    public bool DEBUG;
+    public string currentFen;
 
     public void Awake()
     {
         if(DEBUG){
             FenReader.LoadPositionFromFen(FenReader.startFEN);
+            currentFen = FenReader.startFEN;
             return;
         }
 

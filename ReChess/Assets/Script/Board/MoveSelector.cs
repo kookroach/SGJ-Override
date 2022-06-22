@@ -1,8 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 
 
 public class MoveSelector : MonoBehaviour
@@ -24,7 +22,7 @@ public class MoveSelector : MonoBehaviour
         this.enabled = true;
 
         if ((allAttackHighlights == null || allAttackHighlights.Count() == 0) && (allMoveHighlights == null || allMoveHighlights.Count() == 0))
-            SetPossibleMoves(_movingPiece.GetComponent<PieceBehaviour>().PieceMovement.movement, _movingPiece);     
+            SetPossibleMoves(_movingPiece.GetComponent<PieceBehaviour>().PieceMovement.movement, _movingPiece);
     }
 
     private void Start()
@@ -40,13 +38,14 @@ public class MoveSelector : MonoBehaviour
         var currentPos = GameManager.Instance.GridAtPiece(currentObj);
         var list = allowedMoves.Where(vec =>
         {
-            if (vec.x + currentPos.x >= 8 || vec.x + currentPos.x < 0 || vec.y + currentPos.y >= 8 || vec.y + currentPos.y < 0)
+            if (vec.x + currentPos.x >= 8 || vec.x + currentPos.x < 0 || vec.y  + currentPos.y >= 8 || vec.y  + currentPos.y < 0)
                 return false;
+
             return true;
         }).ToList();
 
-        for(int i = 0; i < list.Count(); i++)
-        {
+        for (int i = 0; i < list.Count(); i++)
+        { 
             list[i] += currentPos;
             if (instatiate)
             {
@@ -61,8 +60,8 @@ public class MoveSelector : MonoBehaviour
                     continue;
                 }
 
-                allMoveHighlights.Add(list[i], Instantiate(moveLocationPrefab, new Vector3(list[i].x, 0.1f, list[i].y), Quaternion.identity, gameObject.transform));
-            }            
+                allMoveHighlights.Add(eval.obstaclePos, Instantiate(moveLocationPrefab, new Vector3(eval.obstaclePos.x, 0.1f, eval.obstaclePos.y), Quaternion.identity, gameObject.transform));
+            }
         }
         return list;
     }
@@ -88,26 +87,27 @@ public class MoveSelector : MonoBehaviour
         int z = Mathf.RoundToInt(hit.point.z);
         Vector2Int gridPoint = new Vector2Int(x, z);
 
-        if(hit.collider.gameObject.layer == (LayerMask.NameToLayer("Highlight"))){
+        if (hit.collider.gameObject.layer == (LayerMask.NameToLayer("Highlight")))
+        {
             _movingPiece.GetComponent<PieceBehaviour>().OnAction(gridPoint);
-            
+
         }
         ExitState();
     }
 
     private void ExitState()
     {
-        
+
         this.enabled = false;
         _tileHighlight.SetActive(false);
         _movingPiece = null;
 
-        for(int i = 0; i < allMoveHighlights.Count(); i++)
+        for (int i = 0; i < allMoveHighlights.Count(); i++)
         {
             Destroy(allMoveHighlights.ElementAt(i).Value);
         }
 
-        for(int i = 0; i < allAttackHighlights.Count(); i++)
+        for (int i = 0; i < allAttackHighlights.Count(); i++)
         {
             Destroy(allAttackHighlights.ElementAt(i).Value);
         }
@@ -117,6 +117,6 @@ public class MoveSelector : MonoBehaviour
 
         TileSelector selector = GetComponent<TileSelector>();
         selector.EnterState();
-        
+
     }
 }
