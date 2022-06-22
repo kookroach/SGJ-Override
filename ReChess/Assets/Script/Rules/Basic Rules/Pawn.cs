@@ -5,6 +5,7 @@ using System.Linq;
 
 public class Pawn : PieceBehaviour
 {
+    public override string ToString() => "p";
     public bool hasMoved = false;
 
     public override (bool hasObstacle, Vector2Int obstaclePos) CanMoveToTarget(Vector2Int target)

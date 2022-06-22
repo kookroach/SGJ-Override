@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -50,4 +51,40 @@ public static class FenReader
             }
         }
     }
+
+    public static string LoadFenFromBoar(Dictionary<Vector2Int, GameObject> board)
+    {
+        string fen = "";
+
+        int file = 0, rank = 7;
+
+        for (int i = rank; i >= 0; i--)
+        {
+            int empty = 0;
+            while(file < 8)
+            {
+                var vec = new Vector2Int(file, rank);
+                file++;
+                GameObject obj;
+
+                if (!board.TryGetValue(vec, out obj))
+                {
+                    empty++;
+                    continue;
+                }
+
+                if(empty != 0)
+                {
+                    fen += empty;
+                    empty = 0;
+                }
+
+                fen += obj.CompareTag("White") ? obj.ToString().ToUpper() : obj.ToString();
+            }
+            fen += "/";
+        }
+
+        return fen;
+    }
+
 }

@@ -6,7 +6,7 @@ using System.Linq;
 
 public class Rook : PieceBehaviour
 {
-
+    public override string ToString() => "r";
     //public virtual bool CanMoveToTarget(Vector2Int target)
     //{
     //    var pieces = GameManager.pieces;

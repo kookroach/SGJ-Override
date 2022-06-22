@@ -6,7 +6,7 @@ using System.Linq;
 
 public class Bishop : PieceBehaviour
 {
-
+    public override string ToString() => "b";
 
     //public virtual bool CanMoveToTarget(Vector2Int target)
     //{

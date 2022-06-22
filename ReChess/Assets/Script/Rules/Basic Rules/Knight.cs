@@ -6,7 +6,7 @@ using System.Linq;
 
 public class Knight : PieceBehaviour
 {
-
+    public override string ToString() => "n";
     //public virtual bool CanMoveToTarget(Vector2Int target)
     //{
     //    var pieces = GameManager.pieces;

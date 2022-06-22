@@ -6,7 +6,7 @@ using System.Linq;
 
 public class Queen : PieceBehaviour
 {
-
+    public override string ToString() => "q";
     //public virtual bool CanMoveToTarget(Vector2Int target)
     //{
     //    var pieces = GameManager.pieces;
