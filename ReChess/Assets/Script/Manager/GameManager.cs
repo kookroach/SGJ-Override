@@ -1,11 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -27,74 +24,38 @@ public class GameManager : MonoBehaviour
    
     public Board board;
     
-    public GameObject pawnRed;
-    public GameObject pawnBlue;
-
-    public GameObject knightRed;
-    public GameObject knightBlue;
-
-    public GameObject rookRed;
-    public GameObject rookBlue;
-
-    public GameObject bishopRed;
-    public GameObject bishopBlue;
-
-    public GameObject queenRed;
-    public GameObject queenBlue;
-
-    public GameObject kingRed;
-    public GameObject kingBlue;
-    
-    public GameObject button1;
-    public GameObject button2;
-    public GameObject button3;
+    public GameObject pawn;
+    public GameObject knight;
+    public GameObject rook;
+    public GameObject bishop;
+    public GameObject queen;
+    public GameObject king;
 
 
     public List<GameObject> playerWhite = new List<GameObject>();
+    public List<GameObject> playerBlack = new List<GameObject>();
 
-    public LayoutData layoutData;
-    public LayoutData.CardSelect cardSelect;
-    public List<LayoutData.Moves> PlayerMoves = new List<LayoutData.Moves>();
+    public List<string> moveHistory = new List<string>();
  
     public bool DEBUG;
-    public string currentFen;
 
     public void Awake()
     {
-        if(DEBUG){
-            FenReader.LoadPositionFromFen(FenReader.startFEN);
-            currentFen = FenReader.startFEN;
+        if (DEBUG)
+        {
+            board.LoadPos(FenReader.startFEN);
             return;
         }
 
-
-        //Set Layout
-       foreach(var piece in layoutData.layouts)
-       {
-            AddPiece(piece.ChessPiece, (int)piece.vector.x, (int)piece.vector.y);
-            
-       }
-
-       
-       
-        //Set Cards
-        //button1.GetComponent<Button>().onClick.AddListener(SelectCard);
-        button1.GetComponentInChildren<TextMeshProUGUI>().text = layoutData.card1.Description;
-        
-        button2.GetComponentInChildren<TextMeshProUGUI>().text = layoutData.card2.Description;
-
-        button3.GetComponentInChildren<TextMeshProUGUI>().text = layoutData.card3.Description;
-
-        button1.SetActive(true);
-        button2.SetActive(true);
-        button3.SetActive(true);
+        board.LoadPos(FenReader.startFEN);
+        //TODO: Start Game Logic (if needed)
 
         FxManager.Instance.CreateSFX(this.gameObject, FxManager.SFX_TYPE.CheezySlow, true, false);
     }
 
-    public void AddPiece(GameObject @object, int col, int row)
+    public void AddPiece(GameObject @object, int col, int row, bool isWhite)
     {
-        board.AddPiece(@object, col, row);
+        board.AddPiece(@object, col, row, isWhite);
     }
 
     public GameObject PieceAtGrid(Vector2Int @vector)
@@ -114,6 +75,7 @@ public class GameManager : MonoBehaviour
 
     public void MoveToGrid(GameObject @object, Vector2Int target)
     {
+        SetTurn(!GetTurn());
         board.MovePiece(@object, target);
     }
 
@@ -122,8 +84,8 @@ public class GameManager : MonoBehaviour
         board.PossibleMoves(@object);
     }
 
-    public bool GetTurn() => board.isWhiteMove;
-    public bool SetTurn(bool value) => board.isWhiteMove = value;
+    public bool GetTurn() => board.isWhiteTurn;
+    public bool SetTurn(bool value) => board.isWhiteTurn = value;
 
     public Board GetBoard() => board;
 }

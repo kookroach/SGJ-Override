@@ -559,10 +559,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bb1be1916e54e34e8984f65b9db05f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultMaterial: {fileID: 2100000, guid: cb2638973defff645bd1848edfa38f52, type: 2}
-  defaultWhite: {fileID: 2100000, guid: cb2638973defff645bd1848edfa38f52, type: 2}
-  defaultBlack: {fileID: 2100000, guid: b02b472498e311e42b2eef62a46c304d, type: 2}
-  selectedMaterial: {fileID: 2100000, guid: a4e93ae349495a1468b95327ca413461, type: 2}
+  isWhiteTurn: 0
+  canWhiteQueenSideCastling: 1
+  canWhiteKingSideCastling: 1
+  canBlackQueenSideCastling: 1
+  canBlackKingSideCastling: 1
+  enPassant: '-'
+  fullmove: 0
+  halfmove: 0
 --- !u!114 &131482359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3093,26 +3097,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   board: {fileID: 131482358}
-  pawnRed: {fileID: 8543364763282190006, guid: 8be6e0d315d3a16459e9c10fe2093adb, type: 3}
-  pawnBlue: {fileID: 4345233427828794028, guid: 644dfbda33ed6444f9e02470d284f702, type: 3}
-  knightRed: {fileID: 6343297158941916681, guid: 9ed1aad9eb0faf84e94a89eb2c824b8f, type: 3}
-  knightBlue: {fileID: 1609337182752801080, guid: 07762ddae7f7bdb4c86947179a1206cd, type: 3}
-  rookRed: {fileID: 2290939553036995774, guid: 8b646a5a09ef2e344b31bf008b62db5d, type: 3}
-  rookBlue: {fileID: 506396512453912938, guid: 350c269ed79af004cb2156e4c944a939, type: 3}
-  bishopRed: {fileID: 2785366503151453909, guid: fbffe3cd50108e443a0cae6456e1606c, type: 3}
-  bishopBlue: {fileID: 3204391787452939913, guid: 6a28fa5f1eb920e4896619834fed7f01, type: 3}
-  queenRed: {fileID: 493878074044124399, guid: 0498ed555388de34686246a0f74c3610, type: 3}
-  queenBlue: {fileID: 6789094142783331072, guid: 63b8cb46aeb93d84988cb7b62c2a7075, type: 3}
-  kingRed: {fileID: 2169919132572526806, guid: aa1aa7e860a914a4c96fca2ab8c94a61, type: 3}
-  kingBlue: {fileID: 2857489990013814966, guid: 7a1d674d677360a4abed7255dc27d31f, type: 3}
+  pawn: {fileID: 4993279382457201635, guid: d296aa42ae3da4d4d9095f21b3a5981f, type: 3}
+  knight: {fileID: 2132128841289157761, guid: f08ed650d5c63f14d8455d76873fe92f, type: 3}
+  rook: {fileID: 3105229041096878692, guid: e2bbbb73451f0c0409a417ebc387163b, type: 3}
+  bishop: {fileID: 1829306208285057662, guid: 974c32faffc3b464aa9bb81ef250984c, type: 3}
+  queen: {fileID: 1496343013928752161, guid: 44505271599f58a46a112891db1d5be0, type: 3}
+  king: {fileID: 3202752670530670703, guid: cc67885194e3a654facbeb7342e13629, type: 3}
   button1: {fileID: 0}
   button2: {fileID: 0}
   button3: {fileID: 0}
   playerWhite: []
+  playerBlack: []
   layoutData: {fileID: 0}
   cardSelect: 0
   PlayerMoves: []
   DEBUG: 1
+  currentFen: 
 --- !u!4 &765122110
 Transform:
   m_ObjectHideFlags: 0

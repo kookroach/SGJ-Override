@@ -11,6 +11,9 @@ public class PieceBehaviour : MonoBehaviour, IRule
     public virtual bool canJump => _pieceMovement.canJump;
     [SerializeField][Range(1, 10)] private float speed = 3;
 
+    public GameObject black;
+    public GameObject white;
+
 
 
     public virtual (bool hasObstacle, Vector2Int obstaclePos) CanMoveToTarget(Vector2Int target)
@@ -56,6 +59,7 @@ public class PieceBehaviour : MonoBehaviour, IRule
 
     public virtual bool OnAction(Vector2Int target)
     {
+        GameManager.Instance.GetBoard().enPassant = "-";
         StartCoroutine(move(new Vector3(target.x, transform.position.y, target.y)));
         return true;
     }

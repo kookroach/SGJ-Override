@@ -8,7 +8,7 @@ public class Board : MonoBehaviour
 {
     private Dictionary<Vector2Int, GameObject> pieces = new Dictionary<Vector2Int, GameObject>();
     [HideInInspector]
-    public bool isWhiteMove;
+    public bool isWhiteTurn;
 
     [HideInInspector]
     public bool canWhiteQueenSideCastling = true;
@@ -21,16 +21,37 @@ public class Board : MonoBehaviour
     [HideInInspector]
     public string enPassant = "-";
 
-    public void AddPiece(GameObject @object, int col, int row)
+    [HideInInspector]
+    public int fullmove;
+    [HideInInspector]
+    public int halfmove;
+    private string currentFEN;
+
+    public void AddPiece(GameObject @object, int col, int row, bool isWhite)
     {
         GameObject newPiece = Instantiate(@object, new Vector3(col, @object.transform.position.y, row), @object.transform.rotation, gameObject.transform);
             
-        if (newPiece.CompareTag("White"))
+        if (isWhite)
         {
+            newPiece.tag = "White";
+            newPiece.GetComponent<PieceBehaviour>().white.SetActive(true);
             GameManager.Instance.playerWhite.Add(newPiece);
+        }
+        else
+        {
+            newPiece.tag = "Black";
+            newPiece.transform.eulerAngles = new Vector3(0, 180, 0);
+            newPiece.GetComponent<PieceBehaviour>().black.SetActive(true);
+            GameManager.Instance.playerBlack.Add(newPiece);
         }
 
         pieces.Add(new Vector2Int(col, row), newPiece);
+    }
+
+    public void LoadPos(string FEN)
+    {
+        currentFEN = FEN;
+        FenReader.LoadPositionFromFen(FEN);
     }
 
     public void RemovePiece(GameObject @object)
@@ -40,10 +61,14 @@ public class Board : MonoBehaviour
 
     public void MovePiece(GameObject @object, Vector2Int target)
     {
+        if(isWhiteTurn)
+            fullmove++;
+        
+        //TODO: Set Halfmove
+
         @object.GetComponent<PieceBehaviour>().OnAction(target);
         pieces.Remove(GridAtPiece(@object));
         pieces[target] = @object;
-        Debug.Log(FenReader.LoadFenFromBoard(pieces));
     }
 
     public void PossibleMoves(GameObject @object)

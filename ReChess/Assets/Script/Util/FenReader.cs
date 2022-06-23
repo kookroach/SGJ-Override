@@ -11,24 +11,19 @@ public static class FenReader
     public static void LoadPositionFromFen(string fen)
     {
         var pieces = new Dictionary<char, GameObject>() {
-            ['k'] = GameManager.Instance.kingBlue,
-            ['K'] = GameManager.Instance.kingRed,
-            ['p'] = GameManager.Instance.pawnBlue,
-            ['P'] = GameManager.Instance.pawnRed,
-            ['n'] = GameManager.Instance.knightBlue,
-            ['N'] = GameManager.Instance.knightRed,
-            ['b'] = GameManager.Instance.bishopBlue,
-            ['B'] = GameManager.Instance.bishopRed,
-            ['r'] = GameManager.Instance.rookBlue,
-            ['R'] = GameManager.Instance.rookRed,
-            ['q'] = GameManager.Instance.queenBlue,
-            ['Q'] = GameManager.Instance.queenRed,
+            ['k'] = GameManager.Instance.king,
+            ['p'] = GameManager.Instance.pawn,
+            ['n'] = GameManager.Instance.knight,
+            ['b'] = GameManager.Instance.bishop,
+            ['r'] = GameManager.Instance.rook,
+            ['q'] = GameManager.Instance.queen,
         };
 
-        string fenBoard = fen.Split(' ')[0];
+        var split = fen.Split(' ');
+
+        string fenBoard = split[0];
         int file = 0, rank = 7;
         
-
         foreach(char symbol in fenBoard)
         {
             if(symbol == '/')
@@ -44,15 +39,29 @@ public static class FenReader
                 }
                 else
                 {
-                    GameObject piece = pieces[symbol];
-                    GameManager.Instance.AddPiece(piece, file, rank);
+                    GameObject piece = pieces[char.ToLower(symbol)];
+                    GameManager.Instance.AddPiece(piece, file, rank, char.IsUpper(symbol));
                     file++;
                 }
             }
         }
+
+        GameManager.Instance.SetTurn(split[1] == "w");
+
+        var board = GameManager.Instance.GetBoard();
+
+        board.canWhiteKingSideCastling = split[2].Contains('K');
+        board.canWhiteQueenSideCastling = split[2].Contains('Q');
+        board.canBlackKingSideCastling = split[2].Contains('k');
+        board.canBlackQueenSideCastling = split[2].Contains('q');
+
+        board.enPassant = split[3];
+
+        board.halfmove = int.Parse(split[4]);
+        board.fullmove = int.Parse(split[5]);
     }
 
-    public static string LoadFenFromBoard(Dictionary<Vector2Int, GameObject> board)
+    public static string LoadFenFromBoard(Dictionary<Vector2Int, GameObject> pieces)
     {
         string fen = "";
 
@@ -68,7 +77,7 @@ public static class FenReader
                 file++;
                 GameObject obj;
 
-                if (!board.TryGetValue(vec, out obj))
+                if (!pieces.TryGetValue(vec, out obj))
                 {
                     empty++;
                     continue;
@@ -94,21 +103,23 @@ public static class FenReader
 
         fen += " ";
 
-        GameManager.Instance.SetTurn(!GameManager.Instance.GetTurn());
         fen += GameManager.Instance.GetTurn() ? "w" : "b";
         fen += " ";
 
-        //check for Castling
-        fen += GameManager.Instance.GetBoard().canWhiteKingSideCastling ? "K" : "";
-        fen += GameManager.Instance.GetBoard().canWhiteQueenSideCastling ? "Q" : "";
-        fen += GameManager.Instance.GetBoard().canBlackKingSideCastling ? "k" : "";
-        fen += GameManager.Instance.GetBoard().canBlackQueenSideCastling ? "q" : "";
+        Board board = GameManager.Instance.GetBoard();
+        fen += board.canWhiteKingSideCastling ? "K" : "";
+        fen += board.canWhiteQueenSideCastling ? "Q" : "";
+        fen += board.canBlackKingSideCastling ? "k" : "";
+        fen += board.canBlackQueenSideCastling ? "q" : "";
         fen += " ";
 
-        //TODO: check for En Passant
+        fen += board.enPassant;
+        fen += " ";
 
-        //TODO: track Halfmove clock
-        //TODO: track Fullmove number
+        fen += board.halfmove;
+        fen += " ";
+
+        fen += board.fullmove;
 
         return fen;
     }

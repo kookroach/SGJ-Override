@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using System.IO;
 
 public class ChessPieceEditor : EditorWindow
 {
@@ -7,7 +8,6 @@ public class ChessPieceEditor : EditorWindow
     bool[,] fieldsArray = new bool[17, 9];
     bool canMoveBackwards;
     bool canJump;
-    PieceBehaviour behaviour = null;
     GameObject piece;
 
 
@@ -65,11 +65,20 @@ public class ChessPieceEditor : EditorWindow
     private void CreateDataButton(){
         GUILayout.Space(160);
         if (GUILayout.Button("Create New Move Data", EditorStyles.toolbarButton))
-        {   
-            var name = piece.name.Split("Red");
-            name = name[0].Split("Blue");
-            if(AssetDatabase.FindAssets("MovementData"+name).Length > 1){
-                    //TODO
+        {
+            if (!Directory.Exists("Assets/Data/PieceData/CustomData/"))
+            {
+                AssetDatabase.CreateFolder("Assets/Data/PieceData/", "CustomData");
+            }
+
+            var name = piece.name;
+            name = name.Replace(' ', '_');
+
+            var obj = AssetDatabase.FindAssets("MovementData_" + name, new[] { "Assets/Data/PieceData/CustomData" });
+            if (obj.Length > 0){
+
+                piece.GetComponent<PieceBehaviour>().PieceMovement = AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(obj[0]), typeof(PieceMovement)) as PieceMovement;
+                Repaint();
             }
 
             ScriptableObject newObject = ScriptableObject.CreateInstance(typeof(PieceMovement));

@@ -8,8 +8,6 @@ public class Pawn : PieceBehaviour
     public override string ToString() => "p";
 
     public override (bool hasObstacle, Vector2Int obstaclePos) CanMoveToTarget(Vector2Int target){
-        Debug.Log(Math.Abs(target.y - Mathf.RoundToInt(transform.position.z)));
-
         //if lateral movement give false positive as if there is a obstacle
         if(target.x != Mathf.RoundToInt(transform.position.x))
             return (true, target);
@@ -27,8 +25,6 @@ public class Pawn : PieceBehaviour
         if(target.x == Mathf.RoundToInt(transform.position.x))
             return false;
         
-        //TODO: check en passant
-
         return base.CanAttack(target);
     }
     private bool CanDoubleMove(){
@@ -41,5 +37,15 @@ public class Pawn : PieceBehaviour
         }
 
         return false;
+    }
+
+    public override bool OnAction(Vector2Int target)
+    {
+        var returnBool = base.OnAction(target);
+
+        if (Math.Abs(target.y - Mathf.RoundToInt(transform.position.z)) > 1)
+            GameManager.Instance.GetBoard().enPassant = AlgebraicReader.GridToAlgebraic(new Vector2Int(target.x, target.y - 1));
+
+        return returnBool; 
     }
 }

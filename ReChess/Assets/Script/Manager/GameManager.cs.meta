@@ -5,14 +5,16 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - board: {instanceID: 0}
-  - pawn: {fileID: 1394685609085146482, guid: 6ddb11c246a6e5d438d7f41366e82716, type: 3}
-  - knight: {fileID: 1394685609085146482, guid: 6ddb11c246a6e5d438d7f41366e82716, type: 3}
-  - rook: {fileID: 1394685609085146482, guid: 6ddb11c246a6e5d438d7f41366e82716, type: 3}
-  - bishop: {fileID: 1394685609085146482, guid: 6ddb11c246a6e5d438d7f41366e82716, type: 3}
-  - queen: {fileID: 1394685609085146482, guid: 6ddb11c246a6e5d438d7f41366e82716, type: 3}
-  - king: {fileID: 1394685609085146482, guid: 6ddb11c246a6e5d438d7f41366e82716, type: 3}
-  - white: {fileID: 2100000, guid: cb2638973defff645bd1848edfa38f52, type: 2}
-  - black: {fileID: 2100000, guid: b02b472498e311e42b2eef62a46c304d, type: 2}
+  - pawn: {fileID: 4993279382457201635, guid: d296aa42ae3da4d4d9095f21b3a5981f, type: 3}
+  - knight: {fileID: 2132128841289157761, guid: f08ed650d5c63f14d8455d76873fe92f, type: 3}
+  - rook: {fileID: 3105229041096878692, guid: e2bbbb73451f0c0409a417ebc387163b, type: 3}
+  - bishop: {fileID: 1829306208285057662, guid: 974c32faffc3b464aa9bb81ef250984c, type: 3}
+  - queen: {fileID: 1496343013928752161, guid: 44505271599f58a46a112891db1d5be0, type: 3}
+  - king: {fileID: 3202752670530670703, guid: cc67885194e3a654facbeb7342e13629, type: 3}
+  - button1: {instanceID: 0}
+  - button2: {instanceID: 0}
+  - button3: {instanceID: 0}
+  - layoutData: {instanceID: 0}
   executionOrder: 200
   icon: {instanceID: 0}
   userData: 
