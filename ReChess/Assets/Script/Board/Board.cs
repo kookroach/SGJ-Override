@@ -18,6 +18,8 @@ public class Board : MonoBehaviour
     public bool canBlackQueenSideCastling = true;
     [HideInInspector]
     public bool canBlackKingSideCastling = true;
+    [HideInInspector]
+    public string enPassant = "-";
 
     public void AddPiece(GameObject @object, int col, int row)
     {
@@ -28,7 +30,7 @@ public class Board : MonoBehaviour
             GameManager.Instance.playerWhite.Add(newPiece);
         }
 
-        pieces.Add(new Vector2Int(col, row), @object);
+        pieces.Add(new Vector2Int(col, row), newPiece);
     }
 
     public void RemovePiece(GameObject @object)
@@ -38,6 +40,7 @@ public class Board : MonoBehaviour
 
     public void MovePiece(GameObject @object, Vector2Int target)
     {
+        @object.GetComponent<PieceBehaviour>().OnAction(target);
         pieces.Remove(GridAtPiece(@object));
         pieces[target] = @object;
         Debug.Log(FenReader.LoadFenFromBoard(pieces));

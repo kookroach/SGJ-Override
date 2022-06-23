@@ -34,23 +34,38 @@ public class MoveSelector : MonoBehaviour
     }
 
     public List<Vector2Int> SetPossibleMoves(List<Vector2Int> allowedMoves, GameObject currentObj, bool instatiate = true)
-    {
+    {        
+        List<Vector2Int> possibleMoves = new List<Vector2Int>();
+        List<Vector2Int> movesCopy = new List<Vector2Int>(allowedMoves);
+
         var currentPos = GameManager.Instance.GridAtPiece(currentObj);
-        var list = allowedMoves.Where(vec =>
-        {
-            if (vec.x + currentPos.x >= 8 || vec.x + currentPos.x < 0 || vec.y  + currentPos.y >= 8 || vec.y  + currentPos.y < 0)
-                return false;
 
-            return true;
-        }).ToList();
+        for(int i = 0; i < movesCopy.Count(); i++){
+            Debug.Log(movesCopy[i]);
+            Debug.Log("-----------------");
+            Debug.Log(movesCopy[i]);
 
-        for (int i = 0; i < list.Count(); i++)
+            //invert for black
+            if(currentObj.CompareTag("Black")){
+                var newVec = new Vector2Int(movesCopy[i].x,  - movesCopy[i].y);
+                movesCopy[i] = newVec;
+            }
+            movesCopy[i] += currentPos;
+
+            if(movesCopy[i].x < 0 || movesCopy[i].x > 7 || movesCopy[i].y < 0 || movesCopy[i].y > 7)
+               continue;
+            possibleMoves.Add(movesCopy[i]);
+        }
+
+
+
+        for (int i = 0; i < possibleMoves.Count(); i++)
         { 
-            list[i] += currentPos;
+            //possibleMoves[i] += currentPos;
             if (instatiate)
             {
                 var pieceBehaviour = currentObj.GetComponent<PieceBehaviour>();
-                var eval = pieceBehaviour.CanMoveToTarget(list[i]);
+                var eval = pieceBehaviour.CanMoveToTarget(possibleMoves[i]);
                 if (eval.hasObstacle)
                 {
                     if (pieceBehaviour.CanAttack(eval.obstaclePos) && !allAttackHighlights.ContainsKey(eval.obstaclePos))
@@ -63,7 +78,7 @@ public class MoveSelector : MonoBehaviour
                 allMoveHighlights.Add(eval.obstaclePos, Instantiate(moveLocationPrefab, new Vector3(eval.obstaclePos.x, 0.1f, eval.obstaclePos.y), Quaternion.identity, gameObject.transform));
             }
         }
-        return list;
+        return possibleMoves;
     }
 
     private void Update()
@@ -89,8 +104,7 @@ public class MoveSelector : MonoBehaviour
 
         if (hit.collider.gameObject.layer == (LayerMask.NameToLayer("Highlight")))
         {
-            _movingPiece.GetComponent<PieceBehaviour>().OnAction(gridPoint);
-
+            GameManager.Instance.MoveToGrid(_movingPiece, gridPoint);
         }
         ExitState();
     }

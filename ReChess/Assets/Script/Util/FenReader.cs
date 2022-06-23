@@ -5,7 +5,7 @@ using UnityEngine;
 
 public static class FenReader
 {
-    public const string startFEN = "rnbqkbnr/8/8/8/8/8/8/RNBQKBNR w KQkq - 0 1";
+    public const string startFEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
 
 
     public static void LoadPositionFromFen(string fen)

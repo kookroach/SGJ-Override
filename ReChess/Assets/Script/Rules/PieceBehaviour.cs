@@ -56,9 +56,7 @@ public class PieceBehaviour : MonoBehaviour, IRule
 
     public virtual bool OnAction(Vector2Int target)
     {
-        
         StartCoroutine(move(new Vector3(target.x, transform.position.y, target.y)));
-        GameManager.Instance.MoveToGrid(gameObject, target);
         return true;
     }
 
@@ -91,7 +89,6 @@ public class PieceBehaviour : MonoBehaviour, IRule
             transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
             transform.LookAt(new Vector3(target.x, transform.position.y, target.z));
             yield return new WaitForEndOfFrame();
-
         }
         transform.transform.rotation = orig;
         transform.position = target;
