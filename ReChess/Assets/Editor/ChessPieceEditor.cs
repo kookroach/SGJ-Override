@@ -39,18 +39,51 @@ public class ChessPieceEditor : EditorWindow
         canMoveBackwards = GUILayout.Toggle(canMoveBackwards, "Can move backwards");
         canJump = GUILayout.Toggle(canJump, "Can jump over other pieces");
 
-        if (GUILayout.Button("Apply"))
-        {
-            PieceMovement pieceMovement = piece.GetComponent<PieceBehaviour>().PieceMovement;
-            pieceMovement.canMoveBackwards = canMoveBackwards;
-            pieceMovement.setArray(fieldsArray);
-            pieceMovement.canJump = canJump;
+        CreateApplyButton();
+        CreateDataButton();
+        
+    }
 
-            EditorUtility.SetDirty(pieceMovement);
-            AssetDatabase.SaveAssetIfDirty(pieceMovement);
-            AssetDatabase.Refresh(); 
+    private void CreateApplyButton(){
+         if( piece != null && piece.GetComponent<PieceBehaviour>().PieceMovement != null){
+            if (GUILayout.Button("Apply current Data"))
+            {
+                PieceMovement pieceMovement = piece.GetComponent<PieceBehaviour>().PieceMovement;
+                pieceMovement.canMoveBackwards = canMoveBackwards;
+                pieceMovement.setArray(fieldsArray);
+                pieceMovement.canJump = canJump;
+
+                EditorUtility.SetDirty(pieceMovement);
+                AssetDatabase.SaveAssetIfDirty(pieceMovement);
+                AssetDatabase.Refresh(); 
+            }
+        }else{
+            GUILayout.Space(20);
         }
     }
+
+    private void CreateDataButton(){
+        GUILayout.Space(160);
+        if (GUILayout.Button("Create New Move Data", EditorStyles.toolbarButton))
+        {   
+            var name = piece.name.Split("Red");
+            name = name[0].Split("Blue");
+            if(AssetDatabase.FindAssets("MovementData"+name).Length > 1){
+                    //TODO
+            }
+
+            ScriptableObject newObject = ScriptableObject.CreateInstance(typeof(PieceMovement));
+
+            
+
+            AssetDatabase.CreateAsset(newObject, "Assets/Data/PieceData/CustomData/MovementData_"+ name[0] +".asset");
+            AssetDatabase.SaveAssets();
+
+            piece.GetComponent<PieceBehaviour>().PieceMovement = newObject as PieceMovement;
+            Repaint();
+        }
+    }
+
 
     private void Update()
     {
@@ -62,9 +95,12 @@ public class ChessPieceEditor : EditorWindow
             if (obj.TryGetComponent(out _))
             {
                 PieceMovement pieceMovement = _.PieceMovement;
-                fieldsArray = pieceMovement.getArray();
-                canMoveBackwards = pieceMovement.canMoveBackwards;
-                canJump = pieceMovement.canJump;
+                if(pieceMovement != null){
+                    fieldsArray = pieceMovement.getArray();
+                    canMoveBackwards = pieceMovement.canMoveBackwards;
+                    canJump = pieceMovement.canJump;
+                }
+               
 
                 piece = obj;
                 Repaint();

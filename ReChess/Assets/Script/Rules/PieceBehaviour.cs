@@ -62,7 +62,12 @@ public class PieceBehaviour : MonoBehaviour, IRule
 
     public virtual bool CanAttack(Vector2Int target)
     {
-        return !GameManager.Instance.PieceAtGrid(target).CompareTag(gameObject.tag);
+        var piece = GameManager.Instance.PieceAtGrid(target);
+        
+        if(piece == null)
+            return false;
+        
+        return !piece.CompareTag(gameObject.tag);
     }
 
     public virtual bool OnAttack(GameObject other)

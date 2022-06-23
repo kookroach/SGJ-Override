@@ -41,10 +41,6 @@ public class MoveSelector : MonoBehaviour
         var currentPos = GameManager.Instance.GridAtPiece(currentObj);
 
         for(int i = 0; i < movesCopy.Count(); i++){
-            Debug.Log(movesCopy[i]);
-            Debug.Log("-----------------");
-            Debug.Log(movesCopy[i]);
-
             //invert for black
             if(currentObj.CompareTag("Black")){
                 var newVec = new Vector2Int(movesCopy[i].x,  - movesCopy[i].y);
@@ -58,10 +54,8 @@ public class MoveSelector : MonoBehaviour
         }
 
 
-
         for (int i = 0; i < possibleMoves.Count(); i++)
         { 
-            //possibleMoves[i] += currentPos;
             if (instatiate)
             {
                 var pieceBehaviour = currentObj.GetComponent<PieceBehaviour>();

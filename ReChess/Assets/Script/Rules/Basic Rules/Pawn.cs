@@ -6,7 +6,40 @@ using System.Linq;
 public class Pawn : PieceBehaviour
 {
     public override string ToString() => "p";
-    public bool hasMoved = false;
 
-   
+    public override (bool hasObstacle, Vector2Int obstaclePos) CanMoveToTarget(Vector2Int target){
+        Debug.Log(Math.Abs(target.y - Mathf.RoundToInt(transform.position.z)));
+
+        //if lateral movement give false positive as if there is a obstacle
+        if(target.x != Mathf.RoundToInt(transform.position.x))
+            return (true, target);
+
+        //if cannot double move give false positive to a vector where no Piece will exist
+        if(Math.Abs(target.y - Mathf.RoundToInt(transform.position.z)) > 1 && !CanDoubleMove())
+            return (true, new Vector2Int(-1,-1));
+
+        //if move is legal do normal obstacle check
+        return base.CanMoveToTarget(target);
+    }
+
+    public override bool CanAttack(Vector2Int target){
+        //if target in front of pawn return false
+        if(target.x == Mathf.RoundToInt(transform.position.x))
+            return false;
+        
+        //TODO: check en passant
+
+        return base.CanAttack(target);
+    }
+    private bool CanDoubleMove(){
+        if(gameObject.CompareTag("Black")){
+            if(Mathf.RoundToInt(transform.position.z) == 6){
+                return true;
+            }
+        }else if(Mathf.RoundToInt(transform.position.z) == 1){
+                return true;
+        }
+
+        return false;
+    }
 }

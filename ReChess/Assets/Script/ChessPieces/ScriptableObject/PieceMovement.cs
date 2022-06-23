@@ -9,7 +9,7 @@ using System.Linq;
 public class PieceMovement : ScriptableObject
 {
 
-    public List<Vector2Int> movement;
+    public List<Vector2Int> movement = new List<Vector2Int>();
     public bool canMoveBackwards;
     public bool canJump = false;
     
